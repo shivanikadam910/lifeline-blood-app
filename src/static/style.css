@@ -1,0 +1,111 @@
+* {
+  font-family: Calibri;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login {
+  background: url(../images/vector2.jpg);
+  background-size: cover;
+}
+
+#signup {
+  background: url(../images/vector4.jpg);
+  background-size: cover;
+}
+
+.layer {
+  position: absolute;
+  top: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80vw;
+  height: 80vh;
+  box-shadow: 3px 3px 20px 6px #ccc;
+}
+
+.loginArea {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: rgba(230, 34, 34, 0.8);
+  width: 380px;
+  height: fit-content; */
+
+  margin-left: 50px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: fit-content;
+  min-width: 380px;
+  background-color: white;
+}
+
+.vector#vector-login {
+  background-image: url(../images/blood-donating-bg.jpg);
+  background-size: cover;
+  width: 150px;
+  height: 150px;
+}
+
+.loginText {
+  margin-top: 30px;
+  color: black;
+}
+
+.register {
+  background-color: rgb(241, 253, 253);
+}
+
+.textArea div {
+  color: whitesmoke;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+}
+
+.submitButton {
+  margin-top: 0px;
+  height: 40px;
+  min-width: 250px;
+  color: whitesmoke;
+  background-color: rgb(30, 89, 180);
+  cursor: pointer;
+  border-radius: 3px;
+  border: none;
+}
+
+.submitButton:hover {
+  background-color: rgb(25, 75, 151);
+  border: none;
+}
+
+.textArea input {
+  padding-left: 10px;
+  height: 40px;
+  border: 1px solid rgba(46, 46, 46, 0.5);
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+  color: rgb(48, 48, 48);
+}
+
+a:hover {
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
