@@ -1,5 +1,6 @@
 import React from "react";
 import "../static/style.css";
+import { Link } from 'react-router-dom'
 
 function LoginPage(props) {
   return (
@@ -36,7 +37,7 @@ function LoginPage(props) {
               </div>
             </form>
             <div className="createAccount">
-              <a href="">Create an Account</a>
+            <Link to="/Signup" >Create an Account</Link>
             </div>
           </div>
         </div>
