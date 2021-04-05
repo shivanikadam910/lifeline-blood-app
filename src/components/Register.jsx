@@ -7,52 +7,58 @@ export default class Register extends Component {
   constructor() {
     super();
     this.state = {
-      displayName: "",
-      email: "",
-      password: "",
-      isLoading: false,
-    };
-    this.updateInputVal = this.updateInputVal.bind(this);
+      displayName:'',
+      email: '',
+      password: '',
+  };
   }
 
   // updateInputVal = (val, prop) => {
   //   const state = this.state;
   //   state[prop] = val;
   //   this.setState(state);
-  // };
-  updateInputVal(event) {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-  }
-
+  // }
+  handleEmailChange(e) {
+    this.setState({email: e.target.value});
+}
+handlePasswordChange(e) {
+    this.setState({password: e.target.value});
+}
+handledisplaynameChange(e){
+  this.setState({displayName: e.target.value});
+}
   registerUser = () => {
-    console.log("register user button pressed");
-    if (this.state.email === "" && this.state.password === "") {
-      console.log("Enter details to signup!");
+    console.log("register user button pressed")
+    if (this.state.email === '' && this.state.password === '') {
+         console.log('Enter details to signup!')
     } else {
-      this.setState({
-        isLoading: true,
-      });
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.state.email, this.state.password)
-        .then((res) => {
-          res.user.updateProfile({
-            displayName: this.state.displayName,
-          });
-          console.log("User registered successfully!");
-          this.setState({
-            isLoading: false,
-            displayName: "",
-            email: "",
-            password: "",
-          });
-          // this.props.navigation.navigate('Login')
-        })
-        .catch((error) => this.setState({ errorMessage: error.message }));
-    }
+      console.log(this.state.email)
+      firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
+
+      // this.setState({
+      //   isLoading: true,
+      // })
+    // .then((res) => {
+    //   res.user.updateProfile({
+    //     displayName: this.state.displayName
+    //   })
+    console.log('User registered successfully!')
+  
+    // .catch(error => this.setState({ errorMessage: error.message }))
+    // }
+
+  //   this.setState({
+  //     isLoading: false,
+  //    displayName: '',
+  //    email: '',
+  //     password: ''
+  //  })
+  // this.props.navigation.navigate('/Login')
+    
+    
+    
+    };
+    this.props.history.push("/login");
   };
   render() {
     return (
@@ -71,8 +77,7 @@ export default class Register extends Component {
                     size="35"
                     required
                     value={this.state.displayName}
-                    // onChange={(val) => this.updateInputVal(val, "displayName")}
-                    onChange={this.updateInputVal}
+                    onChange={this.handledisplaynameChange.bind(this)}
                   ></input>
                 </div>
                 <div>
@@ -82,9 +87,7 @@ export default class Register extends Component {
                     name="email"
                     size="35"
                     required
-                    value={this.state.email}
-                    // onChange={(val) => this.updateInputVal(val, "email")}
-                    onChange={this.updateInputVal}
+                    value={this.state.email} onChange={this.handleEmailChange.bind(this)}
                   ></input>
                 </div>
                 <div>
@@ -93,9 +96,7 @@ export default class Register extends Component {
                     placeholder="Enter Password"
                     name="password"
                     size="35"
-                    value={this.state.password}
-                    onChange={this.updateInputVal}
-                    // onChange={(val) => this.updateInputVal(val, "password")}
+                    value={this.state.password} onChange={this.handlePasswordChange.bind(this)}
                     maxLength={15}
                   />
                 </div>
@@ -107,6 +108,8 @@ export default class Register extends Component {
                   >
                     <b>SIGN UP</b>
                   </button>
+                  <Link to="/login" />
+
                 </div>
               </form>
               <div class="social-login">
