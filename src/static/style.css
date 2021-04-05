@@ -18,6 +18,12 @@
   background-size: cover;
 }
 
+.signin {
+  color: black;
+  font-weight: 500;
+  font-size: 14px;
+}
+
 .layer {
   position: absolute;
   top: 100px;
@@ -57,7 +63,8 @@
 }
 
 .loginText {
-  margin-top: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   color: black;
 }
 
@@ -70,13 +77,13 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 10px;
 }
 
 .submitButton {
-  margin-top: 0px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   height: 40px;
-  min-width: 250px;
+  min-width: 248px;
   color: whitesmoke;
   background-color: rgb(30, 89, 180);
   cursor: pointer;
@@ -89,11 +96,50 @@
   border: none;
 }
 
+.google-btn {
+  height: 40px;
+  width: 248px;
+  background: #fff;
+  border: solid 2px rgb(226, 226, 226);
+  border-radius: 3px;
+  font-weight: 100;
+  font-size: 14px;
+  display: flex;
+  padding: 10px 10px;
+  flex: auto;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.google-btn:hover {
+  background: rgb(241, 241, 241);
+}
+
+.social-login {
+  margin-bottom: 10px;
+}
+
+.social-login img {
+  width: 20px;
+}
+
 .textArea input {
   padding-left: 10px;
   height: 40px;
   border: 1px solid rgba(46, 46, 46, 0.5);
   border-radius: 3px;
+  font-weight: 500;
+}
+
+.createAccount {
+  margin-top: 18px;
+  font-size: 16px;
+  font-size: 15px;
+}
+.createAccount p {
+  color: black;
   font-weight: 500;
 }
 

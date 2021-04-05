@@ -3,9 +3,9 @@
    background-image: url("../images/login.svg");    
    background-size: auto;
 } */
-.social-login img {
+/* .social-login img {
   width: 24px;
-}
+} */
 a {
   text-decoration: none;
 }
@@ -42,13 +42,13 @@ a {
   margin: 0;
 }
 
-.social-login {
+/* .social-login {
   display: flex;
   justify-content: center;
   gap: 5px;
-}
+} */
 
-.google-btn {
+/* .google-btn {
   background: #fff;
   border: solid 2px rgb(245 239 239);
   border-radius: 8px;
@@ -60,7 +60,7 @@ a {
   gap: 5px;
   justify-content: center;
   margin-top: 8px;
-}
+} */
 
 .or {
   text-align: center;
