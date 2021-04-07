@@ -18,7 +18,9 @@ class navbar extends React.Component {
               <a href="#">Contact</a>
             </li>
             <li>
-              <a href="#">Sign-In</a>
+              <a href="#" className="signin">
+                Sign-In
+              </a>
             </li>
           </ul>
         </div>

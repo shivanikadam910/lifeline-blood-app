@@ -7,10 +7,10 @@ export default class Register extends Component {
   constructor() {
     super();
     this.state = {
-      displayName:'',
-      email: '',
-      password: '',
-  };
+      displayName: "",
+      email: "",
+      password: "",
+    };
   }
 
   // updateInputVal = (val, prop) => {
@@ -19,46 +19,45 @@ export default class Register extends Component {
   //   this.setState(state);
   // }
   handleEmailChange(e) {
-    this.setState({email: e.target.value});
-}
-handlePasswordChange(e) {
-    this.setState({password: e.target.value});
-}
-handledisplaynameChange(e){
-  this.setState({displayName: e.target.value});
-}
+    this.setState({ email: e.target.value });
+  }
+  handlePasswordChange(e) {
+    this.setState({ password: e.target.value });
+  }
+  handledisplaynameChange(e) {
+    this.setState({ displayName: e.target.value });
+  }
   registerUser = () => {
-    console.log("register user button pressed")
-    if (this.state.email === '' && this.state.password === '') {
-         console.log('Enter details to signup!')
+    console.log("register user button pressed");
+    if (this.state.email === "" && this.state.password === "") {
+      console.log("Enter details to signup!");
     } else {
-      console.log(this.state.email)
-      firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
+      console.log(this.state.email);
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.state.email, this.state.password);
 
       // this.setState({
       //   isLoading: true,
       // })
-    // .then((res) => {
-    //   res.user.updateProfile({
-    //     displayName: this.state.displayName
-    //   })
-    console.log('User registered successfully!')
-  
-    // .catch(error => this.setState({ errorMessage: error.message }))
-    // }
+      // .then((res) => {
+      //   res.user.updateProfile({
+      //     displayName: this.state.displayName
+      //   })
+      console.log("User registered successfully!");
 
-  //   this.setState({
-  //     isLoading: false,
-  //    displayName: '',
-  //    email: '',
-  //     password: ''
-  //  })
-  // this.props.navigation.navigate('/Login')
-    
-    
-    
-    };
-    this.props.history.push("/login");
+      // .catch(error => this.setState({ errorMessage: error.message }))
+      // }
+
+      //   this.setState({
+      //     isLoading: false,
+      //    displayName: '',
+      //    email: '',
+      //     password: ''
+      //  })
+      // this.props.navigation.navigate('/Login')
+    }
+    this.props.history.push("/Home");
   };
   render() {
     return (
@@ -87,7 +86,8 @@ handledisplaynameChange(e){
                     name="email"
                     size="35"
                     required
-                    value={this.state.email} onChange={this.handleEmailChange.bind(this)}
+                    value={this.state.email}
+                    onChange={this.handleEmailChange.bind(this)}
                   ></input>
                 </div>
                 <div>
@@ -96,7 +96,8 @@ handledisplaynameChange(e){
                     placeholder="Enter Password"
                     name="password"
                     size="35"
-                    value={this.state.password} onChange={this.handlePasswordChange.bind(this)}
+                    value={this.state.password}
+                    onChange={this.handlePasswordChange.bind(this)}
                     maxLength={15}
                   />
                 </div>
@@ -109,7 +110,6 @@ handledisplaynameChange(e){
                     <b>SIGN UP</b>
                   </button>
                   <Link to="/login" />
-
                 </div>
               </form>
               <div class="social-login">

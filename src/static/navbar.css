@@ -11,12 +11,14 @@
 }
 
 .nav {
-  position: fixed;
+  overflow: hidden;
+  position: absolute;
   background-color: #222;
   top: 0;
   left: 0;
   right: 0;
   transition: all 0.3s ease-in-out;
+  z-index: 1;
 }
 
 .nav .container {
@@ -42,7 +44,6 @@
   /* margin-left: 200px; */
   transition: all 0.3s ease-in-out;
 }
-
 
 .nav a.current,
 .nav a:hover {

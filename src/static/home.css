@@ -1,0 +1,506 @@
+.nav {
+  background: #f8f8f8;
+}
+.nav a {
+  background-color: #ebebeb;
+  border-radius: 30px;
+  color: #000000;
+  font-family: Calibri;
+  font-weight: bold;
+  margin-left: 50px;
+}
+.nav .signin {
+  margin-right: 20px;
+  font-size: 16px;
+}
+.nav a.current,
+.nav a:hover {
+  background-color: rgb(184, 184, 184);
+  color: #000000;
+  /* font-weight: bold; */
+}
+
+.container#home {
+  position: absolute;
+  top: 55px;
+  left: 0%;
+  height: 150%;
+  min-width: 100%;
+  background: #f5f5f5;
+}
+
+.sidebar {
+  /* position: absolute;
+ 
+  left: 0px;
+  top: 0px; */
+  position: absolute;
+  left: 0%;
+  top: -60px;
+  bottom: 0%;
+  width: 269px;
+  z-index: 1;
+  background: #fff;
+  border-radius: 0px 30px 30px 0px;
+  filter: drop-shadow(4px 4px 15px rgba(243, 24, 64, 0.07));
+}
+
+.logo {
+  margin-top: 10px;
+  position: absolute;
+  width: 221px;
+  height: 106px;
+  left: 12px;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo h1 {
+  float: right;
+  position: absolute;
+  width: 126px;
+  height: 46px;
+  left: 100px;
+
+  font-family: Gabriola;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 43px;
+
+  color: #000000;
+}
+
+.logo img {
+  float: left;
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  left: 0px;
+  top: -5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.dashboard {
+  position: absolute;
+  width: 244px;
+  height: 33px;
+  left: 13px;
+  top: 150px;
+  background: #fff;
+  mix-blend-mode: multiply;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.dashboard:hover {
+  background: #f2f2f2;
+  border-right: 5px solid #fc3d3d;
+  mix-blend-mode: multiply;
+  cursor: pointer;
+}
+.dashboard img {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 30px;
+}
+.dashboard h3 {
+  position: absolute;
+  width: 111px;
+  height: 23px;
+  left: 65px;
+
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 23px;
+  /* identical to box height */
+
+  color: #969696;
+}
+
+.requestBlood {
+  position: absolute;
+  width: 244px;
+  height: 33px;
+  left: 13px;
+  top: 200px;
+  background: #fff;
+  mix-blend-mode: multiply;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.requestBlood:hover {
+  border-right: 5px solid #fc3d3d;
+  background: #f2f2f2;
+  mix-blend-mode: multiply;
+  cursor: pointer;
+}
+.requestBlood img {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 30px;
+}
+.requestBlood h3 {
+  position: absolute;
+  width: 111px;
+  height: 23px;
+  left: 65px;
+
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 23px;
+  color: #969696;
+}
+
+.donateBlood {
+  position: absolute;
+  width: 244px;
+  height: 33px;
+  left: 13px;
+  top: 250px;
+  background: #fff;
+  mix-blend-mode: multiply;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.donateBlood:hover {
+  border-right: 5px solid #fc3d3d;
+  background: #f2f2f2;
+  mix-blend-mode: multiply;
+  cursor: pointer;
+}
+.donateBlood img {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 30px;
+}
+.donateBlood h3 {
+  position: absolute;
+  width: 111px;
+  height: 23px;
+  left: 65px;
+
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 23px;
+  color: #969696;
+}
+
+.hospitals {
+  position: absolute;
+  width: 244px;
+  height: 33px;
+  left: 13px;
+  top: 300px;
+  background: #fff;
+  mix-blend-mode: multiply;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.hospitals:hover {
+  border-right: 5px solid #fc3d3d;
+  background: #f2f2f2;
+  mix-blend-mode: multiply;
+  cursor: pointer;
+}
+.hospitals img {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 30px;
+}
+.hospitals h3 {
+  position: absolute;
+  width: 111px;
+  height: 23px;
+  left: 65px;
+
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 23px;
+  color: #969696;
+}
+
+.emergency {
+  position: absolute;
+  width: 244px;
+  height: 36px;
+  left: 13px;
+  top: 350px;
+  mix-blend-mode: multiply;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  background: #ffd3d3;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
+}
+.emergency:hover {
+  border-right: 5px solid #fc3d3d;
+  background: #ff9090;
+  mix-blend-mode: multiply;
+  cursor: pointer;
+}
+.emergency img {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 30px;
+}
+.emergency h3 {
+  position: absolute;
+  width: 111px;
+  height: 23px;
+  left: 65px;
+
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 23px;
+  color: #ee1313;
+}
+
+.why {
+  position: absolute;
+  width: 208px;
+  height: 237px;
+  left: 36px;
+  top: 858px;
+}
+.why:hover {
+  cursor: pointer;
+}
+.why h3 {
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 10px;
+  color: #ee565f;
+}
+.donateVector {
+  position: absolute;
+  width: 203px;
+  height: 201px;
+  left: -10px;
+  background-image: url(../images/donateVector.png);
+  background-size: cover;
+}
+
+.banner {
+  position: absolute;
+  width: 1271px;
+  height: 364px;
+  left: 248px;
+  top: 0px;
+  display: flex;
+  align-items: center;
+  background: rgba(243, 10, 52, 0.94);
+  /* background: linear-gradient(
+    90deg,
+    rgba(243, 10, 52, 1) 0%,
+    rgba(243, 10, 52, 1) 0%,
+    rgba(213, 22, 22, 1) 0%,
+    rgba(241, 42, 42, 0.95) 100%
+  ); */
+}
+.banner img {
+  position: absolute;
+  width: 537px;
+  height: 358px;
+  left: 734px;
+  top: 5px;
+}
+.banner h1 {
+  position: absolute;
+  width: 372px;
+  height: 148px;
+  left: 250px;
+  top: 80px;
+  font-family: "Times New Roman";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 74px;
+
+  color: #ffffff;
+}
+.banner h3 {
+  position: absolute;
+  width: 150px;
+  height: 30px;
+  top: 250px;
+  left: 250px;
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 30px;
+
+  color: #ffffff;
+}
+.banner h3:hover {
+  cursor: pointer;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 350px 350px 350px;
+  grid-template-rows: 150px 100px 100px;
+  position: absolute;
+  width: fit-content;
+  height: 364px;
+  left: 320px;
+  top: 410px;
+  column-gap: 50px;
+}
+.card1,
+.card2,
+.card3 {
+  background: #a2d2ff;
+  box-shadow: 4px 4px 20px rgba(147, 147, 147, 0.25);
+  border-radius: 15px;
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  padding-left: 30px;
+  padding-top: 10px;
+}
+.card1 {
+  color: #1f5a91;
+}
+.card2 {
+  background-color: #7dfc7b;
+  color: #226b29;
+}
+.card3 {
+  background-color: #ffbed6;
+  color: #911f63;
+}
+.card1:hover {
+  cursor: pointer;
+  background-color: #76b4ee;
+}
+.card2:hover {
+  cursor: pointer;
+  background-color: #57e955;
+  color: #226b29;
+}
+.card3:hover {
+  cursor: pointer;
+  background-color: #f5a5c3;
+  color: #911f63;
+}
+
+.card-grid .total {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 30px;
+}
+.card-grid .num {
+  font-size: 45px;
+}
+
+.nearby {
+  position: absolute;
+  left: 320px;
+  top: 600px;
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 38px;
+  /* identical to box height */
+
+  color: #474747;
+}
+.hospital-grid {
+  display: grid;
+  grid-template-columns: 350px 350px 350px;
+  grid-template-rows: 330px 330px 330px;
+  position: absolute;
+  width: fit-content;
+  height: 364px;
+  left: 320px;
+  top: 650px;
+  column-gap: 50px;
+}
+
+.hospital1,
+.hospital2,
+.hospital3 {
+  background: #a2d2ff;
+  box-shadow: 4px 4px 20px rgba(147, 147, 147, 0.25);
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  padding-left: 30px;
+}
+.hospital1 {
+  background-image: url(../images/hospital1.jpg);
+  background-size: cover;
+}
+.hospital2 {
+  background-image: url(../images/hospital2.jpg);
+  background-size: cover;
+}
+.hospital3 {
+  background-image: url(../images/hospital3.jpg);
+  background-size: cover;
+}
+.hospitalName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  background-color: red;
+  color: #fff;
+
+  width: 150px;
+  height: 0px;
+  transition: height 500ms;
+}
+
+.hospital1:hover {
+  opacity: 0.5;
+}
+.hospital2:hover {
+  opacity: 0.5;
+}
+.hospital3:hover {
+  opacity: 0.5;
+}
+.hospital1:hover .hospitalName {
+  opacity: 1;
+  height: 100px;
+}
+.hospital2:hover .hospitalName {
+  opacity: 1;
+  height: 100px;
+}
+.hospital3:hover .hospitalName {
+  opacity: 1;
+  height: 100px;
+}
