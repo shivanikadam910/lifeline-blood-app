@@ -3,11 +3,12 @@ import firebase from "../firebase/firebase";
 import logo from "../images/logo.png";
 import "../static/navbar.css";
 
+
 class navbar extends React.Component {
   render() {
     return (
       <div class="maincontainer">
-        <div class="nav">
+        <div class="nav" id="header">
           <div class="navlogo">
             <img src={logo} alt="LifeLine" /> 
           </div>
@@ -34,5 +35,6 @@ class navbar extends React.Component {
     );
   }
 }
+
 
 export default navbar;
