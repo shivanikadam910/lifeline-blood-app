@@ -2,6 +2,7 @@ import React from "react";
 import firebase from "../firebase/firebase";
 import logo from "../images/logo.png";
 import "../static/navbar.css";
+import { Link } from "react-router-dom";
 
 
 class navbar extends React.Component {
@@ -15,7 +16,7 @@ class navbar extends React.Component {
           <div class="navul">
             <ul class="ulnav">
               <li>
-                <a href="#">Home</a>
+              <Link to="/Home" style={{ fontWeight: "600" }}> Home</Link> 
               </li>
               <li>
                 <a href="#">About</a>
@@ -24,9 +25,7 @@ class navbar extends React.Component {
                 <a href="#">Contact</a>
               </li>
               <li>
-                <a href="#" className="signin">
-                  Sign-In
-                </a>
+              <Link to="/Login" style={{ fontWeight: "600" }}> Sign in </Link> 
               </li>
             </ul>
           </div>

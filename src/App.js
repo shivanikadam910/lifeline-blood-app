@@ -7,7 +7,8 @@ import Navbar from "./components/navbar";
 import LoginPage from "./components/LoginPage";
 import Register from "./components/Register";
 import HomeScreen from "./components/HomeScreen";
-import Dashboard from "./components/dashboard";
+import Dashboard from "./components/dashboard"
+
 
 class App extends Component {
   render() {
