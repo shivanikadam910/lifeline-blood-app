@@ -7,6 +7,7 @@ import Navbar from "./components/navbar";
 import LoginPage from "./components/LoginPage";
 import Register from "./components/Register";
 import HomeScreen from "./components/HomeScreen";
+import Dashboard from "./components/dashboard";
 
 class App extends Component {
   render() {
@@ -14,7 +15,7 @@ class App extends Component {
       <Router>
         <UserProvider>
           <Navbar />
-          <Route exact path="/" component={Register} />
+          <Route exact path="/" component={Dashboard} />
           <Route exact path="/Signup" component={Register} />
           <Route exact path="/Login" component={LoginPage} />
           <Route exact path="/Home" component={HomeScreen} />
