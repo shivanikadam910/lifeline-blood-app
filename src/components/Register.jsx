@@ -13,11 +13,7 @@ export default class Register extends Component {
     };
   }
 
-  // updateInputVal = (val, prop) => {
-  //   const state = this.state;
-  //   state[prop] = val;
-  //   this.setState(state);
-  // }
+  
   handleEmailChange(e) {
     this.setState({ email: e.target.value });
   }
@@ -28,36 +24,54 @@ export default class Register extends Component {
     this.setState({ displayName: e.target.value });
   }
   registerUser = () => {
+
+
     console.log("register user button pressed");
-    if (this.state.email === "" && this.state.password === "") {
-      console.log("Enter details to signup!");
-    } else {
-      console.log(this.state.email);
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.state.email, this.state.password);
 
-      // this.setState({
-      //   isLoading: true,
-      // })
-      // .then((res) => {
-      //   res.user.updateProfile({
-      //     displayName: this.state.displayName
-      //   })
-      console.log("User registered successfully!");
+    if (this.state.email === "") {
+      alert('Enter email');
+      window.location = '/Signup';
 
-      // .catch(error => this.setState({ errorMessage: error.message }))
-      // }
-
-      //   this.setState({
-      //     isLoading: false,
-      //    displayName: '',
-      //    email: '',
-      //     password: ''
-      //  })
-      // this.props.navigation.navigate('/Login')
     }
-    this.props.history.push("/Home");
+    else {
+      if (this.state.password === "") {
+        alert('Enter password');
+        window.location = '/Signup';
+
+
+      }
+      else {
+        if (this.state.displayName === "") {
+          alert('Enter name');
+          window.location = '/Signup';
+
+
+        }
+        // 
+        else {
+          console.log(this.state.email);
+          firebase
+            .auth()
+            .createUserWithEmailAndPassword(this.state.email, this.state.password)
+            .catch(function (error) {
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              alert(errorMessage);
+              window.location = '/Signup';
+
+
+            })
+
+          this.props.history.push("/Home");
+
+          console.log("User registered successfully!");
+
+
+        }
+      }
+
+    }
+
   };
   render() {
     return (

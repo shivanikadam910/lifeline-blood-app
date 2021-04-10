@@ -20,6 +20,7 @@ class App extends Component {
           <Route exact path="/Signup" component={Register} />
           <Route exact path="/Login" component={LoginPage} />
           <Route exact path="/Home" component={HomeScreen} />
+          <Route exact path="/dashboard" component={Dashboard} />
         </UserProvider>
       </Router>
     );

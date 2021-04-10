@@ -24,63 +24,36 @@ export default class LoginPage extends Component {
     console.log(" button pressed")
     if (this.state.email === '' && this.state.password === '') {
       console.log('Enter details to login!')
-    } 
+    }
     else {
-      
+
       firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-    //   .then((user) =>  { //Auth is successful
-    //      
-    //   })
-      .catch(function(error) {
-         var errorCode = error.code;
-         var  errorMessage = error.message;
-        if (errorCode === 'auth/wrong-password') {
-          console.log("Wrong password");
-           
-       
-          alert('Wrong password.');
+
+        .catch(function (error) {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+
           window.location = '/login';
+          alert(errorMessage);
 
-          
-        } else {
-          console.log("Navigate to Home");
-          // this.props.navigation.navigate('Home');
-        }
-      })
+        })
 
-    // this.props.history.push('/login'); 
 
-    // };
       var user = firebase.auth().currentUser;
 
       if (user) {
         console.log("User is signed in.")
-        this.props.history.push('/dashboard.js');
+        this.props.history.push('/dashboard');
 
-    } else {
-     console.log("no user has signed in")
-     this.props.history.push('/Login');
-       }
-       
-     
-    
-    // // <UserProvider>
-    // // const currentUser  = useContext(UserContext);
-    // //  if (currentUser) {
-    // //   //  console.log("",currentUser)
-    // //   <Redirect to={this.props.history.push('/dashboard.js')} />
-       
-    // }
-   
+      } else {
+        console.log("no user has signed in")
+        this.props.history.push('/Login');
+      }
 
-    // </UserProvider>
-  
-  
-    
-   
-    }   
-      
-      
+
+    }
+
+
   };
   render() {
     return (
