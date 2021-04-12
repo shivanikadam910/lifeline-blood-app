@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import firebase from "../firebase/firebase";
 import "../static/style.css";
 import { Link } from "react-router-dom";
-import { confirmAlert } from 'react-confirm-alert';
+
 
 
 export default class Register extends Component {
@@ -13,9 +13,9 @@ export default class Register extends Component {
       email: "",
       password: "",
 
-      // emailVerification: false,
+
     };
-    // this.verifyUser = this.verifyUser.bind(this);
+
     this.registerUser = this.registerUser.bind(this);
   }
 
@@ -29,19 +29,27 @@ export default class Register extends Component {
   handledisplaynameChange(e) {
     this.setState({ displayName: e.target.value });
   }
-  verifyUser = () => {
-    var user = firebase.auth().currentUser;
-    console.log("Verify user")
-    user.sendEmailVerification().then(function () {
-      // Email sent.
-      window.alert("Verification sent")
-      // this.state.emailVerification = true;
-    }).catch(function (error) {
-      // An error happened.
-      window.alert(error)
-    });
-  }
+  signup_google = () => {
 
+    const googleAuth = new firebase.auth.GoogleAuthProvider();
+
+
+    firebase.auth().signInWithPopup(googleAuth)
+      .then((result) => {
+        let user = result.user;
+
+
+        this.props.history.push('/login')
+
+
+      }).catch((error) => {
+
+        window.alert(error.message)
+
+      });
+
+
+  }
   registerUser = () => {
     console.log("register user button pressed");
 
@@ -62,7 +70,7 @@ export default class Register extends Component {
           alert('Enter name');
           window.location = '/Signup';
         }
-        // 
+
         else {
           console.log(this.state.email);
           firebase
@@ -74,10 +82,8 @@ export default class Register extends Component {
               alert(errorMessage);
               window.location = '/Signup';
             })
-            window.alert("Verify link from email!");
-            // this.verifyUser();
+          window.alert("Verify link from email!");
           this.props.history.push("/verificationReq");
-         
           console.log("User registered successfully!");
         }
       }
@@ -133,12 +139,13 @@ export default class Register extends Component {
                   >
                     <b>SIGN UP</b>
                   </button>
-                 
+
                   <Link to="/login" />
                 </div>
               </form>
               <div class="social-login">
-                <button class="google-btn">
+                <button class="google-btn" onClick={
+                  this.signup_google.bind(this)}>
                   <img
                     style={{ width: "16px" }}
                     alt="Google"

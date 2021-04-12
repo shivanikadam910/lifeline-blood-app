@@ -20,6 +20,36 @@ export default class LoginPage extends Component {
   handlePasswordChange(e) {
     this.setState({ password: e.target.value });
   }
+
+  login_google = () => {
+
+    console.log("gooogle signup")
+
+    const googleAuth = new firebase.auth.GoogleAuthProvider();
+
+
+    firebase.auth().signInWithPopup(googleAuth)
+      .then((result) => {
+        let user = result.user;
+
+        const obj = {
+          username: user.displayName,
+          email: user.email,
+          uid: user.uid,
+
+        }
+        console.log(obj)
+        localStorage.setItem('codecaamp', JSON.stringify(obj))
+        this.props.history.push('/home')
+
+
+      }).catch((error) => {
+
+        window.alert(error.message)
+
+      });
+  }
+
   loginUser = () => {
     console.log(" button pressed")
     if (this.state.email === '' && this.state.password === '') {
@@ -40,16 +70,18 @@ export default class LoginPage extends Component {
 
 
       var user = firebase.auth().currentUser;
+      var verified = user.emailVerified;
+      if (verified) {
+        console.log("verified ,can log in ")
+        this.props.history.push('/home')
 
-      if (user) {
-        console.log("User is signed in.")
-        this.props.history.push('/home');
-
-      } else {
-        console.log("no user has signed in")
-        this.props.history.push('/Login');
       }
+      else {
+        console.log("not verified!!!");
+        alert("You are not verified please verify before login ");
+        this.props.history.push("/verificationReq");
 
+      }
 
     }
 
@@ -94,7 +126,7 @@ export default class LoginPage extends Component {
                 </div>
               </form>
               <div class="social-login">
-                <button class="google-btn">
+                <button class="google-btn" onClick={this.login_google.bind(this)}>
                   <img
                     style={{ width: "16px" }}
                     alt="Google"

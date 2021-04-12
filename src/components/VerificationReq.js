@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import firebase from "../firebase/firebase";
 
 class VerificationReq extends Component {
+
     verifyUser = () => {
-        var user = firebase.auth().currentUser;
+      var user = firebase.auth().currentUser;
         console.log("Verify user")
         user.sendEmailVerification().then(function () {
           // Email sent.
@@ -12,10 +13,16 @@ class VerificationReq extends Component {
           // this.state.emailVerification = true;
         }).catch(function (error) {
           // An error happened.
-          window.alert(error)
+              window.alert(error.message)
         });
+
+
+       
+
       }
+
   render() {
+    
     return (
       
         <div>
@@ -29,9 +36,9 @@ class VerificationReq extends Component {
           <button onClick={this.verifyUser}>
             Send Verification link
           </button>
-          <button> <Link to="/login">
+          <button id="login_butn"> <a onClick={() => {window.location.href="/login"}}>
             Login
-            </Link>
+          </a>
           </button>
         </div>
       
