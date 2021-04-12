@@ -43,7 +43,7 @@ export default class LoginPage extends Component {
 
       if (user) {
         console.log("User is signed in.")
-        this.props.history.push('/dashboard');
+        this.props.history.push('/home');
 
       } else {
         console.log("no user has signed in")

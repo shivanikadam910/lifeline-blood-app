@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import firebase from "../firebase/firebase";
 import "../static/style.css";
 import { Link } from "react-router-dom";
+import { confirmAlert } from 'react-confirm-alert';
+
 
 export default class Register extends Component {
   constructor() {
@@ -10,10 +12,14 @@ export default class Register extends Component {
       displayName: "",
       email: "",
       password: "",
+
+      // emailVerification: false,
     };
+    // this.verifyUser = this.verifyUser.bind(this);
+    this.registerUser = this.registerUser.bind(this);
   }
 
-  
+
   handleEmailChange(e) {
     this.setState({ email: e.target.value });
   }
@@ -23,9 +29,20 @@ export default class Register extends Component {
   handledisplaynameChange(e) {
     this.setState({ displayName: e.target.value });
   }
+  verifyUser = () => {
+    var user = firebase.auth().currentUser;
+    console.log("Verify user")
+    user.sendEmailVerification().then(function () {
+      // Email sent.
+      window.alert("Verification sent")
+      // this.state.emailVerification = true;
+    }).catch(function (error) {
+      // An error happened.
+      window.alert(error)
+    });
+  }
+
   registerUser = () => {
-
-
     console.log("register user button pressed");
 
     if (this.state.email === "") {
@@ -44,8 +61,6 @@ export default class Register extends Component {
         if (this.state.displayName === "") {
           alert('Enter name');
           window.location = '/Signup';
-
-
         }
         // 
         else {
@@ -58,20 +73,15 @@ export default class Register extends Component {
               var errorMessage = error.message;
               alert(errorMessage);
               window.location = '/Signup';
-
-
             })
-
-          this.props.history.push("/Home");
-
+            window.alert("Verify link from email!");
+            // this.verifyUser();
+          this.props.history.push("/verificationReq");
+         
           console.log("User registered successfully!");
-
-
         }
       }
-
     }
-
   };
   render() {
     return (
@@ -123,6 +133,7 @@ export default class Register extends Component {
                   >
                     <b>SIGN UP</b>
                   </button>
+                 
                   <Link to="/login" />
                 </div>
               </form>

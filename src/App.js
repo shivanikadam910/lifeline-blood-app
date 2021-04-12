@@ -7,7 +7,8 @@ import Navbar from "./components/navbar";
 import LoginPage from "./components/LoginPage";
 import Register from "./components/Register";
 import HomeScreen from "./components/HomeScreen";
-import Dashboard from "./components/dashboard"
+import Dashboard from "./components/dashboard";
+import Verification from "./components/VerificationReq";
 
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route exact path="/Login" component={LoginPage} />
           <Route exact path="/Home" component={HomeScreen} />
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/verificationReq" component={Verification} />
         </UserProvider>
       </Router>
     );
