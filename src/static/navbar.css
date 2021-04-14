@@ -17,7 +17,6 @@ html {
   min-height: 100%;
   width: 100%;
   background-color: #E5E5E5;
-  
 }
 
 
@@ -30,11 +29,10 @@ html {
   padding:0;
   margin: 0;
   position: fixed;
-  top: 0;
+  top: 0%;
   width: 100%;
   border: none;
   z-index: 99;
-  
   background-color: #f5f5f5;
   transition: all 0.3s ease-in-out;
 }
@@ -77,9 +75,10 @@ html {
   
   
     border: none;
-    margin: 10px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
     width: 18%; 
     height: 100%;
+    padding-top: 0px;
     padding-bottom: 10px;
     background-color:#fff;
     border-radius: 0px 25px 0px 0px;

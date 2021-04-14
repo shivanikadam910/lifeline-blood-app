@@ -20,11 +20,11 @@
   
 
   .card{
-    border: none !important;
+    border: black 1px solid!important;
     border-radius: 1px !important;
   }
   .card-body {
-    padding: 1.60rem !important;
+    padding: 1.60px !important;
   }
   .card-title {
     margin-bottom: 1.4rem !important;
@@ -33,4 +33,9 @@
   p {
     margin-top: 4px !important;
     margin-bottom: 1.5rem !important;
+  }
+
+  .owncard{
+    display: block;
+   
   }

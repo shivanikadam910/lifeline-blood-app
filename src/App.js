@@ -10,6 +10,7 @@ import HomeScreen from "./components/HomeScreen";
 import Dashboard from "./components/dashboard";
 import Verification from "./components/VerificationReq";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   render() {
