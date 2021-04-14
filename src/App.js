@@ -9,7 +9,7 @@ import Register from "./components/Register";
 import HomeScreen from "./components/HomeScreen";
 import dashboard from "./components/dashboard";
 import Verification from "./components/VerificationReq";
-
+import Request from "./components/ReceiverRequest";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
@@ -24,6 +24,7 @@ class App extends Component {
           <Route exact path="/Home" component={HomeScreen} />
           <Route exact path="/dashboard" component={dashboard} />
           <Route exact path="/verificationReq" component={Verification} />
+          <Route exact path="/receiverrequest" component={Request} />
         </UserProvider>
       </Router>
     );

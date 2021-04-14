@@ -5,10 +5,10 @@ import CardGroup from 'react-bootstrap/CardGroup'
 import '../static/dashboard.css'
 import '../static/home.css'
 import data from '../Blood_news_json'
-
+import Request from "./ReceiverRequest";
 import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
-
+import { Link } from "react-router-dom";
 const newdata = data.map((data) => {
     return (
         <Card key={data.post_id} style={{ background: '#f5f5f5' }}>
@@ -46,8 +46,11 @@ export default class Main extends Component {
               </div>
 
               <div className="menulist">
-                <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
+              <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
+              <Link to="/receiverrequest" style={{ fontWeight: "600" }}>
+                
                 <h3>Request Blood</h3>
+              </Link>
               </div>
 
               <div className="menulist">

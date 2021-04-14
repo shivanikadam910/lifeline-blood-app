@@ -4,7 +4,7 @@ import lifeline from "../images/lifeline.png";
 import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
 import { Link } from "react-router-dom";
-
+import Request from "./ReceiverRequest";
 class dashboard extends React.Component {
   render() {
     return (
@@ -20,8 +20,10 @@ class dashboard extends React.Component {
               </div>
 
               <div className="menulist">
+              <Link to="/receiverrequest" style={{ fontWeight: "600" }}>
                 <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
                 <h3>Request Blood</h3>
+              </Link>
               </div>
 
               <div className="menulist">

@@ -1,0 +1,20 @@
+.frame {
+    font-family: sans-serif;
+    width: 400px;
+    margin-left: 720px;
+    margin-right: auto;
+    margin-top: 90px;
+    margin-bottom: 3em;
+    border-radius: 10px;
+    background-color: #ffff;
+    padding: 1.8rem;
+    box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .rec-request {
+    display: flex;
+    flex-direction: column;
+  }
+  .rec-request label {
+    color: rgb(170 166 166);
+  }
