@@ -10,18 +10,20 @@
     text-decoration: none;
     font-size: 20px;
     padding: 5px ;
+    border-radius: 5px;
   }
   
   a:hover {
   text-decoration: none;
-  background: rgb(230,110,171)  !important;
-  
+  background:#fc3d3d  !important;
+  transition: 300ms;
   }
-  
 
   .card{
     border: black 1px solid!important;
-    border-radius: 1px !important;
+    border-radius: 10px !important;
+    padding: 10px;
+    background-color: black;
   }
   .card-body {
     padding: 1.60px !important;

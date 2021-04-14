@@ -1,40 +1,14 @@
-import React, { Component } from 'react'
-import Card from 'react-bootstrap/Card'
-import CardColumns from 'react-bootstrap/CardColumns'
-import CardGroup from 'react-bootstrap/CardGroup'
-import '../static/dashboard.css'
-import '../static/home.css'
-import data from '../Blood_news_json'
-
+import React from "react";
+import "../static/home.css";
+import lifeline from "../images/lifeline.png";
 import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
+import { Link } from "react-router-dom";
 
-const newdata = data.map((data) => {
+class dashboard extends React.Component {
+  render() {
     return (
-        <Card key={data.post_id} className="m-3 p-3 ">
-            <Card.Body>
-                <Card.Title>{data.post_title}</Card.Title>
-                <Card.Text>
-                      -{data.post_author}
-                </Card.Text>
-
-                <a className="btn-primary"
-                    href={data.post_url}
-                    target="_blank"
-                    rel=" noopener noreferrer"
-                >
-                    Go to link
-          </a>
-            </Card.Body>
-        </Card>
-
-    )
-}
-)
-export default class Main extends Component {
-    render() {
-        return (
-            <div className="containermain" >
+      <div className="containermain" >
       <div className="sidebar">
         
         <div className="menu">
@@ -120,12 +94,12 @@ export default class Main extends Component {
               <div className="hospitalName">City Hospital</div>
             </div>
           </div>
-          <CardColumns className=" m-3 p-3 owncard "> {newdata}  </CardColumns>
+        
       </div>
        
     </div>
-            
-
-        )
-    }
+    );
+  }
 }
+
+export default dashboard;

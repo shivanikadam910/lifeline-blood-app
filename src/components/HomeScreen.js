@@ -1,14 +1,40 @@
-import React from "react";
-import "../static/home.css";
-import lifeline from "../images/lifeline.png";
+import React, { Component } from 'react'
+import Card from 'react-bootstrap/Card'
+import CardColumns from 'react-bootstrap/CardColumns'
+import CardGroup from 'react-bootstrap/CardGroup'
+import '../static/dashboard.css'
+import '../static/home.css'
+import data from '../Blood_news_json'
+
 import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
-import { Link } from "react-router-dom";
 
-class HomeScreen extends React.Component {
-  render() {
+const newdata = data.map((data) => {
     return (
-      <div className="containermain" >
+        <Card key={data.post_id} style={{ background: '#f5f5f5' }}>
+            <Card.Body>
+                <Card.Title>{data.post_title}</Card.Title>
+                <Card.Text>
+                      -{data.post_author}
+                </Card.Text>
+
+                <a className="btn-primary"
+                    href={data.post_url}
+                    target="_blank"
+                    rel=" noopener noreferrer"
+                >
+                    Go to link
+          </a>
+            </Card.Body>
+        </Card>
+
+    )
+}
+)
+export default class Main extends Component {
+    render() {
+        return (
+            <div className="containermain" >
       <div className="sidebar">
         
         <div className="menu">
@@ -64,42 +90,14 @@ class HomeScreen extends React.Component {
             </div>
         </div>
         
-        <div className="card-grid">
-          <div className="card1">
-            <div>My Donations</div>
-            <div className="total">Total</div>
-            <div className="num">0</div>
-          </div>
-          <div className="card2">
-            <div>Received</div>
-            <div className="total">Total</div>
-            <div className="num">0</div>
-          </div>
-          <div className="card3">
-            <div>Request Pending</div>
-            <div className="total">Total</div>
-            <div className="num">0</div>
-          </div>
-        </div>
         
-          <div className="nearby">Nearby Hospitals</div>
-          <div className="card-grid">
-            <div className="hospital1">
-              <div className="hospitalName">City Hospital</div>
-            </div>
-            <div className="hospital2">
-              <div className="hospitalName">City Hospital</div>
-            </div>
-            <div className="hospital3">
-              <div className="hospitalName">City Hospital</div>
-            </div>
-          </div>
-        
+          <div className="nearby">Latest News</div>
+          <CardColumns className=" m-3 p-3 owncard "> {newdata}  </CardColumns>
       </div>
        
     </div>
-    );
-  }
-}
+            
 
-export default HomeScreen;
+        )
+    }
+}

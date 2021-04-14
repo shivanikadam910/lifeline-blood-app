@@ -7,7 +7,7 @@ import Navbar from "./components/navbar";
 import LoginPage from "./components/LoginPage";
 import Register from "./components/Register";
 import HomeScreen from "./components/HomeScreen";
-import Dashboard from "./components/dashboard";
+import dashboard from "./components/dashboard";
 import Verification from "./components/VerificationReq";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,11 +18,11 @@ class App extends Component {
       <Router>
         <UserProvider>
           <Navbar />
-          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/" component={HomeScreen} />
           <Route exact path="/Signup" component={Register} />
           <Route exact path="/Login" component={LoginPage} />
           <Route exact path="/Home" component={HomeScreen} />
-          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/dashboard" component={dashboard} />
           <Route exact path="/verificationReq" component={Verification} />
         </UserProvider>
       </Router>
