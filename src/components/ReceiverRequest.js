@@ -22,7 +22,8 @@ class ReceiverRequest extends React.Component {
       FirstName: "",
       LastName: "",
       Post: "",
-      Hospital:""
+      Hospital:"",
+      users: []
     };
 
     this.addUser = this.addUser.bind(this);
@@ -97,8 +98,18 @@ class ReceiverRequest extends React.Component {
     }
 
   }
+  componentDidMount() {
+    const db = firebase.firestore();
+    db.collection("User")
+      .get()
+      .then(querySnapshot => {
+        const data = querySnapshot.docs.map(doc => doc.data());
+        console.log(data); 
+        this.setState({ users: data });
+      });
+  }
   render() {
-    
+    const { users } = this.state;
     return (
       <div className="containermain" >
       <div className="sidebar">
@@ -248,11 +259,24 @@ class ReceiverRequest extends React.Component {
             </select>
             
             <button class="cta-btn" onClick={this.addUser} class="buttonform"><h3>Make Request</h3></button>
+            
           </form>
         </div>
         </div>
         <div class="request-card-1">
-
+          {users.map(user => (
+          <div key={user.uid} >
+            <h5>Name : {user.FirstName}  {user.LastName}</h5>
+            <div>                  
+                  <h6>Age : {user.Age}</h6>
+                  <h6>Blood Group : {user.BloodGrp}</h6>
+                  <h6>Gender : {user.Gender}</h6>
+                  <h6>Contact : {user.Contact}</h6>
+                  <h6>City : {user.City} </h6>
+            </div>
+            <hr />
+          </div>
+        ))}       
         </div>
         </div>
 
