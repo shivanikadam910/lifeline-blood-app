@@ -47,10 +47,8 @@ export default class Main extends Component {
 
               <div className="menulist">
               <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
-              <Link to="/receiverrequest" style={{ fontWeight: "600" }}>
-                
-                <h3>Request Blood</h3>
-              </Link>
+               <h3>Request Blood</h3>
+            
               </div>
 
               <div className="menulist">

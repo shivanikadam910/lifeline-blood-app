@@ -10,6 +10,7 @@ import HomeScreen from "./components/HomeScreen";
 import dashboard from "./components/dashboard";
 import Verification from "./components/VerificationReq";
 import Request from "./components/ReceiverRequest";
+import Donorprofile from "./components/Donor_profile";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
           <Route exact path="/dashboard" component={dashboard} />
           <Route exact path="/verificationReq" component={Verification} />
           <Route exact path="/receiverrequest" component={Request} />
+          <Route exact path="/Donor_profile" component={Donorprofile} />
         </UserProvider>
       </Router>
     );

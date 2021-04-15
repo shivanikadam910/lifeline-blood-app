@@ -73,7 +73,7 @@ export default class LoginPage extends Component {
       var verified = user.emailVerified;
       if (verified) {
         console.log("verified ,can log in ")
-        this.props.history.push('/home')
+        this.props.history.push('/dashboard')
 
       }
       else {
