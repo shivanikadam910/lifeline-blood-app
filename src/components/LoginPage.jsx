@@ -40,7 +40,7 @@ export default class LoginPage extends Component {
         }
         console.log(obj)
         localStorage.setItem('codecaamp', JSON.stringify(obj))
-        this.props.history.push('/home')
+        this.props.history.push('/dashboard')
 
 
       }).catch((error) => {

@@ -169,9 +169,8 @@ class ReceiverRequest extends React.Component {
             />
             <br />
 
-            
             <label for="hospitals">Choose a Hospital:</label>
-            <select id="sel" onchange={this.handleHospitalChange.bind(this.Hospital_Name)}>
+            <select id="sel" onchange={this.handleHospitalChange.bind(this.Hospital_Name) }>
               {data.map((e,key) => {
                 if(e.District == this.state.City){
                 return <option key={key} value={e.Hospital_Name}>{e.Hospital_Name}</option>
