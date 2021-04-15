@@ -1,43 +1,190 @@
-/* 
-.btn-primary{
-    border: none;
-    border-radius: 1px;
-    background: rgb(230,110,171);
-    background: linear-gradient(90deg, rgba(230,110,171,0.9808298319327731) 20%, rgba(198,98,226,1) 80%);
-  } */
-  
-  a{
-    text-decoration: none;
-    font-size: 20px;
-    padding: 5px ;
-    border-radius: 5px;
-  }
-  
-  a:hover {
-  text-decoration: none;
-  background:#fc3d3d  !important;
-  transition: 300ms;
-  }
 
-  .card{
-    border: black 1px solid!important;
-    border-radius: 10px !important;
-    padding: 10px;
-    background-color: black;
-  }
-  .card-body {
-    padding: 1.60px !important;
-  }
-  .card-title {
-    margin-bottom: 1.4rem !important;
-  }
-  
-  p {
-    margin-top: 4px !important;
-    margin-bottom: 1.5rem !important;
-  }
 
-  .owncard{
-    display: block;
-   
-  }
+.banner{
+  height: 40%;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  background-color: #fc3d3d;
+  
+  
+}
+.banner1{
+  width: 50%;
+  float: left;
+  display: flex;
+  flex-flow: row wrap;
+}
+.banner1 h1 {
+  width: 100%;
+font-family: "Times New Roman";
+font-style: normal;
+font-weight: 600;
+font-size: 64px;
+line-height: 74px;
+margin-left: 40%;
+margin-top: 15%;
+color: #ffffff;
+}
+.banner1 h3 {
+width: 100%;
+font-family: Calibri;
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 30px;
+margin-left: 40%;
+margin-top: -50px;
+color: #ffffff;
+}
+.banner1 h3:hover {
+cursor: pointer;
+}
+.banner2{
+  width: 50%;
+  margin-top: 1%;
+}
+.banner2 img {
+  width: 100%;
+  height: 100%;
+}
+
+
+.card-grid{
+  height: 20%;
+  width: 100%;    
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+
+.card1,
+.card2,
+.card3 {
+  width: 30%;
+background: #a2d2ff;
+box-shadow: 4px 4px 20px rgba(147, 147, 147, 0.25);
+border-radius: 15px;
+font-family: Calibri;
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+padding-left: 30px;
+padding-top: 10px;
+}
+
+.card1 {
+color: #1f5a91;
+}
+.card2 {
+background-color: #7dfc7b;
+color: #226b29;
+}
+.card3 {
+background-color: #ffbed6;
+color: #911f63;
+}
+.card1:hover {
+cursor: pointer;
+background-color: #76b4ee;
+}
+.card2:hover {
+cursor: pointer;
+background-color: #57e955;
+color: #226b29;
+}
+.card3:hover {
+cursor: pointer;
+background-color: #f5a5c3;
+color: #911f63;
+}
+
+.card-grid .total {
+font-size: 16px;
+font-weight: 500;
+margin-top: 30px;
+}
+.card-grid .num {
+font-size: 45px;
+}
+
+
+
+.nearby {
+  height: 10%;
+  width: 100%;
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 38px;
+  /* identical to box height */
+  color: #474747;
+  padding-left: 40px;
+  margin-top: 30px;
+}
+
+.hospital1,
+.hospital2,
+.hospital3 {
+  width: 30%;
+  height: 350px;
+  background: #a2d2ff;
+  box-shadow: 4px 4px 20px rgba(147, 147, 147, 0.25);
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  padding-left: 30px;
+}
+.hospital1 {
+  background-image: url(../images/hospital1.jpg);
+  background-size: cover;
+}
+.hospital2 {
+  background-image: url(../images/hospital2.jpg);
+  background-size: cover;
+}
+.hospital3 {
+  background-image: url(../images/hospital3.jpg);
+  background-size: cover;
+}
+.hospitalName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  background-color: red;
+  color: #fff;
+
+  width: 150px;
+  height: 0px;
+  transition: height 500ms;
+}
+
+.hospital1:hover {
+  opacity: 0.5;
+}
+.hospital2:hover {
+  opacity: 0.5;
+}
+.hospital3:hover {
+  opacity: 0.5;
+}
+.hospital1:hover .hospitalName {
+  opacity: 1;
+  height: 100px;
+}
+.hospital2:hover .hospitalName {
+  opacity: 1;
+  height: 100px;
+}
+.hospital3:hover .hospitalName {
+  opacity: 1;
+  height: 100px;
+}

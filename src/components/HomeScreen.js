@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Card from 'react-bootstrap/Card'
 import CardColumns from 'react-bootstrap/CardColumns'
 import CardGroup from 'react-bootstrap/CardGroup'
-import '../static/dashboard.css'
+
 import '../static/home.css'
 import data from '../Blood_news_json'
 import Request from "./ReceiverRequest";
@@ -46,14 +46,17 @@ export default class Main extends Component {
               </div>
 
               <div className="menulist">
+              <Link to="/receiverrequest" style={{ textDecoration : "none"  }} className="link">
               <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
                <h3>Request Blood</h3>
-            
+              </Link>            
               </div>
 
               <div className="menulist">
+              <Link to="/receiverrequest" style={{ textDecoration : "none"  }} className="link">
                 <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
                 <h3>Donate Blood</h3>
+              </Link>
               </div>
 
               <div className="menulist">

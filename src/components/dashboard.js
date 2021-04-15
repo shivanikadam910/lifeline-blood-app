@@ -1,5 +1,5 @@
 import React from "react";
-import "../static/home.css";
+import "../static/dashboard.css";
 import lifeline from "../images/lifeline.png";
 import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
@@ -20,15 +20,17 @@ class dashboard extends React.Component {
               </div>
 
               <div className="menulist">
+              <Link to="/receiverrequest" style={{ textDecoration : "none"  }} className="link">
                 <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
-                <Link to="/receiverrequest" style={{ fontWeight: "600" }}>
+                
                 <h3>Request Blood</h3>
               </Link>
               </div>
 
               <div className="menulist">
+              <Link to="/receiverrequest" style={{ textDecoration : "none"  }} className="link">
                 <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
-                <Link to="/Donor_profile" style={{ fontWeight: "600" }}>
+               
                 <h3>Donate Blood</h3>
                 </Link>
               </div>

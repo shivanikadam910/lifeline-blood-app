@@ -1,9 +1,16 @@
-import React from "react";
+import React from "react";  
+
 import firebase from "../firebase/firebase";
+import { Link } from "react-router-dom";
+import donateblood from "../images/Donating-Blood-1.svg";
 import "../static/receiverrequest.css";
+
+
+import smile from "../images/smiling-woman.png";
+import donate from "../images/donateVector.png";
+
 import data from '../Hospitals.json'
 import Select from 'react-select';
-
 class ReceiverRequest extends React.Component {
 
   constructor() {
@@ -93,9 +100,71 @@ class ReceiverRequest extends React.Component {
   render() {
     
     return (
-      <div class="frame">
-        <div class="rec-request">
-          <form>
+      <div className="containermain" >
+      <div className="sidebar">
+        
+        <div className="menu">
+          <ul>
+            <li>
+              <div className="menulist">
+                <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
+                <h3>Dashboard</h3>
+              </div>
+
+              <div className="menulist">
+              <Link to="/receiverrequest" style={{ textDecoration : "none"  }} className="link">
+                <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
+                
+                <h3>Request Blood</h3>
+              </Link>
+              </div>
+
+              <div className="menulist">
+              <Link to="/receiverrequest" style={{ textDecoration : "none"  }} className="link">
+                <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
+                
+                <h3>Donate Blood</h3>
+                </Link>
+              </div>
+
+              <div className="menulist">
+                <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
+                <h3>Hospitals</h3>
+              </div>
+
+              <div className="emergency">
+                <img src="https://img.icons8.com/material-outlined/24/000000/error--v1.png" />
+                <h3>Emergency</h3>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div className="why">
+          <h3>Why Donate Blood?</h3>
+          
+          <div className="donateVector">
+          <img src={donate} alt="why donate"/>
+          </div>
+        </div>
+      </div>
+      <div className="container2">
+        <div className="banner">
+            <div class="banner1">
+              <h1>
+                  Donate Blood
+                  <br />
+                  Save lives!
+                </h1>
+                <h3>Donate Now &nbsp; &gt;</h3>
+            </div>
+            <div class="banner2">
+              <img src={smile} alt="Smiling Woman" />
+            </div>
+        </div>
+        <div class="request-card">
+          <div class="request-card-1">
+              <div class="rec-request">
+              <form>
             <label for="firstname">
               <b>First Name</b>
             </label>
@@ -169,7 +238,7 @@ class ReceiverRequest extends React.Component {
             />
             <br />
 
-            <label for="hospitals">Choose a Hospital:</label>
+            <label for="hospitals"><b>Choose a Hospital:</b></label>
             <select id="sel" onchange={this.handleHospitalChange.bind(this.Hospital_Name) }>
               {data.map((e,key) => {
                 if(e.District == this.state.City){
@@ -178,10 +247,49 @@ class ReceiverRequest extends React.Component {
               })}
             </select>
             
-            <button class="cta-btn" onClick={this.addUser}>Make Request</button>
+            <button class="cta-btn" onClick={this.addUser} class="buttonform"><h3>Make Request</h3></button>
           </form>
         </div>
+        </div>
+        <div class="request-card-1">
+
+        </div>
+        </div>
+
+        <div className="card-grid">
+          <div className="card1">
+            <div>My Donations</div>
+            <div className="total">Total</div>
+            <div className="num">0</div>
+          </div>
+          <div className="card2">
+            <div>Received</div>
+            <div className="total">Total</div>
+            <div className="num">0</div>
+          </div>
+          <div className="card3">
+            <div>Request Pending</div>
+            <div className="total">Total</div>
+            <div className="num">0</div>
+          </div>
+        </div>
+        
+          <div className="nearby">Nearby Hospitals</div>
+          <div className="card-grid">
+            <div className="hospital1">
+              <div className="hospitalName">City Hospital</div>
+            </div>
+            <div className="hospital2">
+              <div className="hospitalName">City Hospital</div>
+            </div>
+            <div className="hospital3">
+              <div className="hospitalName">City Hospital</div>
+            </div>
+          </div>
+        
       </div>
+       
+    </div>
     );
   }
 }
