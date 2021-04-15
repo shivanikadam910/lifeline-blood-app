@@ -1,7 +1,11 @@
 import React from "react";
 import firebase from "../firebase/firebase";
 import "../static/receiverrequest.css";
+import data from '../Hospitals.json'
+import Select from 'react-select';
+
 class ReceiverRequest extends React.Component {
+
   constructor() {
     super();
     this.state = {
@@ -11,11 +15,13 @@ class ReceiverRequest extends React.Component {
       FirstName: "",
       LastName: "",
       Post: "",
+      Hospital:""
     };
 
     this.addUser = this.addUser.bind(this);
   }
-
+ 
+  
   handleFirstNameChange(e) {
     this.setState({ FirstName: e.target.value });
   }
@@ -34,7 +40,9 @@ class ReceiverRequest extends React.Component {
   handleCityChange(e) {
     this.setState({ City: e.target.value });
   }
-
+  handleHospitalChange(e){
+    this.setState({Hospital : e.target.value})
+   }
 
   addUser = e => {
     e.preventDefault();
@@ -83,6 +91,7 @@ class ReceiverRequest extends React.Component {
 
   }
   render() {
+    
     return (
       <div class="frame">
         <div class="rec-request">
@@ -159,10 +168,17 @@ class ReceiverRequest extends React.Component {
               required
             />
             <br />
+
+            
             <label for="hospitals">Choose a Hospital:</label>
-            <select name="hospitals" id="hospitals">
-              <option value="giriraj">Giriraj</option>
+            <select id="sel" onchange={this.handleHospitalChange.bind(this.Hospital_Name)}>
+              {data.map((e,key) => {
+                if(e.District == this.state.City){
+                return <option key={key} value={e.Hospital_Name}>{e.Hospital_Name}</option>
+                }
+              })}
             </select>
+            
             <button class="cta-btn" onClick={this.addUser}>Make Request</button>
           </form>
         </div>
