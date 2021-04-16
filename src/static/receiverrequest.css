@@ -23,6 +23,7 @@
     background: #F2FFF9;
     box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
+    overflow-y: scroll;
 }
 
 .rec-request {

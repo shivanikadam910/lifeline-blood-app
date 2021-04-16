@@ -41,8 +41,10 @@ export default class Main extends Component {
           <ul>
             <li>
               <div className="menulist">
+                <Link to = "/dashboard"  style={{ textDecoration : "none"  }} className="link">
                 <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
                 <h3>Dashboard</h3>
+                </Link>
               </div>
 
               <div className="menulist">
