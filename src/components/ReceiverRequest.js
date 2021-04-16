@@ -264,8 +264,6 @@ class ReceiverRequest extends React.Component {
         </div>
         </div>
         <div class="request-card-1">
-        
-
           {users.map(user => (
           <div key={user.uid} >
             <h5>Name : {user.FirstName}  {user.LastName}</h5>
