@@ -72,10 +72,11 @@ export default class Main extends Component {
           </ul>
         </div>
         <div className="why">
-          <h3>Why Donate Blood?</h3>
-          
+          <Popup modal trigger={<h3>Why Donate Blood?</h3>}>
+            {close => <WhyDonateBlood close={close} />}
+          </Popup>
           <div className="donateVector">
-          <img src={donate} alt="why donate"/>
+            <img src={donate} alt="why donate"/>
           </div>
         </div>
       </div>
