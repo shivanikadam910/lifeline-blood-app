@@ -167,7 +167,7 @@
     display: flex;
     flex-flow: row wrap ;
     justify-content: space-around;
-    margin-top: 105px;
+    margin-top: 67px;
    
   }
   .why:hover {
@@ -180,7 +180,7 @@
     font-family: Calibri;
     font-style: normal;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 23px;
     line-height: 30px;
     padding-top: 20px;
     
@@ -189,13 +189,13 @@
   
   }
   .donateVector {
-    margin-top: -10px;
+    margin-top: -35px;
     width: 100%;
     text-align: center;
     padding-bottom: 0px;
     padding-bottom: 60px;
-    height: 65%;
-    width: 65%;
+    height: 60%;
+    width: 60%;
   }
   
   .donateVector img{

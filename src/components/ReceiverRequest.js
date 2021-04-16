@@ -160,22 +160,15 @@ class ReceiverRequest extends React.Component {
         </div>
         <div className="container2">
           <div className="banner">
-            <div class="banner1">
-              <h1>
-                Donate Blood
-                  <br />
-                  Save lives!
-                </h1>
-              <h3>Donate Now &nbsp; &gt;</h3>
-            </div>
-            <div class="banner2">
-              <img src={smile} alt="Smiling Woman" />
-            </div>
+            
+              <img src={donateblood} alt="some error occured" />              
+            
           </div>
           <div class="request-card">
             <div class="request-card-1">
               <div class="rec-request">
                 <form>
+                  <h3>Recive Request</h3>
                   <label for="firstname">
                     <b>First Name</b>
                   </label>
@@ -201,9 +194,9 @@ class ReceiverRequest extends React.Component {
                   />
                   <br />
                   <div>
-                <label for="Bloodgrp">Blood Group:</label>                   
+                <label for="Bloodgrp"><b>Blood Group</b></label>                   
 
-                    <select name="bloodgrp" id="bloodgrp" value={this.state.BloodGrp} onChange={(e) => this.setState({BloodGrp: e.target.value})}>
+                    <select className="drpdwn" name="bloodgrp" id="bloodgrp" value={this.state.BloodGrp} onChange={(e) => this.setState({BloodGrp: e.target.value})}>
                     <option value="O+" >O+</option>
                     <option value="O-" >O-</option>
                     <option value="A+" >A+</option>
@@ -253,8 +246,8 @@ class ReceiverRequest extends React.Component {
                   />
                   <br />
 
-                  <label for="hospitals"><b>Choose a Hospital:</b></label>
-                  <select id="sel" value={this.state.selectValue} onChange={(e) => this.setState({ selectValue: e.target.value })} >
+                  <label for="hospitals"><b>Choose a Hospital</b></label>
+                  <select className="drpdwn2" id="sel" value={this.state.selectValue} onChange={(e) => this.setState({ selectValue: e.target.value })} >
                     {data.map((e, key) => {
                       if (e.District == this.state.City) {
                         return (<option key={key} value={e.Hospital_Name}>{e.Hospital_Name}</option>)
@@ -263,41 +256,10 @@ class ReceiverRequest extends React.Component {
                   </select>
 
 
-                  <button class="cta-btn" onClick={this.addUser} class="buttonform"><h3>Make Request</h3></button>
+                  <button class="cta-btn" onClick={this.addUser} class="buttonform"><h4>Make Request</h4></button>
 
                 </form>
               </div>
-            </div>
-          </div>
-
-          <div className="card-grid">
-            <div className="card1">
-              <div>My Donations</div>
-              <div className="total">Total</div>
-              <div className="num">0</div>
-            </div>
-            <div className="card2">
-              <div>Received</div>
-              <div className="total">Total</div>
-              <div className="num">0</div>
-            </div>
-            <div className="card3">
-              <div>Request Pending</div>
-              <div className="total">Total</div>
-              <div className="num">0</div>
-            </div>
-          </div>
-
-          <div className="nearby">Nearby Hospitals</div>
-          <div className="card-grid">
-            <div className="hospital1">
-              <div className="hospitalName">City Hospital</div>
-            </div>
-            <div className="hospital2">
-              <div className="hospitalName">City Hospital</div>
-            </div>
-            <div className="hospital3">
-              <div className="hospitalName">City Hospital</div>
             </div>
           </div>
 

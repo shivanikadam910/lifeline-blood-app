@@ -94,24 +94,16 @@ class ViewMyRequest extends React.Component {
                     </div>
                 </div>
                 <div className="container2">
-                    <div className="banner">
-                        <div class="banner1">
-                            <h1>
-                                Donate Blood
-                  <br />
-                  Save lives!
-                </h1>
-                            <h3>Donate Now &nbsp; &gt;</h3>
-                        </div>
-                        <div class="banner2">
-                            <img src={smile} alt="Smiling Woman" />
-                        </div>
-                    </div>
+                <div className="banner">
+            
+            <img src={donateblood} alt="some error occured" />              
+          
+        </div>
                     <div class="request-card">
                         <div class="request-card-1">
-                            <h1 align="center"> MY REQUESTS</h1>
+                            <h3 > My Requests</h3>
                             {users.map(user => (
-                                <div key={user.uid}>
+                                <div key={user.uid} class="list">
                                     <h5> {user.FirstName}  {user.LastName}</h5>
                                     <div>
                                         <h6>{user.Age}</h6>
@@ -126,9 +118,9 @@ class ViewMyRequest extends React.Component {
                         </div>
 
                         <div class="request-card-1">
-                            <h1 align="center">DONOR-LIST</h1>
+                            <h3>Donor List</h3>
                             {donors.map(user => (
-                                <div key={user.uid} className="category">
+                                <div key={user.uid} className="list">
                                     <h5>{user.FirstName}  {user.LastName}</h5>
                                     <div>
                                         <h6>Age : {user.Age}</h6>

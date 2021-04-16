@@ -9,7 +9,7 @@
 }
 
 .request-card{
-    padding: 15px;
+    padding: 25px;
     margin: 0px;
     display: flex;
     flex-flow: row wrap;
@@ -18,17 +18,25 @@
 }
 
 .request-card-1{
-    width: 46%;
+    width: 45%;
     margin: 0px 20px 0px 20px;
     background: #F2FFF9;
     box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
-    overflow-y: scroll;
+    overflow-y: hidden;
 }
 
 .rec-request {
   display: block;
   
+}
+
+.request-card-1 h3{
+  font-weight: 600;
+  text-align: center;
+  color: #6069B4;
+  padding-top: 20px;
+  font-size: 40px;
 }
 .rec-request label {
   width: 30%;
@@ -42,12 +50,39 @@ line-height: 30px;
 font-style: normal;
 }
 
+.list{
+  margin: 20px 20px 20px 20px;
+}
+.list h5{
+  margin: 10px;
+}
+.list h6{
+  margin: 10px;
+}
+.drpdwn{
+  width: 20%;
+  margin: 20px 0px 20px 20px ;
+  padding: 20px 10px 20px 10px;
+  border-radius: 10px;
+  border: solid grey 0.1px;
+  color: grey;
+}
+
 .rec-request input{
   width: 50%;
   margin: 20px 0px 20px 20px ;
   padding: 20px 10px 20px 10px;
   border-radius: 10px;
   border: solid grey 0.1px;
+}
+
+.drpdwn2{
+  width: 50%;
+  margin: 20px 0px 20px 20px ;
+  padding: 20px 10px 20px 10px;
+  border-radius: 10px;
+  border: solid grey 0.1px;
+  color: grey;
 }
 
 

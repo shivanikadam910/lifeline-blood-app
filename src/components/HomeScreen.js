@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import Card from 'react-bootstrap/Card'
 import CardColumns from 'react-bootstrap/CardColumns'
 import CardGroup from 'react-bootstrap/CardGroup'
-
+import Popup from "reactjs-popup";
 import '../static/home.css'
 import data from '../Blood_news_json'
 import Request from "./ReceiverRequest";
+import WhyDonateBlood from "./WhyDonateBlood";
 import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
 import { Link } from "react-router-dom";
@@ -72,12 +73,12 @@ export default class Main extends Component {
               </div>
             </li>
           </ul>
-        </div>
-        <div className="why">
-          <h3>Why Donate Blood?</h3>
-          
+        </div><div className="why">
+          <Popup modal trigger={<h3>Why Donate Blood?</h3>}>
+            {close => <WhyDonateBlood close={close} />}
+          </Popup>
           <div className="donateVector">
-          <img src={donate} alt="why donate"/>
+            <img src={donate} alt="why donate"/>
           </div>
         </div>
       </div>
