@@ -1,54 +1,59 @@
-.container {
-    text-align: center;
+
+.contact-info{
+    
+  width: 100%;    
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-top: 45px;
+  margin-bottom: 45px;
 }
 
-.section-header h3 {
-    font-size: 32px;
-    color: #111;
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: 700;
-    position: relative;
-    padding-bottom: 15px;
+.contactinfo1{
+    width: 100%;
+    
+background: #a2d2ff;
+box-shadow: 4px 4px 20px rgba(147, 147, 147, 0.25);
+border-radius: 15px;
+font-family: Calibri;
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+padding-left: 30px;
+padding-top: 50px;
+padding-bottom: 50px;
+margin: 20px 40px 20px 40px;
+
+box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
 }
 
 .section-header h3::before {
-    content: '';
-    position: absolute;
-    display: block;
-    width: 120px;
-    height: 1px;
     background: #ddd;
-    bottom: 1px;
-    left: calc(50% - 60px);
   }
   
 .section-header h3::after {
-    content: '';
-    position: absolute;
-    display: block;
-    width: 40px;
-    height: 3px;
+    
+    
     background: #18d26e;
-    bottom: 0;
-    left: calc(50% - 20px);
+    
+    
 }
   
 .section-header p {
     text-align: center;
-    padding-bottom: 30px;
+    
     color: #333;
 }
 
 .contact-info {
-    margin-bottom: 20px;
+    
     text-align: center;
 }
   
 .contact-info i {
     font-size: 48px;
     display: inline-block;
-    margin-bottom: 10px;
+    
     color: #18d26e;
 }
   
@@ -59,7 +64,7 @@
   
 .contact-info h3 {
     font-size: 18px;
-    margin-bottom: 15px;
+    
     font-weight: bold;
     text-transform: uppercase;
     color: #999;
@@ -74,6 +79,5 @@
 }
 
 .contact-address, .contact-phone, .contact-email {
-    margin-bottom: 20px;
-    padding: 20px 0;
+    
 }

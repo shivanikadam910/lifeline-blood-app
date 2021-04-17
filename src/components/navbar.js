@@ -20,6 +20,9 @@ class navbar extends React.Component {
               <Link to="/Home" style={{ fontWeight: "600" }}> Home</Link> 
               </li>
               <li>
+                <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>Why Donate Blood?</Link>  
+              </li>
+              <li>
                 <Link to="/About" style={{ fontWeight: "600" }}> About Us</Link>
               </li>
               <li>
