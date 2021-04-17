@@ -13,10 +13,9 @@ import Request from "./components/ReceiverRequest";
 import Donorprofile from "./components/Donor_profile";
 import ViewMyRequest from "./components/ViewMyRequest";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Contact_us from "./components/Contact_us";
 import About_us from "./components/About_us";
-
+import WhyDonateBlood from "./components/WhyDonateBlood";
 class App extends Component {
   render() {
     return (
@@ -37,6 +36,7 @@ class App extends Component {
           <Route exact path="/Contact" component={Contact_us} />
           <Route exact path="/About" component={About_us} />
 
+          <Route exact path="/WhyDonateBlood" component={WhyDonateBlood} />
         </UserProvider>
       </Router>
     );
