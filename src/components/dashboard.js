@@ -17,6 +17,7 @@ class dashboard extends React.Component {
     const db = firebase.firestore();
     db.collection("Receiver")
       .where("Email", "==", auth.currentUser.email)
+      .where("ApplicationStatus","==",false)
       .get()
       .then(querySnapshot => {
         const count = querySnapshot.size

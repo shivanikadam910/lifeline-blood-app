@@ -24,12 +24,15 @@ class ReceiverRequest extends React.Component {
       Post: "",
       Hospital: "",
       users: [],
+      users1:[],
       selectValue:"",
+      ApplicationStatus: false,
+      stat : new Boolean(null)
     };
 
     this.addUser = this.addUser.bind(this);
   }
-
+  
 
   handleFirstNameChange(e) {
     this.setState({ FirstName: e.target.value });
@@ -56,6 +59,18 @@ class ReceiverRequest extends React.Component {
   addUser = e => {
     e.preventDefault();
     const db = firebase.firestore();
+    this.state.users1.forEach((user) => {
+      console.log("FirstName:",this.state.FirstName)
+      console.log("LastName:",this.state.LastName)
+      
+      if(user.FirstName == this.state.FirstName && user.LastName == this.state.LastName && !user.ApplicationStatus){
+        this.setState({ stat : true })
+      }
+      else{
+        this.setState({ stat : false })
+      }
+    });
+      
     if (this.state.FirstName === "") {
       window.alert("Enter you First Name")
     }
@@ -80,7 +95,10 @@ class ReceiverRequest extends React.Component {
                 window.alert("Enter reason for requesting blood.")
               }
               else {
-
+                if(this.state.stat){
+                  window.alert("Request with the name already exists. Try with different name")
+                }
+                else{
                 const userRef = db.collection('Receiver').add({
                   BloodGrp: this.state.BloodGrp,
                   City: this.state.City,
@@ -89,12 +107,14 @@ class ReceiverRequest extends React.Component {
                   LastName: this.state.LastName,
                   Post: this.state.Post,
                   Email: auth.currentUser.email,
-                  Hospital: this.state.selectValue
+                  Hospital: this.state.selectValue,
+                  ApplicationStatus : this.state.ApplicationStatus
                 });
                 window.alert("Your request has beed successfully submitted! View your request and donor list. Get well soon!");
                 this.props.history.push("/ViewMyRequest");
                 console.log("Your request has beed successfully submitted! ");
               }
+            }
             }
           }
         }
@@ -104,6 +124,15 @@ class ReceiverRequest extends React.Component {
   }
   componentDidMount() {
     console.log(auth.currentUser.email)
+    const db = firebase.firestore();
+    db.collection("Receiver")
+        .where("Email", "==", auth.currentUser.email)
+        .get()
+        .then(querySnapshot => {
+            const data = querySnapshot.docs.map(doc => doc.data());
+            console.log("here is data", data);
+            this.setState({ users1: data });
+        });
   }
 
   render() {
