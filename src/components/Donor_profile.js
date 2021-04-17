@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import firebase from "../firebase/firebase";
 
+import donateblood from "../images/Donating-Blood-1.svg";
+import "../static/receiverrequest.css";
+
+
+import smile from "../images/smiling-woman.png";
+import donate from "../images/donateVector.png";
+
+import data from '../Hospitals.json'
+import Select from 'react-select';
 class Donor_profile extends Component {
 
 
