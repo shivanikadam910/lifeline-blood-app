@@ -60,42 +60,42 @@ class ReceiverRequest extends React.Component {
     e.preventDefault();
     const db = firebase.firestore();
     this.state.users1.forEach((user) => {
-      console.log("FirstName:",this.state.FirstName)
-      console.log("LastName:",this.state.LastName)
       
       if(user.FirstName == this.state.FirstName && user.LastName == this.state.LastName && !user.ApplicationStatus){
+        console.log("True")
         this.setState({ stat : true })
       }
       else{
+        console.log("False")
         this.setState({ stat : false })
       }
     });
       
     if (this.state.FirstName === "") {
-      window.alert("Enter you First Name")
+      window.alert("Enter your First Name")
     }
     else {
       if (this.state.LastName === "") {
-        window.alert("Enter you Last Name")
+        window.alert("Enter your Last Name")
       }
       else {
         if (this.state.BloodGrp === "") {
-          window.alert("Enter you Blood Group")
+          window.alert("Enter your Blood Group")
         }
         else {
           if (this.state.City === "") {
-            window.alert("Enter you City")
+            window.alert("Enter your City")
           }
           else {
             if (this.state.ContactDetails.length != 14) {
-              window.alert("required 10 digits, match format!")
+              window.alert("Required 10 digits, match format!")
             }
             else {
               if (this.state.Post === "") {
                 window.alert("Enter reason for requesting blood.")
               }
               else {
-                if(this.state.stat){
+                if(this.state.stat==true){
                   window.alert("Request with the name already exists. Try with different name")
                 }
                 else{
