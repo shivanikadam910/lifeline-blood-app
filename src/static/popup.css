@@ -1,23 +1,56 @@
-.container {
-  font-size: 28px;
-  background-color: #f7f7f7;
-  text-align: center;
+
+.blood{
+    
+  
+  width: 100%;    
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  
+  margin-top: 2px;
+  margin-bottom: 45px;
 }
 
-.section-header h3 {
-  text-align: center;
-  font-family: Calibri;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  color: #ee565f;
+.blood-1{
+  width: 100%;
+  
+background: #a2d2ff;
+box-shadow: 4px 4px 20px rgba(147, 147, 147, 0.25);
+border-radius: 15px;
+font-family: Calibri;
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+padding-left: 30px;
+padding-right: 30px;
+padding-top: 50px;
+padding-bottom: 50px;
+margin: 20px 40px 20px 40px;
+
+
+box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
+
 }
 
-.contact-phone, .contact-email {
-  text-align: center;
-  font-family: Calibri;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  color: #000000;
+
+.blood-1 h2{
+  
+  width: 100%;
+    margin: 10px ;
+    
+    padding: 10px;
+    font-size: 50px;
+    border-bottom: solid grey 0.5px;
+    font-weight: bolder;
+    color:#6069B4;
+}
+
+.blood-1 p{
+  
+  width: 100%;
+    margin: 10px;
+    padding: 10px;
+    font-weight: bolder;
+    color: rgb(63, 61, 61);
+    
 }

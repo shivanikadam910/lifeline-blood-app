@@ -28,11 +28,14 @@ box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
 }
 
 .verifytext{
+  width: 100%;
     margin: 10px;
     padding: 10px;
     font-weight: bolder;
     color: rgb(63, 61, 61);
 }
+
+
 
 .verifybutton{
     margin: 10px 40px 10px 10px;
