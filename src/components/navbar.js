@@ -20,10 +20,10 @@ class navbar extends React.Component {
               <Link to="/Home" style={{ fontWeight: "600" }}> Home</Link> 
               </li>
               <li>
-                <a href="#">About</a>
+                <Link to="/About" style={{ fontWeight: "600" }}> About Us</Link>
               </li>
               <li>
-                <a href="#">Contact</a>
+                <Link to="/Contact" style={{ fontWeight: "600" }}> Contact Us</Link>
               </li>
               <li>
               <Link to="/Login" style={{ fontWeight: "600" }}> Sign in </Link> 
