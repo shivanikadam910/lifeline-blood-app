@@ -112,7 +112,7 @@ class ViewMyRequest extends React.Component {
                                         <h6>Contact : {user.ContactDetails}</h6>
                                         <h6>City : {user.City} </h6>
                                     </div>
-                                    <hr />
+                                    
                                 </div>
                             ))}
                         </div>
@@ -129,7 +129,7 @@ class ViewMyRequest extends React.Component {
                                         <h6>Contact : {user.Contact}</h6>
                                         <h6>City : {user.City} </h6>
                                     </div>
-                                    <hr />
+                                    
                                 </div>
                             ))}
                         </div>
