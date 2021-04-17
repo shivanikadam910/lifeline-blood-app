@@ -1,5 +1,7 @@
 import React from "react";
-import "../static/popup.css"
+import "../static/popup.css";
+import donate from "../images/donateVector.png";
+
 
 class Contact_us extends React.Component {
   render() {
