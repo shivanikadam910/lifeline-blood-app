@@ -16,6 +16,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Contact_us from "./components/Contact_us";
 import About_us from "./components/About_us";
 import WhyDonateBlood from "./components/WhyDonateBlood";
+import View_reciever from "./components/ViewRecievers"
 class App extends Component {
   render() {
     return (
@@ -31,6 +32,8 @@ class App extends Component {
           <Route exact path="/receiverrequest" component={Request} />
           <Route exact path="/Donor_profile" component={Donorprofile} />
           <Route exact path="/ViewMyRequest" component={ViewMyRequest} />
+          <Route exact path="/ViewRecievers" component={View_reciever} />
+
           
 
           <Route exact path="/Contact" component={Contact_us} />

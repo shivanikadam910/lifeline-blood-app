@@ -11,6 +11,7 @@ class dashboard extends React.Component {
     super();
     this.state = {
       Requestcount: "",
+      Donation_rqst_cnt:""
     };
   }
   componentDidMount() {
@@ -23,6 +24,14 @@ class dashboard extends React.Component {
         const count = querySnapshot.size
         this.setState({ Requestcount: count });
         console.log(count)
+      });
+      db.collection("User")
+      .where("Email", "==", auth.currentUser.email)
+      .get()
+      .then(querySnapshot => {
+        const count1 = querySnapshot.size
+        this.setState({ Donation_rqst_cnt: count1 });
+        console.log(count1)
       });
   }
   render() {
@@ -93,9 +102,11 @@ class dashboard extends React.Component {
 
           <div className="card-grid">
             <div className="card1">
+              <Link to="/ViewRecievers">
               <div>My Donations</div>
               <div className="total">Total</div>
-              <div className="num">0</div>
+              <div className="num">{this.state.Donation_rqst_cnt}</div>
+              </Link>
             </div>
             <div className="card2">
               <div>Received</div>

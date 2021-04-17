@@ -1,26 +1,51 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import firebase from "../firebase/firebase";
-
-import donateblood from "../images/Donating-Blood-1.svg";
+import firebase, { auth } from "../firebase/firebase";
 import "../static/receiverrequest.css";
-
-
-import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
+import donateblood from "../images/Donating-Blood-1.svg";
 
-import data from '../Hospitals.json'
-import Select from 'react-select';
+
 class Donor_profile extends Component {
-
-
     constructor() {
         super();
         this.state = {
+            Medic_condition: "", bloodgrp: "", selectValue: "",
+            users: [],
+
+
+            onInputchange(event) {
+                this.setState({
+                    [event.target.name]: event.target.value
+
+                });
+
+            }
         };
         this.onInputchange = this.onInputchange.bind(this);
         this.onSubmitForm = this.onSubmitForm.bind(this);
+
     }
+    componentDidMount() {
+
+
+        console.log(auth.currentUser.email)
+        const db = firebase.firestore();
+        db.collection("RegisteredHospital")
+
+            .get()
+            .then(querySnapshot => {
+                const data = querySnapshot.docs.map(doc => doc.data());
+                
+                this.setState({ users: data });
+            });
+
+       
+    }
+
+
+
+
 
     onInputchange(event) {
         this.setState({
@@ -28,166 +53,318 @@ class Donor_profile extends Component {
         });
     }
 
+
+
+
     onSubmitForm() {
 
 
-
-
         const db = firebase.firestore();
+        db.collection("RegisteredHospital")
 
-        const userRef = db.collection('User').add({
-            FirstName: this.state.fname,
-            LastName: this.state.lname,
-            DonorType: this.state.dtype,
-            Gender: this.state.gender,
-            Height: this.state.height,
-            Weight: this.state.weight,
-            Age: this.state.age,
-            RecentDonation: this.state.rct_don,
-            BloodPre: this.state.bp,
-            Diabetic: this.state.dib,
-            BloodGrp: this.state.bgrp
-
-
-        })
-            .then(() => {
-                console.log("Document successfully written!");
-                window.alert("Profile Created successfully ")
-                window.location = '/dashboard';
-            })
-            .catch((error) => {
-                console.error("Error writing document: ", error);
-                window.alert(error.message);
+            .get()
+            .then(querySnapshot => {
+                const data = querySnapshot.docs.map(doc => doc.data());
+                console.log("here is data", data);
+                this.setState({ users: data });
             });
+
+        db.collection("User")
+            .get()
+            .then(querySnapshot => {
+                const data = querySnapshot.docs.map(doc => doc.data());
+                console.log("here is data", data);
+                this.setState({ donors: data });
+            });
+
+        if (this.state.age > 65 || this.state.age < 18) {
+
+            window.alert("Sorry ,You cannot donate blood at this age");
+            window.location = "/dashboard"
+
+        }
+        else {
+            if (this.state.weight < 50) {
+                window.alert("You are underweight to donate blood :(");
+                window.location = "/dashboard";
+            }
+            else {
+                if (this.state.Medic_condition != "None") {
+                    window.alert("Sorry you cannot donate blood with this medical condition");
+                    window.location = "/dashboard";
+                }
+                else {
+                    if (this.state.rct_don === "True") {
+                        window.alert("Sorry you cannot donate blood , as you have donated recently");
+                        window.location = "/dashboard";
+
+                    } else {
+
+                        const db = firebase.firestore();
+
+
+                        const userRef = db.collection('User').add({
+                            FirstName: this.state.fname,
+                            LastName: this.state.lname,
+                            DonorType: "Regular",
+                            Gender: this.state.gender,
+                            Height: this.state.height,
+                            Weight: this.state.weight,
+                            Age: this.state.age,
+                            RecentDonation: this.state.rct_don,
+                            Contact: this.state.contact,
+                            Bloodgrp: this.state.bloodgrp,
+                            MedicalCondition: this.state.Medic_condition,
+                            City: this.state.city,
+                            Contact: this.state.contact,
+                            Email: auth.currentUser.email,
+                            Appointment_hospital: this.state.selectValue
+
+
+                        })
+                            .then(() => {
+                                console.log("Document successfully written!");
+                                console.log(this.state.special_med_con);
+                                alert("Profile Created successfully ")
+                                this.props.history.push("/ViewRecievers");
+
+                            })
+                            .catch((error) => {
+                                console.error("Error writing document: ", error);
+                                alert(error.message);
+                            });
+
+
+                    }
+
+                }
+
+            }
+        }
 
 
     }
 
+
     render() {
         const { items } = this.state;
+        const { users } = this.state;
+
+
 
         return (
-            <div class="frame" >
-                <div >
-                    <form>
-                        <label>
-                            First Name :
-                <input
-                                name="fname"
-                                type="text"
-                                value={this.state.fname}
-                                onChange={this.onInputchange}
-                            />
-                        </label>
-                    </form>
-                </div>
-                <div>
-                    <label>
-                        Last Name :
-                <input
-                            name="lname"
-                            type="text"
-                            value={this.state.lname}
-                            onChange={this.onInputchange}
-                        />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Blood Group :
-                <input
-                            name="bgrp"
-                            type="text"
-                            value={this.state.bgrp}
-                            onChange={this.onInputchange}
-                        />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Donor Type :
-                <input
-                            name="dtype"
-                            type="text"
-                            value={this.state.dtype}
-                            onChange={this.onInputchange}
-                        />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Gender :
-                <input
-                            name="gender"
-                            type="text"
-                            value={this.state.gender}
-                            onChange={this.onInputchange}
-                        />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Age :
-                <input
-                            name="age"
-                            type="number"
-                            value={this.state.age}
-                            onChange={this.onInputchange}
-                        />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Weight :
-                <input
-                            name="weight"
-                            type="number" step="0.01"
-                            value={this.state.weight}
-                            onChange={this.onInputchange}
-                        />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Height:
-                <input
-                            name="height"
-                            type="number" step="0.01"
-                            value={this.state.height}
-                            onChange={this.onInputchange}
-                        />
-                    </label>
-                    <div>
-                        <label>
-                            Blood Pressure :
-                <input name="bp" type="radio" id="bp_yes" value="True" onChange={this.onInputchange} />
-                            <label for="yes">Yes</label>
-                            <input type="radio" id="bp_no" name="bp" value="False" onChange={this.onInputchange} ></input>
-                            <label for="no">No</label><br />
-                        </label>
+            <div className="containermain" >
+                <div className="sidebar">
+
+                    <div className="menu">
+                        <ul>
+                            <li>
+                                <div className="menulist">
+                                    <Link to="/dashboard" style={{ textDecoration: "none" }} className="link">
+                                        <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
+                                        <h3>Dashboard</h3>
+                                    </Link>
+                                </div>
+
+                                <div className="menulist">
+                                    <Link to="/receiverrequest" style={{ textDecoration: "none" }} className="link">
+                                        <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
+
+                                        <h3>Request Blood</h3>
+                                    </Link>
+                                </div>
+
+                                <div className="menulist">
+                                    <Link to="/receiverrequest" style={{ textDecoration: "none" }} className="link">
+                                        <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
+
+                                        <h3>Donate Blood</h3>
+                                    </Link>
+                                </div>
+
+                                <div className="menulist">
+                                    <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
+                                    <h3>Hospitals</h3>
+                                </div>
+
+                                <div className="emergency">
+                                    <img src="https://img.icons8.com/material-outlined/24/000000/error--v1.png" />
+                                    <h3>Emergency</h3>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div>
-                        <label>
-                            Diabetes :
-                <input name="dib" type="radio" id="dib_yes" value="True" onChange={this.onInputchange} />
-                            <label for="yes">Yes</label>
-                            <input type="radio" id="dib_no" name="dib" value="False " onChange={this.onInputchange}></input>
-                            <label for="no">No</label><br />
-                        </label>
+                    <div className="why">
+                        <h3>Why Donate Blood?</h3>
+
+                        <div className="donateVector">
+                            <img src={donate} alt="why donate" />
+                        </div>
                     </div>
-                    <div>
-                        <label>
-                            Recent Donation :
+                </div>
+
+                <div className="container2">
+                    <div className="banner">
+
+                        <img src={donateblood} alt="some error occured" />
+
+                    </div>
+
+                    <div class="request-card" >
+                        <div class="request-card-1">
+
+                            <form>
+                                <h3>Medical Profile</h3>
+
+                                        First Name :
+                                        <input
+                                    name="fname"
+                                    type="text"
+                                    value={this.state.fname}
+                                    onChange={this.onInputchange}
+                                />
+
+
+
+                                <div>
+                                    <label>
+                                        Last Name :
+                <input
+                                            name="lname"
+                                            type="text"
+                                            value={this.state.lname}
+                                            onChange={this.onInputchange}
+                                        />
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="Bloodgrp">Blood Group:</label>
+
+
+                                    <select name="bloodgrp" id="bloodgrp" value={this.state.bloodgrp} onChange={(e) => this.setState({ bloodgrp: e.target.value })}>
+                                        <option selected > -- select an option -- </option>
+                                        <option value="O+" >O+</option>
+                                        <option value="O-" >O-</option>
+                                        <option value="A+" >A+</option>
+                                        <option value="A-" >A-</option>
+                                        <option value="B+" >B+</option>
+                                        <option value="B-" >B-</option>
+                                        <option value="AB+" >AB+</option>
+                                        <option value="AB-" >AB-</option>
+
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label>
+                                        Gender :
+                <input
+                                            name="gender"
+                                            type="text"
+                                            value={this.state.gender}
+                                            onChange={this.onInputchange}
+                                        />
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        Age :
+                <input
+                                            name="age"
+                                            type="number"
+                                            value={this.state.age}
+                                            onChange={this.onInputchange}
+                                        />
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        City :
+                <input
+                                            name="city"
+                                            type="text"
+                                            value={this.state.city}
+                                            onChange={this.onInputchange}
+                                        />
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        Contact :
+                <input
+                                            name="contact"
+                                            type="string"
+                                            value={this.state.contact}
+                                            onChange={this.onInputchange}
+                                        />
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        Weight :
+                <input
+                                            name="weight"
+                                            type="number" step="0.01"
+                                            value={this.state.weight}
+                                            onChange={this.onInputchange}
+                                        />
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        Height:
+                <input
+                                            name="height"
+                                            type="number" step="0.01"
+                                            value={this.state.height}
+                                            onChange={this.onInputchange}
+                                        />
+                                    </label><br />
+
+                                    <label for="condition">Do you have any of these medical Conditions:</label>
+
+
+                                    <select name="special_med_con" id="special_med_con" value={this.state.Medic_condition} onChange={(e) => this.setState({ Medic_condition: e.target.value })}>
+                                        <option selected > -- select an option -- </option>
+                                        <option value="Cardiac Arrest" >Cardiac Arrest</option>
+                                        <option value="Severe lung disease" >Severe lung disease</option>
+                                        <option value="Hepatitis B" >Hepatitis B</option>
+                                        <option value="Hepatitis C" >Hepatitis C</option>
+                                        <option value="Cancer" >Cancer</option>
+                                        <option value="HIV" >HIV</option>
+                                        <option value="Chronic Alchoholism" >Chronic Alchoholism</option>
+                                        <option value="None" >None of the above</option>
+
+                                    </select>
+                                </div>
+                                <div>
+                                    <label>
+                                        Have you donated blood in past 112 days:
                 <input name="rct_don" type="radio" id="rct_yes" value="True" onChange={this.onInputchange} />
-                            <label for="yes">Yes</label>
-                            <input type="radio" id="rct_no" name="rct_don" value="False" onChange={this.onInputchange}></input>
-                            <label for="no">No</label><br />
-                        </label>
+                                        <label for="yes">Yes</label>
+                                        <input type="radio" id="rct_no" name="rct_don" value="False" onChange={this.onInputchange}></input>
+                                        <label for="no">No</label><br />
+                                    </label>
+                                </div>
+                                <label>Select the hospital you would like to donate bloood </label>
+                                <select className="drpdwn2" id="select" value={this.state.selectValue} onChange={(e1) => this.setState({ selectValue: e1.target.value })} >
+                                    <option selected > -- select an option -- </option>
+                                    {users.map((e, key) => {
+                                        if (this.state.city == e.City) {
+                                            return (<option key={key} value={e.Hospital}>{e.Hospital}</option>)
+                                        }
+                                    })}
+                                </select>
+                            </form>
+                            <div>
+                                <button onClick={this.onSubmitForm}>Submit</button>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
-                <div>
-                    <button onClick={this.onSubmitForm}>Submit</button>
-                </div>
+
             </div>
         );
     }
@@ -195,3 +372,4 @@ class Donor_profile extends Component {
 }
 
 export default Donor_profile;
+
