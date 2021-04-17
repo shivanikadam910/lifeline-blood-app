@@ -39,7 +39,9 @@ html {
 
 .navul{
   width: 80%;
-  padding-left: 30%;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  padding-left: 16%;
   margin: 0px;
 }
 .ulnav {
@@ -51,7 +53,7 @@ html {
   display: inline;
   text-align: center;
   margin: 0;
-  padding: 15px 10px 0px 0px;
+  padding: 5px ;
 }
 
 .ulnav a {
@@ -71,6 +73,7 @@ html {
   /* font-weight: bold; */
 }
 
+
 .navlogo {
   
   
@@ -79,7 +82,7 @@ html {
     width: 18%; 
     height: 100%;
     padding-top: 0px;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     background-color:#fff;
     border-radius: 0px 25px 0px 0px;
     box-shadow:10px -10px 15px rgba(243, 24, 64, 0.07);
