@@ -1,0 +1,79 @@
+.container {
+    text-align: center;
+}
+
+.section-header h3 {
+    font-size: 32px;
+    color: #111;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-header h3::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+  }
+  
+.section-header h3::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #18d26e;
+    bottom: 0;
+    left: calc(50% - 20px);
+}
+  
+.section-header p {
+    text-align: center;
+    padding-bottom: 30px;
+    color: #333;
+}
+
+.contact-info {
+    margin-bottom: 20px;
+    text-align: center;
+}
+  
+.contact-info i {
+    font-size: 48px;
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #18d26e;
+}
+  
+.contact-info address, .contact-info p {
+    margin-bottom: 0;
+    color: #000;
+}
+  
+.contact-info h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #999;
+}
+  
+.contact-info a {
+    color: #000;
+}
+  
+.contact-info a:hover {
+    color: #18d26e;
+}
+
+.contact-address, .contact-phone, .contact-email {
+    margin-bottom: 20px;
+    padding: 20px 0;
+}
