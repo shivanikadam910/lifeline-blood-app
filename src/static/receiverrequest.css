@@ -23,7 +23,8 @@
     background: #F2FFF9;
     box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
-    overflow-y: hidden;
+    overflow-y: scroll;
+    height: 800px;
 }
 
 .rec-request {
@@ -56,6 +57,7 @@ font-style: normal;
   border-radius: 10px;
   background: white;
   box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
+  
 }
 .list h5{
   margin: 10px;
