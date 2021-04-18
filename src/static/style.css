@@ -25,13 +25,13 @@
 }
 
 .layer {
-  position: absolute;
-  top: 100px;
+  position: fixed;
+  top: 20px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 80vw;
-  height: 80vh;
+  width: 100vw;
+  height: 100vh;
   box-shadow: 3px 3px 20px 6px #ccc;
 }
 

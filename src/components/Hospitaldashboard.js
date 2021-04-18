@@ -9,46 +9,59 @@ import Request from "./ReceiverRequest";
 class Hospitaldashboard extends React.Component {
   constructor() {
     super();
-    this.state = {
-     
-    };
+    this.state = {};
   }
-  
+
   render() {
     return (
-      <div className="containermain" >
+      <div className="containermain">
         <div className="sidebar">
-
           <div className="menu">
             <ul>
               <li>
                 <div className="menulist">
-                  <Link to="/Hospitaldashboard" style={{ textDecoration: "none" }} className="link">
+                  <Link
+                    to="/Hospitaldashboard"
+                    style={{ textDecoration: "none" }}
+                    className="link"
+                  >
                     <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
                     <h3>Dashboard</h3>
                   </Link>
                 </div>
 
                 <div className="menulist">
-                  <Link to="/Hospitaldashboard" style={{ textDecoration: "none" }} className="link">
-                    <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
+                  <Link
+                    to="/Hospitaldashboard"
+                    style={{ textDecoration: "none" }}
+                    className="link"
+                  >
+                    <img src="https://img.icons8.com/windows/32/000000/approve-and-update.png" />
 
                     <h3>Update Applications</h3>
                   </Link>
                 </div>
 
                 <div className="menulist">
-                  <Link to="/Hospitaldashboard" style={{ textDecoration: "none" }} className="link">
-                    <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
+                  <Link
+                    to="/Hospitaldashboard"
+                    style={{ textDecoration: "none" }}
+                    className="link"
+                  >
+                    <img src="https://img.icons8.com/material-two-tone/24/000000/news.png" />
 
                     <h3>News and Events</h3>
                   </Link>
                 </div>
 
                 <div className="menulist">
-                <Link to="/Hospitaldashboard" style={{ textDecoration: "none" }} className="link">
-                  <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
-                  <h3>Appointments</h3>
+                  <Link
+                    to="/Hospitaldashboard"
+                    style={{ textDecoration: "none" }}
+                    className="link"
+                  >
+                    <img src="https://img.icons8.com/material-rounded/24/000000/calendar-minus.png" />
+                    <h3>Appointments</h3>
                   </Link>
                 </div>
 
@@ -60,10 +73,15 @@ class Hospitaldashboard extends React.Component {
             </ul>
           </div>
           <div className="why">
-            <h3>Why Donate Blood?</h3>
-
+            <h3>
+              <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>
+                Why Donate Blood?
+              </Link>
+            </h3>
             <div className="donateVector">
-              <img src={donate} alt="why donate" />
+              <Link to="/WhyDonateBlood">
+                <img src={donate} alt="why donate" />
+              </Link>
             </div>
           </div>
         </div>
@@ -71,16 +89,16 @@ class Hospitaldashboard extends React.Component {
           <div className="card-grid">
             <div className="card1">
               <Link to="">
-              <div>My Applications</div>
-              <div className="total">Total</div>
-              <div className="num">0</div>
+                <div>My Applications</div>
+                <div className="total">Total</div>
+                <div className="num">0</div>
               </Link>
             </div>
             <div className="card2">
-              <Link to = "">
-              <div>My Report</div>
-              <div className="total">Total</div>
-              <div className="num">0</div>
+              <Link to="">
+                <div>My Report</div>
+                <div className="total">Total</div>
+                <div className="num">0</div>
               </Link>
             </div>
             <div className="card3">
@@ -104,9 +122,7 @@ class Hospitaldashboard extends React.Component {
               <div className="hospitalName">City Hospital</div>
             </div>
           </div> */}
-
         </div>
-
       </div>
     );
   }

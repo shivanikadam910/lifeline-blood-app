@@ -1,5 +1,5 @@
 import React from "react";
-import "../static/contact.css"
+import "../static/contact.css";
 import "../static/dashboard.css";
 import lifeline from "../images/lifeline.png";
 import firebase, { auth } from "../firebase/firebase";
@@ -19,27 +19,31 @@ import Request from "./ReceiverRequest";
 // npm install --save-dev @iconify/react @iconify-icons/mdi
 // npm install --save-dev @iconify/react @iconify-icons/ion
 
-
-
-
 class Contact_us extends React.Component {
   render() {
     return (
-      <div className="containermain" >
+      <div className="containermain">
         <div className="sidebar">
-
           <div className="menu">
             <ul>
               <li>
                 <div className="menulist">
-                  <Link to="/dashboard" style={{ textDecoration: "none" }} className="link">
+                  <Link
+                    to="/dashboard"
+                    style={{ textDecoration: "none" }}
+                    className="link"
+                  >
                     <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
                     <h3>Dashboard</h3>
                   </Link>
                 </div>
 
                 <div className="menulist">
-                  <Link to="/receiverrequest" style={{ textDecoration: "none" }} className="link">
+                  <Link
+                    to="/receiverrequest"
+                    style={{ textDecoration: "none" }}
+                    className="link"
+                  >
                     <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
 
                     <h3>Request Blood</h3>
@@ -47,7 +51,11 @@ class Contact_us extends React.Component {
                 </div>
 
                 <div className="menulist">
-                  <Link to="/Donor_profile" style={{ textDecoration: "none" }} className="link">
+                  <Link
+                    to="/Donor_profile"
+                    style={{ textDecoration: "none" }}
+                    className="link"
+                  >
                     <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
 
                     <h3>Donate Blood</h3>
@@ -67,10 +75,15 @@ class Contact_us extends React.Component {
             </ul>
           </div>
           <div className="why">
-            <h3>Why Donate Blood?</h3>
-
+            <h3>
+              <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>
+                Why Donate Blood?
+              </Link>
+            </h3>
             <div className="donateVector">
-              <img src={donate} alt="why donate" />
+              <Link to="/WhyDonateBlood">
+                <img src={donate} alt="why donate" />
+              </Link>
             </div>
           </div>
         </div>
@@ -79,47 +92,38 @@ class Contact_us extends React.Component {
             <div class="banner1">
               <h1>
                 Donate Blood
-                  <br />
-                  Save lives!
-                </h1>
+                <br />
+                Save lives!
+              </h1>
               <h3>Donate Now &nbsp; &gt;</h3>
             </div>
             <div class="banner2">
               <img src={smile} alt="Smiling Woman" />
             </div>
           </div>
-          
 
-      <div class="contact-info">
-      <div class="contactinfo1">
-        <h2>Contact Us</h2>
-      </div>
-          <div class="contactinfo1">
-            
+          <div class="contact-info">
+            <div class="contactinfo1">
+              <h2>Contact Us</h2>
+            </div>
+            <div class="contactinfo1">
               {/* &emsp;&emsp;&emsp;<Icon icon={telephonereceiver2Icon} /> */}
               <h3>Phone Number</h3>
-              <p><a href="tel:+91987456321">+91 987456321</a></p>
-            
-          </div>
+              <p>
+                <a href="tel:+91987456321">+91 987456321</a>
+              </p>
+            </div>
 
-          <div class="contactinfo1">
-            
+            <div class="contactinfo1">
               {/* &emsp;<Icon icon={emailIcon} /> */}
               <h3>Email</h3>
-              <p><a href="mailto:lifeline@gmail.com">lifeline@gmail.com</a></p>
-            
+              <p>
+                <a href="mailto:lifeline@gmail.com">lifeline@gmail.com</a>
+              </p>
+            </div>
           </div>
-
         </div>
-
       </div>
-    
-
-
-        </div>
-
-
-
     );
   }
 }

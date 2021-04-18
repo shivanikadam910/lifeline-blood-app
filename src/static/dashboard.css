@@ -223,3 +223,7 @@ font-size: 45px;
   opacity: 1;
   height: 100px;
 }
+
+.menulist {
+  width: 120%;
+}
