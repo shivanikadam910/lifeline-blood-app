@@ -32,13 +32,30 @@ const newdata = data.map((data) => {
     )
 }
 )
+
+
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+
 export default class Main extends Component {
     render() {
         return (
             <div className="containermain" >
-      <div className="sidebar">
-        
-        <div className="menu">
+      <div className="sidebar" id="main">
+        <div class="w3-teal">
+          <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+          
+        </div>
+        <div className="menu" id="mySidebar">
           <ul>
             <li>
               <div className="menulist">
@@ -105,7 +122,9 @@ export default class Main extends Component {
       </div>
        
     </div>
-            
+    
+  
+
 
         )
     }
