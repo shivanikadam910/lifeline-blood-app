@@ -10,8 +10,8 @@ export default class LoginPage extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     };
   }
   handleEmailChange(e) {
@@ -22,13 +22,13 @@ export default class LoginPage extends Component {
   }
 
   login_google = () => {
-    console.log("gooogle signup");
+
+    console.log("gooogle signup")
 
     const googleAuth = new firebase.auth.GoogleAuthProvider();
 
-    firebase
-      .auth()
-      .signInWithPopup(googleAuth)
+
+    firebase.auth().signInWithPopup(googleAuth)
       .then((result) => {
         let user = result.user;
 
@@ -36,44 +36,56 @@ export default class LoginPage extends Component {
           username: user.displayName,
           email: user.email,
           uid: user.uid,
-        };
-        console.log(obj);
-        localStorage.setItem("codecaamp", JSON.stringify(obj));
-        this.props.history.push("/dashboard");
-      })
-      .catch((error) => {
-        window.alert(error.message);
+
+        }
+        console.log(obj)
+        localStorage.setItem('codecaamp', JSON.stringify(obj))
+        this.props.history.push('/dashboard')
+
+
+      }).catch((error) => {
+
+        window.alert(error.message)
+
       });
-  };
+  }
 
   loginUser = () => {
-    console.log(" button pressed");
-    if (this.state.email === "" && this.state.password === "") {
-      console.log("Enter details to login!");
-    } else {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.state.email, this.state.password)
+    console.log(" button pressed")
+    if (this.state.email === '' && this.state.password === '') {
+      console.log('Enter details to login!')
+    }
+    else {
+
+      firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
 
         .catch(function (error) {
           var errorCode = error.code;
           var errorMessage = error.message;
 
-          window.location = "/login";
+          window.location = '/login';
           alert(errorMessage);
-        });
+
+        })
+
 
       var user = firebase.auth().currentUser;
       var verified = user.emailVerified;
       if (verified) {
-        console.log("verified ,can log in ");
-        this.props.history.push("/dashboard");
-      } else {
+        console.log("verified ,can log in ")
+        this.props.history.push('/dashboard')
+
+      }
+      else {
         console.log("not verified!!!");
         alert("You are not verified please verify before login ");
         this.props.history.push("/verificationReq");
+
       }
+
     }
+
+
   };
   render() {
     return (
@@ -108,20 +120,13 @@ export default class LoginPage extends Component {
                   ></input>
                 </div>
                 <div className="btn">
-                  <button
-                    type="submit"
-                    className="submitButton"
-                    onClick={this.loginUser}
-                  >
+                  <button type="submit" className="submitButton" onClick={this.loginUser}>
                     <b>LOGIN</b>
                   </button>
                 </div>
               </form>
               <div class="social-login">
-                <button
-                  class="google-btn"
-                  onClick={this.login_google.bind(this)}
-                >
+                <button class="google-btn" onClick={this.login_google.bind(this)}>
                   <img
                     style={{ width: "16px" }}
                     alt="Google"
@@ -135,7 +140,7 @@ export default class LoginPage extends Component {
                 <p>Don't have an account?&nbsp;&nbsp;</p>
                 <Link to="/Signup" style={{ fontWeight: "600" }}>
                   Sign up here
-                </Link>
+              </Link>
               </div>
             </div>
           </div>
