@@ -30,7 +30,7 @@ class Hospitaldashboard extends React.Component {
                 </div>
 
                 <div className="menulist">
-                  <Link to="" style={{ textDecoration: "none" }} className="link">
+                  <Link to="/Hospitaldashboard" style={{ textDecoration: "none" }} className="link">
                     <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
 
                     <h3>Update Applications</h3>
@@ -38,7 +38,7 @@ class Hospitaldashboard extends React.Component {
                 </div>
 
                 <div className="menulist">
-                  <Link to="" style={{ textDecoration: "none" }} className="link">
+                  <Link to="/Hospitaldashboard" style={{ textDecoration: "none" }} className="link">
                     <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
 
                     <h3>News and Events</h3>
@@ -46,7 +46,7 @@ class Hospitaldashboard extends React.Component {
                 </div>
 
                 <div className="menulist">
-                <Link to="" style={{ textDecoration: "none" }} className="link">
+                <Link to="/Hospitaldashboard" style={{ textDecoration: "none" }} className="link">
                   <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
                   <h3>Appointments</h3>
                   </Link>

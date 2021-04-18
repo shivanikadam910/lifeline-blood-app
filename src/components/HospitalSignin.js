@@ -22,9 +22,9 @@ export default class HospitalRegister extends Component {
     handleHpasswordChange(e) {
         this.setState({ Hpassword: e.target.value });
     }
-   
 
     loginHospital = () => {
+
         console.log(this.state.Hlicence)
         console.log(" button pressed")
         if (this.state.Hlicence === '' && this.state.Hpassword === '') {
@@ -39,21 +39,19 @@ export default class HospitalRegister extends Component {
                 .get()
                 .then(querySnapshot => {
                     const data = querySnapshot.docs.map(doc => doc.data());
+                    this.setState({ users: data })
                     console.log("here is data", data);
-                    this.setState({ users: data });
+                    if (data == "") {
+                        window.alert("Login failed!")
+                        this.props.history.push("/Hsignin");
+                    }
+
                 });
-             this.props.history.push("/Hospitaldashboard");
-            // .then(function () {
-            //     // Email sent.
-            //     this.props.history.push("/Hdashboard");
-            //     // this.state.emailVerification = true;
-            // }).catch(function (error) {
-            //     // An error happened.
-            //     window.alert(error.message)
-            // });
+            this.props.history.push("/Hospitaldashboard");
         }
     };
     render() {
+
         return (
             <div className="container">
                 <div className="layer" id="login">
@@ -83,7 +81,11 @@ export default class HospitalRegister extends Component {
                                         value={this.state.Hpassword}
                                         onChange={this.handleHpasswordChange.bind(this)}
                                     ></input>
+
+
                                 </div>
+
+
                                 <div className="btn">
                                     <button type="submit" className="submitButton" onClick={this.loginHospital.bind(this)}>
                                         <b>LOGIN</b>

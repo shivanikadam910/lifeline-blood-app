@@ -76,20 +76,55 @@ padding-left: 30px;
 padding-top: 10px;
 }
 
+.card1 a{
+  text-decoration: none;
+  color: #1F5A90;
+}
+
+.card2 a{
+  text-decoration: none;
+  color: #226b29;
+}
+
+.card3 a{
+  text-decoration: none;
+  color: #226b29;
+  color: #911f63;
+}
+
+.card1 a:hover{
+  text-decoration: none;
+}
+
+.card2 a:hover{
+  text-decoration: none;
+  color: #226b29;
+}
+
+.card3 a:hover{
+  text-decoration: none;
+  color: #911f63;
+}
+
 .card1 {
 color: #1f5a91;
+text-decoration: none;
 }
 .card2 {
 background-color: #7dfc7b;
 color: #226b29;
+text-decoration: none;
 }
 .card3 {
 background-color: #ffbed6;
 color: #911f63;
+text-decoration: none;
 }
 .card1:hover {
 cursor: pointer;
 background-color: #76b4ee;
+
+
 }
 .card2:hover {
 cursor: pointer;
