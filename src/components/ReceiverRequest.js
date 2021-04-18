@@ -226,6 +226,7 @@ class ReceiverRequest extends React.Component {
                 <label for="Bloodgrp"><b>Blood Group</b></label>                   
 
                     <select className="drpdwn" name="bloodgrp" id="bloodgrp" value={this.state.BloodGrp} onChange={(e) => this.setState({BloodGrp: e.target.value})}>
+                    <option selected > -- select an option -- </option>
                     <option value="O+" >O+</option>
                     <option value="O-" >O-</option>
                     <option value="A+" >A+</option>
@@ -277,6 +278,7 @@ class ReceiverRequest extends React.Component {
 
                   <label for="hospitals"><b>Choose a Hospital</b></label>
                   <select className="drpdwn2" id="sel" value={this.state.selectValue} onChange={(e) => this.setState({ selectValue: e.target.value })} >
+                    <option selected > -- select an option -- </option>
                     {data.map((e, key) => {
                       if (e.District == this.state.City) {
                         return (<option key={key} value={e.Hospital_Name}>{e.Hospital_Name}</option>)

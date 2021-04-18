@@ -97,11 +97,12 @@ class ViewRecievers extends React.Component {
                         </div>
                     </div>
                 </div>
+                <div className="container2">
+                <div className="banner">
+                    <img src={donateblood} alt="some error occured" />             
+                </div> 
 
-
-
-
-                <div >
+                
                     <div class="request-card">
                         <div class="request-card-1">
                             <h3 > My Requests</h3>
@@ -137,6 +138,7 @@ class ViewRecievers extends React.Component {
                             ))}
                         </div>
                     </div>
+                
                 </div>
             </div>
 

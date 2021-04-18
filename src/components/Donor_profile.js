@@ -212,36 +212,39 @@ class Donor_profile extends Component {
 
                     <div class="request-card" >
                         <div class="request-card-1">
-
+                            <div class="rec-request">
                             <form>
                                 <h3>Medical Profile</h3>
-
-                                        First Name :
-                                        <input
+                                <label for="firstname">
+                                    <b>First Name</b>
+                                </label>             
+                                <input
                                     name="fname"
+                                    placeholder="Enter First Name"
                                     type="text"
                                     value={this.state.fname}
                                     onChange={this.onInputchange}
+                                    required
                                 />
-
-
-
-                                <div>
-                                    <label>
-                                        Last Name :
-                <input
+                                <br />
+                                    <label for="lastname">
+                                        <b>Last Name</b>
+                                        </label>
+                                    <input
                                             name="lname"
                                             type="text"
+                                            placeholder="Enter Last Name"
                                             value={this.state.lname}
                                             onChange={this.onInputchange}
+                                            required
                                         />
-                                    </label>
-                                </div>
-                                <div>
-                                    <label for="Bloodgrp">Blood Group:</label>
+                                    
+                                
+                                <br />
+                                    <label for="Bloodgrp"><b>Blood Group</b></label>
 
 
-                                    <select name="bloodgrp" id="bloodgrp" value={this.state.bloodgrp} onChange={(e) => this.setState({ bloodgrp: e.target.value })}>
+                                    <select className="drpdwn" name="bloodgrp" id="bloodgrp" value={this.state.bloodgrp} onChange={(e) => this.setState({ bloodgrp: e.target.value })}>
                                         <option selected > -- select an option -- </option>
                                         <option value="O+" >O+</option>
                                         <option value="O-" >O-</option>
@@ -253,78 +256,93 @@ class Donor_profile extends Component {
                                         <option value="AB-" >AB-</option>
 
                                     </select>
-                                </div>
 
-                                <div>
-                                    <label>
-                                        Gender :
-                <input
+                                <br />
+                                    <label >
+                                        <b>Gender </b>
+                                        </label>
+                                        <input
                                             name="gender"
+                                            placeholder="Enter gender"
                                             type="text"
                                             value={this.state.gender}
                                             onChange={this.onInputchange}
                                         />
-                                    </label>
-                                </div>
-                                <div>
+                                    
+                                    <br />
                                     <label>
-                                        Age :
-                <input
+                                        <b>Age </b>
+                                    </label>
+                                    <input
                                             name="age"
                                             type="number"
+                                            placeholder="enter your age"
                                             value={this.state.age}
                                             onChange={this.onInputchange}
+
                                         />
-                                    </label>
-                                </div>
-                                <div>
+                                    <br />
+                                
                                     <label>
-                                        City :
-                <input
+                                        <b>City </b>
+                                        
+                                    </label>
+                                     <input
                                             name="city"
                                             type="text"
+                                            placeholder="Enter city"
                                             value={this.state.city}
                                             onChange={this.onInputchange}
+                                            required
                                         />
+                                    <br />
+                                
+                                    <label for="contactno">
+                                        <b>Contact Number</b>
                                     </label>
-                                </div>
-                                <div>
-                                    <label>
-                                        Contact :
-                <input
+                                    <input
                                             name="contact"
-                                            type="string"
+                                            placeholder="+91-9120034561"
+                                            type="tel"
                                             value={this.state.contact}
                                             onChange={this.onInputchange}
+                                            required
                                         />
-                                    </label>
-                                </div>
-                                <div>
+                                    <br />
+                                
                                     <label>
-                                        Weight :
-                <input
+                                       <b> Weight </b>
+                                        </label>
+                                    <input
                                             name="weight"
+                                            placeholder="Enter your weight"
                                             type="number" step="0.01"
                                             value={this.state.weight}
                                             onChange={this.onInputchange}
+                                            required
                                         />
-                                    </label>
-                                </div>
-                                <div>
+                                    <br />
+                                
+                                
                                     <label>
-                                        Height:
-                <input
+                                        <b>Height</b>
+                                    </label>
+                                    <input
                                             name="height"
+                                            placeholder="Enter your height"
                                             type="number" step="0.01"
                                             value={this.state.height}
                                             onChange={this.onInputchange}
+                                            required
                                         />
-                                    </label><br />
+                                    <br />
 
-                                    <label for="condition">Do you have any of these medical Conditions:</label>
+                                    <label for="condition">
+                                        <b>Do you have any of these medical Conditions</b>
+                                    </label>
 
 
-                                    <select name="special_med_con" id="special_med_con" value={this.state.Medic_condition} onChange={(e) => this.setState({ Medic_condition: e.target.value })}>
+                                    <select class="drpdwn" name="special_med_con" id="special_med_con" value={this.state.Medic_condition} onChange={(e) => this.setState({ Medic_condition: e.target.value })}>
                                         <option selected > -- select an option -- </option>
                                         <option value="Cardiac Arrest" >Cardiac Arrest</option>
                                         <option value="Severe lung disease" >Severe lung disease</option>
@@ -336,17 +354,38 @@ class Donor_profile extends Component {
                                         <option value="None" >None of the above</option>
 
                                     </select>
-                                </div>
-                                <div>
-                                    <label>
-                                        Have you donated blood in past 112 days:
-                <input name="rct_don" type="radio" id="rct_yes" value="True" onChange={this.onInputchange} />
-                                        <label for="yes">Yes</label>
-                                        <input type="radio" id="rct_no" name="rct_don" value="False" onChange={this.onInputchange}></input>
-                                        <label for="no">No</label><br />
+                                    <br />
+                                    
+                                    <label >
+                                        <b>Have you donated blood in past 112 days</b>
+                                        </label>
+                                        
+                                        
+                                    
+                                    <label for="yes">
+                                    <input 
+                                        
+                                        name="rct_don" 
+                                        placeholder="Yes/No"
+                                        type="radio" 
+                                        id="rct_yes" 
+                                        value="True" 
+                                        onChange={this.onInputchange} 
+                                        style={{ margin:"20px"}}
+                                    
+                                    />
+                                       <b>Yes</b>
                                     </label>
-                                </div>
-                                <label>Select the hospital you would like to donate bloood </label>
+                                    
+                                    
+                                    <label for="no" >
+                                    <input type="radio" id="rct_no" name="rct_don" value="False" onChange={this.onInputchange}></input>
+                                        <b>No</b></label>
+                                    
+                                    <br />
+                                    
+                                
+                                <label for="hospitals"><b>Choose a Hospital</b></label>
                                 <select className="drpdwn2" id="select" value={this.state.selectValue} onChange={(e1) => this.setState({ selectValue: e1.target.value })} >
                                     <option selected > -- select an option -- </option>
                                     {users.map((e, key) => {
@@ -355,11 +394,13 @@ class Donor_profile extends Component {
                                         }
                                     })}
                                 </select>
-                            </form>
-                            <div>
-                                <button onClick={this.onSubmitForm}>Submit</button>
-                            </div>
 
+                                <button class="cta-btn" onClick={this.onSubmitForm} class="buttonform"><h4>Submit</h4></button>
+                            </form>
+                            
+                                
+                            
+                            </div>
                         </div>
 
                     </div>
