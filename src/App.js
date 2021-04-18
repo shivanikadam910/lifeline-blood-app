@@ -19,6 +19,7 @@ import WhyDonateBlood from "./components/WhyDonateBlood";
 import View_reciever from "./components/ViewRecievers"
 import HospitalRegister from "./components/HospitalRegister";
 import HospitalSignin from "./components/HospitalSignin";
+import ReceivedBlood from "./components/ReceivedBlood";
 class App extends Component {
   render() {
     return (
@@ -40,6 +41,7 @@ class App extends Component {
           <Route exact path="/About" component={About_us} />
           <Route exact path="/Hsignin" component={HospitalSignin} />
           <Route exact path="/WhyDonateBlood" component={WhyDonateBlood} />
+          <Route exact path="/ReceivedBlood" component={ReceivedBlood} />
         </UserProvider>
       </Router>
     );

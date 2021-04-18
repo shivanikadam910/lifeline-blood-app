@@ -11,7 +11,8 @@ class dashboard extends React.Component {
     super();
     this.state = {
       Requestcount: "",
-      Donation_rqst_cnt:""
+      Donation_rqst_cnt:"",
+      ReceivedCount: ""
     };
   }
   componentDidMount() {
@@ -25,6 +26,7 @@ class dashboard extends React.Component {
         this.setState({ Requestcount: count });
         console.log(count)
       });
+
       db.collection("User")
       .where("Email", "==", auth.currentUser.email)
       .get()
@@ -32,6 +34,16 @@ class dashboard extends React.Component {
         const count1 = querySnapshot.size
         this.setState({ Donation_rqst_cnt: count1 });
         console.log(count1)
+      });
+
+      db.collection("Receiver")
+      .where("Email", "==", auth.currentUser.email)
+      .where("ApplicationStatus","==",true)
+      .get()
+      .then(querySnapshot => {
+        const count2 = querySnapshot.size
+        this.setState({ ReceivedCount: count2 });
+        console.log(count2)
       });
   }
   render() {
@@ -109,9 +121,11 @@ class dashboard extends React.Component {
               </Link>
             </div>
             <div className="card2">
+              <Link to = "/ReceivedBlood">
               <div>Received</div>
               <div className="total">Total</div>
-              <div className="num">0</div>
+              <div className="num">{this.state.ReceivedCount}</div>
+              </Link>
             </div>
             <div className="card3">
               <Link to="/ViewMyRequest">

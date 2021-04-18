@@ -17,78 +17,21 @@ class ViewMyRequest extends React.Component {
         super();
         this.state = {
             users: [],
-            donors: [],
-            currentID :""
         };
     }
     componentDidMount() {
         const db = firebase.firestore();
         db.collection("Receiver")
             .where("Email", "==", auth.currentUser.email)
-            .where("ApplicationStatus","==",false)
+            .where("ApplicationStatus","==",true)
             .get()
             .then(querySnapshot => {
                 const data = querySnapshot.docs.map(doc => doc.data());
                 console.log("here is data", data);
                 this.setState({ users: data });
             });
-
-        db.collection("User")
-            .get()
-            .then(querySnapshot => {
-                const data = querySnapshot.docs.map(doc => doc.data());
-                console.log("here is data", data);
-                this.setState({ donors: data });
-            });
     }
 
-    applicationUpdate = (user) => {
-        const db = firebase.firestore();
-        db.collection("Receiver")
-            .where("Email", "==", auth.currentUser.email)
-            .where("ApplicationStatus","==",false)
-            .where("FirstName","==",user.FirstName)
-            .where("LastName","==",user.LastName)
-            .get()
-            .then(snapshot => {
-                snapshot.docs.forEach(doc => {
-                    this.setState({
-                        currentID : doc.id
-                    },() =>{db.collection('Receiver').doc(this.state.currentID)
-                           .update({
-                                ApplicationStatus: true
-                             });
-                             window.alert("Request Marked Completed")
-                             this.props.history.push("/ReceivedBlood");
-                            })
-                             
-                })
-            })
-
-    }
-
-    applicationDelete = (user) => {
-        const db = firebase.firestore();
-        db.collection("Receiver")
-            .where("Email", "==", auth.currentUser.email)
-            .where("ApplicationStatus","==",false)
-            .where("FirstName","==",user.FirstName)
-            .where("LastName","==",user.LastName)
-            .get()
-            .then(snapshot => {
-                snapshot.docs.forEach(doc => {
-                    this.setState({
-                        currentID : doc.id
-                    },() =>{db.collection('Receiver').doc(this.state.currentID)
-                           .delete().then(() => {
-                            window.alert("Request Deleted Successfully")
-                        })
-                        });
-                             
-                        })
-                             
-            })
-    }
 
     render() {
         const { users } = this.state;
@@ -151,7 +94,7 @@ class ViewMyRequest extends React.Component {
         </div>
                     <div class="request-card">
                         <div class="request-card-1">
-                            <h3 > My Requests</h3>
+                            <h3 > Received Blood Requests</h3>
                             {users.map(user => (
                                 <div key={user.uid} class="list">
                                     <h5> {user.FirstName}  {user.LastName}</h5>
@@ -160,25 +103,6 @@ class ViewMyRequest extends React.Component {
                                         <h6>Blood Group : {user.BloodGrp}</h6>
                                         <h6>Reason : {user.Post}</h6>
                                         <h6>Contact : {user.ContactDetails}</h6>
-                                        <h6>City : {user.City} </h6>
-                                        <button class="cta-btn" onClick={this.applicationUpdate.bind(this,user)} class="buttonform"><h4>Complete Request</h4></button>
-                                        <button class="cta-btn" onClick={this.applicationDelete.bind(this,user)} class="buttonform"><h4>Delete Request</h4></button>
-                                    </div>
-                                    
-                                </div>
-                            ))}
-                        </div>
-
-                        <div class="request-card-1">
-                            <h3>Donor List</h3>
-                            {donors.map(user => (
-                                <div key={user.uid} className="list">
-                                    <h5>{user.FirstName}  {user.LastName}</h5>
-                                    <div>
-                                        <h6>Age : {user.Age}</h6>
-                                        <h6>Blood Group : {user.Bloodgrp}</h6>
-                                        <h6>Gender : {user.Gender}</h6>
-                                        <h6>Contact : {user.Contact}</h6>
                                         <h6>City : {user.City} </h6>
                                     </div>
                                     
