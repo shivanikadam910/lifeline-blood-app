@@ -144,7 +144,7 @@ export default class HospitalRegister extends Component {
                             </form>
                             <div className="createAccount">
                                 <p>Already registered Hospital?&nbsp;&nbsp;</p>
-                                <Link to="/Hlogin" style={{ fontWeight: "600" }}>Log In</Link>
+                                <Link to="/Hsignin" style={{ fontWeight: "600" }}>Log In</Link>
                             </div>
                         </div>
                     </div>
