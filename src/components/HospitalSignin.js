@@ -22,16 +22,7 @@ export default class HospitalRegister extends Component {
     handleHpasswordChange(e) {
         this.setState({ Hpassword: e.target.value });
     }
-   componentDidMount(){
-    const db = firebase.firestore();
-    db.collection("RegisteredHospital")
-    .get()
-    .then(querySnapshot => {
-        const data = querySnapshot.docs.map(doc => doc.data());
-        console.log("here is data", data);
-        this.setState({ users: data });
-    });
-   }
+   
 
     loginHospital = () => {
         console.log(this.state.Hlicence)
@@ -40,9 +31,9 @@ export default class HospitalRegister extends Component {
             console.log('Enter details to login!')
         }
         else {
-            console.log(this.state.Hpassword) 
-            const db = firebase.firestore();       
-            db.collection("RegisteredHospital")
+            console.log(this.state.Hpassword)
+            const db = firebase.firestore();
+            db.collection('RegisteredHospital')
                 .where("Licence", "==", this.state.Hlicence)
                 .where("Password", "==", this.state.Hpassword)
                 .get()
@@ -51,15 +42,15 @@ export default class HospitalRegister extends Component {
                     console.log("here is data", data);
                     this.setState({ users: data });
                 });
-               
-                // .then(function () {
-                //     // Email sent.
-                //     this.props.history.push("/Hdashboard");
-                //     // this.state.emailVerification = true;
-                // }).catch(function (error) {
-                //     // An error happened.
-                //     window.alert(error.message)
-                // });
+             this.props.history.push("/Hospitaldashboard");
+            // .then(function () {
+            //     // Email sent.
+            //     this.props.history.push("/Hdashboard");
+            //     // this.state.emailVerification = true;
+            // }).catch(function (error) {
+            //     // An error happened.
+            //     window.alert(error.message)
+            // });
         }
     };
     render() {
@@ -78,7 +69,7 @@ export default class HospitalRegister extends Component {
                                         name="licence"
                                         size="35"
                                         required
-                                        value={this.state.email}
+                                        value={this.state.Hlicence}
                                         onChange={this.handleHlicenceChange.bind(this)}
                                     ></input>
                                 </div>

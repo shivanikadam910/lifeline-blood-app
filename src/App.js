@@ -20,6 +20,7 @@ import View_reciever from "./components/ViewRecievers"
 import HospitalRegister from "./components/HospitalRegister";
 import HospitalSignin from "./components/HospitalSignin";
 import ReceivedBlood from "./components/ReceivedBlood";
+import Hospitaldashboard from "./components/Hospitaldashboard";
 class App extends Component {
   render() {
     return (
@@ -42,6 +43,7 @@ class App extends Component {
           <Route exact path="/Hsignin" component={HospitalSignin} />
           <Route exact path="/WhyDonateBlood" component={WhyDonateBlood} />
           <Route exact path="/ReceivedBlood" component={ReceivedBlood} />
+          <Route exact path="/Hospitaldashboard" component={Hospitaldashboard} />
         </UserProvider>
       </Router>
     );

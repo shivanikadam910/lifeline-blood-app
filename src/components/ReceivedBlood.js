@@ -12,7 +12,7 @@ import donate from "../images/donateVector.png";
 import data from '../Hospitals.json'
 import Select from 'react-select';
 
-class ViewMyRequest extends React.Component {
+class ReceivedBlood extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -116,4 +116,4 @@ class ViewMyRequest extends React.Component {
         );
     }
 }
-export default ViewMyRequest;
+export default ReceivedBlood;
