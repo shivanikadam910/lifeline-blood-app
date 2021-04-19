@@ -37,10 +37,13 @@ class MyEvents extends React.Component {
                             <li>
                                 <div className="menulist">
                                     <Link
-                                        to="/Hospitaldashboard"
-                                        style={{ textDecoration: "none" }}
-                                        className="link"
-                                    >
+                                        to={{
+                                        pathname :"/Hospitaldashboard",
+                                        state : {data : this.props.location.state.data}
+                                     }}
+                                     className="link"
+                                     style={{ textDecoration: "none" }}
+                                     >
                                         <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
                                         <h3>Dashboard</h3>
                                     </Link>
@@ -60,13 +63,16 @@ class MyEvents extends React.Component {
 
                                 <div className="menulist">
                                     <Link
-                                        to="/AddEvent"
-                                        style={{ textDecoration: "none" }}
-                                        className="link"
+                                        to={{
+                                        pathname :"/AddEvent",
+                                        state : {data : this.props.location.state.data}
+                                    }}
+                                    className="link"
+                                     style={{ textDecoration: "none" }}
                                     >
                                         <img src="https://img.icons8.com/material-two-tone/24/000000/news.png" />
 
-                                        <h3>News and Events</h3>
+                                        <h3>Post Event</h3>
                                     </Link>
                                 </div>
 

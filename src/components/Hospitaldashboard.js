@@ -33,9 +33,12 @@ class Hospitaldashboard extends React.Component {
               <li>
                 <div className="menulist">
                   <Link
-                    to="/Hospitaldashboard"
-                    style={{ textDecoration: "none" }}
-                    className="link"
+                    to={{
+                    pathname :"/Hospitaldashboard",
+                    state : {data : this.props.location.state.data}
+                  }}
+                  className="link"
+                  style={{ textDecoration: "none" }}
                   >
                     <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
                     <h3>Dashboard</h3>
@@ -57,12 +60,14 @@ class Hospitaldashboard extends React.Component {
                 <div className="menulist">
                   <Link to={{
                     pathname :  "/AddEvent",
-                    className:"link",
                     state : {data : this.props.location.state.data}
-                    }}>
+                    }}
+                    className="link"
+                    style={{ textDecoration: "none" }}
+                    >
                     <img src="https://img.icons8.com/material-two-tone/24/000000/news.png" />
 
-                    <h3>News and Events</h3>
+                    <h3>Post Event</h3>
                   </Link>
                 </div>
 
@@ -100,7 +105,8 @@ class Hospitaldashboard extends React.Component {
         <div className="container2">
           <div className="card-grid">
             <div className="card1">
-              <Link to="/PendingHospitalApp">
+              <Link to={{pathname:"/PendingHospitalApp",
+                        state : {data : this.props.location.state.data}}}>
                 <div>My Applications</div>
                 <div className="total">Total</div>
                 <div className="num">0</div>

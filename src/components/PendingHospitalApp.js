@@ -9,7 +9,7 @@ import donate from "../images/donateVector.png";
 
 
 class PendingHospitalApp extends Component {
-    constructor() {
+    constructor(props) {
         super();
         this.state = {
             hospitals: [],
@@ -22,8 +22,7 @@ class PendingHospitalApp extends Component {
 
         const db = firebase.firestore();
         db.collection('RegisteredHospital')
-            .where("Licence", "==", "6Rw0DuKd7")
-            .where("Password", "==", "qwer1234")
+            .where("Licence", "==", this.props.location.state.data)
             .get()
             .then(querySnapshot => {
                 const data = querySnapshot.docs.map(doc => doc.data());
@@ -67,7 +66,10 @@ class PendingHospitalApp extends Component {
               <li>
                 <div className="menulist">
                   <Link
-                    to="/Hospitaldashboard"
+                    to={{
+                      pathname:"/Hospitaldashboard",
+                      state : {data : this.props.location.state.data}
+                    }}
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
@@ -90,13 +92,16 @@ class PendingHospitalApp extends Component {
 
                 <div className="menulist">
                   <Link
-                    to="/Hospitaldashboard"
+                    to={{
+                      pathname :"/AddEvent",
+                      state : {data : this.props.location.state.data}
+                  }}
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
                     <img src="https://img.icons8.com/material-two-tone/24/000000/news.png" />
 
-                    <h3>News and Events</h3>
+                    <h3>Post Event</h3>
                   </Link>
                 </div>
 
