@@ -62,10 +62,10 @@ class AddEvent extends Component {
                 Title: this.state.title,
                 Description: this.state.description,
                 Url: this.state.url,
-                Licence: "3Ed0XxAz7"
+                Licence: this.props.location.state.data
             });
             window.alert("Your event has beed successfully Post!");
-            this.props.history.push("/MyEvents");
+            this.props.history.push({pathname :"/MyEvents",state:{data : this.props.location.state.data}});
         }
     }
     render() {

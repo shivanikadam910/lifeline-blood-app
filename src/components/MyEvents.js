@@ -7,7 +7,7 @@ import donate from "../images/donateVector.png";
 import { Link } from "react-router-dom";
 import Request from "./ReceiverRequest";
 class MyEvents extends React.Component {
-    constructor() {
+    constructor(props) {
         super();
         this.state = {
             users: [],
@@ -18,7 +18,7 @@ class MyEvents extends React.Component {
         const db = firebase.firestore();
 
         db.collection("Events")
-            .where("Licence", "==", "3Ed0XxAz7")
+            .where("Licence", "==", this.props.location.state.data)
             .get()
             .then(querySnapshot => {
                 const data = querySnapshot.docs.map(doc => doc.data());

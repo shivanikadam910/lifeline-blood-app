@@ -7,16 +7,15 @@ import donate from "../images/donateVector.png";
 import { Link } from "react-router-dom";
 import Request from "./ReceiverRequest";
 class Hospitaldashboard extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
-      Eventcount: "",
     };
   }
   componentDidMount() {
     const db = firebase.firestore();
     db.collection("Events")
-    .where("Licence", "==", "3Ed0XxAz7")
+    .where("Licence", "==", this.props.location.state.data)
       .get()
       .then((querySnapshot) => {
         const count = querySnapshot.size;
@@ -56,11 +55,11 @@ class Hospitaldashboard extends React.Component {
                 </div>
 
                 <div className="menulist">
-                  <Link
-                    to="/AddEvent"
-                    style={{ textDecoration: "none" }}
-                    className="link"
-                  >
+                  <Link to={{
+                    pathname :  "/AddEvent",
+                    className:"link",
+                    state : {data : this.props.location.state.data}
+                    }}>
                     <img src="https://img.icons8.com/material-two-tone/24/000000/news.png" />
 
                     <h3>News and Events</h3>
@@ -115,7 +114,8 @@ class Hospitaldashboard extends React.Component {
               </Link>
             </div>
             <div className="card3">
-              <Link to="/MyEvents">
+              <Link to={{pathname:"/MyEvents",
+                        state : {data : this.props.location.state.data}}}>
                 <div>My Events</div>
                 <div className="total">Total</div>
                 <div className="num">{this.state.Eventcount}</div>
