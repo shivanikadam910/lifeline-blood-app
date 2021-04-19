@@ -1,0 +1,78 @@
+.containerevent {
+    width: fit-content;
+    height: 130%;
+    margin-left: 275px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 30%;
+    top: 15%;
+    font-size: large;
+}
+.eventheader {
+    margin-bottom: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgba(255, 160, 122, 0.2);
+    padding-top: 10px;
+}
+.eventheader h4 {
+    float: left;
+    font-family: Calibri;
+    color: black;
+}
+.eventheader .add {
+    border-bottom: 8px solid salmon;
+}
+.eventheader .my {
+    border-bottom: 8px solid transparent;
+}
+
+.imageUpload img {
+    float: left;
+}
+
+.imageUpload button {
+    float: left;
+    clear: left;
+    margin-top: 30px;
+}
+
+.imageinfo {
+    display: flex;
+    flex-direction: column;
+}
+.containerevent .submit {
+    background-color: lightcoral;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: 500;
+    border: none;
+}
+.containerevent .submit {
+    background-color: lightcoral;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: 600;
+    border: none;
+}
+.containerevent .upload {
+    border: none;
+    background-color: lightcoral;
+    padding: 10px;
+    border-radius: 10px;
+    color: whitesmoke;
+    width: 50%;
+}
+.containerevent .submit{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.containerevent .submit:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}

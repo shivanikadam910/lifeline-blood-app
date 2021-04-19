@@ -9,20 +9,19 @@ import Request from "./ReceiverRequest";
 class Hospitaldashboard extends React.Component {
   constructor(props) {
     super();
-    this.state = {
-    };
+    this.state = {};
   }
   componentDidMount() {
     const db = firebase.firestore();
     db.collection("Events")
-    .where("Licence", "==", this.props.location.state.data)
+      .where("Licence", "==", this.props.location.state.data)
       .get()
       .then((querySnapshot) => {
         const count = querySnapshot.size;
         this.setState({ Eventcount: count });
         console.log(count);
       });
-    }
+  }
 
   render() {
     return (
@@ -34,11 +33,11 @@ class Hospitaldashboard extends React.Component {
                 <div className="menulist">
                   <Link
                     to={{
-                    pathname :"/Hospitaldashboard",
-                    state : {data : this.props.location.state.data}
-                  }}
-                  className="link"
-                  style={{ textDecoration: "none" }}
+                      pathname: "/Hospitaldashboard",
+                      state: { data: this.props.location.state.data },
+                    }}
+                    className="link"
+                    style={{ textDecoration: "none" }}
                   >
                     <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
                     <h3>Dashboard</h3>
@@ -58,13 +57,14 @@ class Hospitaldashboard extends React.Component {
                 </div>
 
                 <div className="menulist">
-                  <Link to={{
-                    pathname :  "/AddEvent",
-                    state : {data : this.props.location.state.data}
+                  <Link
+                    to={{
+                      pathname: "/AddEvent",
+                      state: { data: this.props.location.state.data },
                     }}
                     className="link"
                     style={{ textDecoration: "none" }}
-                    >
+                  >
                     <img src="https://img.icons8.com/material-two-tone/24/000000/news.png" />
 
                     <h3>Post Event</h3>
@@ -105,8 +105,12 @@ class Hospitaldashboard extends React.Component {
         <div className="container2">
           <div className="card-grid">
             <div className="card1">
-              <Link to={{pathname:"/PendingHospitalApp",
-                        state : {data : this.props.location.state.data}}}>
+              <Link
+                to={{
+                  pathname: "/PendingHospitalApp",
+                  state: { data: this.props.location.state.data },
+                }}
+              >
                 <div>My Applications</div>
                 <div className="total">Total</div>
                 <div className="num">0</div>
@@ -120,8 +124,12 @@ class Hospitaldashboard extends React.Component {
               </Link>
             </div>
             <div className="card3">
-              <Link to={{pathname:"/MyEvents",
-                        state : {data : this.props.location.state.data}}}>
+              <Link
+                to={{
+                  pathname: "/MyEvents",
+                  state: { data: this.props.location.state.data },
+                }}
+              >
                 <div>My Events</div>
                 <div className="total">Total</div>
                 <div className="num">{this.state.Eventcount}</div>
