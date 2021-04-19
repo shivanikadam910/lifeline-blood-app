@@ -88,7 +88,7 @@ class Hospitaldashboard extends React.Component {
         <div className="container2">
           <div className="card-grid">
             <div className="card1">
-              <Link to="">
+              <Link to="/PendingHospitalApp">
                 <div>My Applications</div>
                 <div className="total">Total</div>
                 <div className="num">0</div>

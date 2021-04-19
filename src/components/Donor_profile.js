@@ -36,11 +36,11 @@ class Donor_profile extends Component {
             .get()
             .then(querySnapshot => {
                 const data = querySnapshot.docs.map(doc => doc.data());
-                
+                // console.log("here is data", data);
                 this.setState({ users: data });
             });
 
-       
+        //   users.map(user => (key=uid ,user.Hospital))
     }
 
 
@@ -213,35 +213,36 @@ class Donor_profile extends Component {
                     <div class="request-card" >
                         <div class="request-card-1">
                             <div class="rec-request">
-                            <form>
-                                <h3>Medical Profile</h3>
-                                <label for="firstname">
-                                    <b>First Name</b>
-                                </label>             
-                                <input
-                                    name="fname"
-                                    placeholder="Enter First Name"
-                                    type="text"
-                                    value={this.state.fname}
-                                    onChange={this.onInputchange}
-                                    required
-                                />
-                                <br />
+                                <form>
+                                    <h3>Medical Profile</h3>
+                                    <label for="firstname">
+                                        <b>First Name</b>
+                                    </label>
+                                    <input
+                                        name="fname"
+                                        type="text"
+                                        value={this.state.fname}
+                                        onChange={this.onInputchange}
+                                    />
+
+
+
+
+                                    <br />
                                     <label for="lastname">
                                         <b>Last Name</b>
-                                        </label>
+                                    </label>
+
                                     <input
-                                            name="lname"
-                                            type="text"
-                                            placeholder="Enter Last Name"
-                                            value={this.state.lname}
-                                            onChange={this.onInputchange}
-                                            required
-                                        />
-                                    
-                                
-                                <br />
+                                        name="lname"
+                                        type="text"
+                                        value={this.state.lname}
+                                        onChange={this.onInputchange}
+                                    />
+
+                                    <br />
                                     <label for="Bloodgrp"><b>Blood Group</b></label>
+
 
 
                                     <select className="drpdwn" name="bloodgrp" id="bloodgrp" value={this.state.bloodgrp} onChange={(e) => this.setState({ bloodgrp: e.target.value })}>
@@ -257,90 +258,90 @@ class Donor_profile extends Component {
 
                                     </select>
 
-                                <br />
+
+
+                                    <br />
                                     <label >
                                         <b>Gender </b>
-                                        </label>
-                                        <input
-                                            name="gender"
-                                            placeholder="Enter gender"
-                                            type="text"
-                                            value={this.state.gender}
-                                            onChange={this.onInputchange}
-                                        />
-                                    
+                                    </label>
+                                    <input
+                                        name="gender"
+                                        type="text"
+                                        value={this.state.gender}
+                                        onChange={this.onInputchange}
+                                    />
+
+
                                     <br />
                                     <label>
                                         <b>Age </b>
                                     </label>
-                                    <input
-                                            name="age"
-                                            type="number"
-                                            placeholder="enter your age"
-                                            value={this.state.age}
-                                            onChange={this.onInputchange}
 
-                                        />
+                                    <input
+                                        name="age"
+                                        type="number"
+                                        value={this.state.age}
+                                        onChange={this.onInputchange}
+                                    />
+
                                     <br />
-                                
+
                                     <label>
                                         <b>City </b>
-                                        
+
                                     </label>
-                                     <input
-                                            name="city"
-                                            type="text"
-                                            placeholder="Enter city"
-                                            value={this.state.city}
-                                            onChange={this.onInputchange}
-                                            required
-                                        />
+                                    <input
+                                        name="city"
+                                        type="text"
+                                        value={this.state.city}
+                                        onChange={this.onInputchange}
+                                    />
+
                                     <br />
-                                
+
                                     <label for="contactno">
                                         <b>Contact Number</b>
                                     </label>
                                     <input
-                                            name="contact"
-                                            placeholder="+91-9120034561"
-                                            type="tel"
-                                            value={this.state.contact}
-                                            onChange={this.onInputchange}
-                                            required
-                                        />
+                                        name="contact"
+                                        type="string"
+                                        value={this.state.contact}
+                                        onChange={this.onInputchange}
+                                    />
+
                                     <br />
-                                
+
                                     <label>
-                                       <b> Weight </b>
-                                        </label>
+                                        <b> Weight </b>
+                                    </label>
                                     <input
-                                            name="weight"
-                                            placeholder="Enter your weight"
-                                            type="number" step="0.01"
-                                            value={this.state.weight}
-                                            onChange={this.onInputchange}
-                                            required
-                                        />
+                                        name="weight"
+                                        type="number" step="0.01"
+                                        value={this.state.weight}
+                                        onChange={this.onInputchange}
+                                    />
+
+
+
                                     <br />
-                                
-                                
+
+
                                     <label>
                                         <b>Height</b>
                                     </label>
                                     <input
-                                            name="height"
-                                            placeholder="Enter your height"
-                                            type="number" step="0.01"
-                                            value={this.state.height}
-                                            onChange={this.onInputchange}
-                                            required
-                                        />
+                                        name="height"
+                                        type="number" step="0.01"
+                                        value={this.state.height}
+                                        onChange={this.onInputchange}
+                                    />
+
+
                                     <br />
 
                                     <label for="condition">
                                         <b>Do you have any of these medical Conditions</b>
                                     </label>
-
 
                                     <select class="drpdwn" name="special_med_con" id="special_med_con" value={this.state.Medic_condition} onChange={(e) => this.setState({ Medic_condition: e.target.value })}>
                                         <option selected > -- select an option -- </option>
@@ -354,52 +355,34 @@ class Donor_profile extends Component {
                                         <option value="None" >None of the above</option>
 
                                     </select>
+
                                     <br />
-                                    
+
                                     <label >
                                         <b>Have you donated blood in past 112 days</b>
-                                        </label>
-                                        
-                                        
-                                    
-                                    <label for="yes">
-                                    <input 
-                                        
-                                        name="rct_don" 
-                                        placeholder="Yes/No"
-                                        type="radio" 
-                                        id="rct_yes" 
-                                        value="True" 
-                                        onChange={this.onInputchange} 
-                                        style={{ margin:"20px"}}
-                                    
-                                    />
-                                       <b>Yes</b>
                                     </label>
-                                    
-                                    
-                                    <label for="no" >
-                                    <input type="radio" id="rct_no" name="rct_don" value="False" onChange={this.onInputchange}></input>
-                                        <b>No</b></label>
-                                    
-                                    <br />
-                                    
-                                
-                                <label for="hospitals"><b>Choose a Hospital</b></label>
-                                <select className="drpdwn2" id="select" value={this.state.selectValue} onChange={(e1) => this.setState({ selectValue: e1.target.value })} >
-                                    <option selected > -- select an option -- </option>
-                                    {users.map((e, key) => {
-                                        if (this.state.city == e.City) {
-                                            return (<option key={key} value={e.Hospital}>{e.Hospital}</option>)
-                                        }
-                                    })}
-                                </select>
+                                    <label for="yes">
+                                    <input name="rct_don" type="radio" id="rct_yes" value="True" onChange={this.onInputchange} style={{ margin: "20px" }}/>
+                                   <b>Yes</b>  </label>
+                                   <label for="no">
+                                    <input type="radio" id="rct_no" name="rct_don" value="False" onChange={this.onInputchange} style={{ margin: "20px" }}></input>
+                                    <b>No</b></label><br />
 
-                                <button class="cta-btn" onClick={this.onSubmitForm} class="buttonform"><h4>Submit</h4></button>
-                            </form>
-                            
-                                
-                            
+
+                                    <label>Select the hospital you would like to donate bloood </label>
+                                    <select className="drpdwn2" id="select" value={this.state.selectValue} onChange={(e1) => this.setState({ selectValue: e1.target.value })} >
+                                        <option selected > -- select an option -- </option>
+                                        {users.map((e, key) => {
+                                            if (this.state.city == e.City) {
+                                                return (<option key={key} value={e.Hospital}>{e.Hospital}</option>)
+                                            }
+                                        })}
+                                    </select>
+                                </form>
+                                <div>
+                                    <button onClick={this.onSubmitForm}>Submit</button>
+                                </div>
+
                             </div>
                         </div>
 
@@ -413,4 +396,3 @@ class Donor_profile extends Component {
 }
 
 export default Donor_profile;
-
