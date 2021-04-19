@@ -9,8 +9,21 @@ import Request from "./ReceiverRequest";
 class Hospitaldashboard extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      Eventcount: "",
+    };
   }
+  componentDidMount() {
+    const db = firebase.firestore();
+    db.collection("Events")
+    .where("Licence", "==", "3Ed0XxAz7")
+      .get()
+      .then((querySnapshot) => {
+        const count = querySnapshot.size;
+        this.setState({ Eventcount: count });
+        console.log(count);
+      });
+    }
 
   render() {
     return (
@@ -44,7 +57,7 @@ class Hospitaldashboard extends React.Component {
 
                 <div className="menulist">
                   <Link
-                    to="/Hospitaldashboard"
+                    to="/AddEvent"
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
@@ -102,10 +115,10 @@ class Hospitaldashboard extends React.Component {
               </Link>
             </div>
             <div className="card3">
-              <Link to="">
+              <Link to="/MyEvents">
                 <div>My Events</div>
                 <div className="total">Total</div>
-                <div className="num">0</div>
+                <div className="num">{this.state.Eventcount}</div>
               </Link>
             </div>
           </div>
