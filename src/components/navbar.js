@@ -5,31 +5,45 @@ import "../static/navbar.css";
 import "../static/main.css";
 import { Link } from "react-router-dom";
 
-
 class navbar extends React.Component {
   render() {
     return (
       <div class="maincontainer">
         <div class="nav" id="header">
           <div class="navlogo">
-            <img src={logo} alt="LifeLine" /> 
+            <img src={logo} alt="LifeLine" />
           </div>
+
           <div class="navul">
             <ul class="ulnav">
               <li>
-              <Link to="/Home" style={{ fontWeight: "600" }}> Home</Link> 
+                <Link to="/Home" style={{ fontWeight: "600" }}>
+                  {" "}
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>Why Donate Blood?</Link>  
+                <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>
+                  Why Donate Blood?
+                </Link>
               </li>
               <li>
-                <Link to="/About" style={{ fontWeight: "600" }}> About Us</Link>
+                <Link to="/About" style={{ fontWeight: "600" }}>
+                  {" "}
+                  About Us
+                </Link>
               </li>
               <li>
-                <Link to="/Contact" style={{ fontWeight: "600" }}> Contact Us</Link>
+                <Link to="/Contact" style={{ fontWeight: "600" }}>
+                  {" "}
+                  Contact Us
+                </Link>
               </li>
               <li>
-              <Link to="/Login" style={{ fontWeight: "600" }}> Sign in </Link> 
+                <Link to="/Login" style={{ fontWeight: "600" }}>
+                  {" "}
+                  Sign in{" "}
+                </Link>
               </li>
             </ul>
           </div>
@@ -38,6 +52,5 @@ class navbar extends React.Component {
     );
   }
 }
-
 
 export default navbar;

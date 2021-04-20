@@ -149,7 +149,13 @@ class ReceiverRequest extends React.Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
+                <div
+                  className="menulist"
+                  style={{
+                    background: "#f2f2f2",
+                    borderRight: "5px solid #fc3d3d",
+                  }}
+                >
                   <Link
                     to="/receiverrequest"
                     style={{ textDecoration: "none" }}
@@ -157,7 +163,7 @@ class ReceiverRequest extends React.Component {
                   >
                     <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
 
-                    <h3>Request Blood</h3>
+                    <h3 style={{ color: "black" }}>Request Blood</h3>
                   </Link>
                 </div>
 
@@ -199,14 +205,11 @@ class ReceiverRequest extends React.Component {
           </div>
         </div>
         <div className="container2">
-          <div className="banner">
-            <img src={donateblood} alt="some error occured" />
-          </div>
           <div class="request-card">
             <div class="request-card-1">
               <div class="rec-request">
                 <form>
-                  <h3>Recive Request</h3>
+                  <h3>Recieve Request</h3>
                   <label for="firstname">
                     <b>First Name</b>
                   </label>
@@ -231,7 +234,7 @@ class ReceiverRequest extends React.Component {
                     required
                   />
                   <br />
-                  <div>
+                  <div className="customSelect">
                     <label for="Bloodgrp">
                       <b>Blood Group</b>
                     </label>
@@ -246,18 +249,17 @@ class ReceiverRequest extends React.Component {
                       }
                     >
                       <option selected> -- select an option -- </option>
-                      <option value="O+">O+</option>
-                      <option value="O-">O-</option>
                       <option value="A+">A+</option>
                       <option value="A-">A-</option>
-                      <option value="B+">B+</option>
-                      <option value="B-">B-</option>
                       <option value="AB+">AB+</option>
                       <option value="AB-">AB-</option>
+                      <option value="B+">B+</option>
+                      <option value="B-">B-</option>
+                      <option value="O+">O+</option>
+                      <option value="O-">O-</option>
                     </select>
                   </div>
 
-                  <br />
                   <label for="bloodgroup">
                     <b>City</b>
                   </label>
@@ -318,13 +320,15 @@ class ReceiverRequest extends React.Component {
                     })}
                   </select>
 
-                  <button
-                    class="cta-btn"
-                    onClick={this.addUser}
-                    class="buttonform"
-                  >
-                    <h4>Make Request</h4>
-                  </button>
+                  <div className="req-button">
+                    <button
+                      class="cta-btn"
+                      onClick={this.addUser}
+                      className="buttonform"
+                    >
+                      <h4>Make Request</h4>
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>

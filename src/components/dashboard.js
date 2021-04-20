@@ -53,14 +53,20 @@ class dashboard extends React.Component {
           <div className="menu">
             <ul>
               <li>
-                <div className="menulist">
+                <div
+                  className="menulist"
+                  style={{
+                    background: "#f2f2f2",
+                    borderRight: "5px solid #fc3d3d",
+                  }}
+                >
                   <Link
                     to="/dashboard"
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
                     <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
-                    <h3>Dashboard</h3>
+                    <h3 style={{ color: "black" }}>Dashboard</h3>
                   </Link>
                 </div>
 

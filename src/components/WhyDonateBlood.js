@@ -80,36 +80,67 @@ class WhyDonateBlood extends React.Component {
           </div>
         </div>
         <div className="container2">
-          <div className="banner">
-            <img src={donateblood} alt="some error occured" />
-          </div>
           <div class="blood">
             <div class="blood-1">
               <div class="bloodtext">
-                <h2>Why Donate Blood?</h2>
+                <h2>Why should I donate blood?</h2>
               </div>
 
               <p>
-                Every 2 Seconds, someone in the country is in need of blood.
-              </p>
-              <p>
-                Every year our nation requires about 4 Crore units of blood.
-              </p>
-              <p>
-                Out of which only a meager 5 Lakh units of blood are available.
-              </p>
-
-              <p>
-                An adequate amount of blood is needed in all health care
-                facilities to meet the urgent need for patients facing trauma
-                and other lifesaving procedures, such as blood transfusions –
-                which saves millions of lives each year. Donating blood is a
-                simple procedure that can be done within an hour.
-              </p>
-              <p>
-                Safe blood saves lives and improves health. It is the most
-                precious gift that anyone can give to another person: the gift
-                of life.
+                Safe blood saves lives and improves health. Blood transfusion is
+                needed for: <br />
+                <br />
+                <ul>
+                  <li>
+                    women with complications of pregnancy, such as ectopic
+                    pregnancies and haemorrhage before, during or after
+                    childbirth;
+                  </li>
+                  <li>
+                    children with severe anaemia often resulting from malaria or
+                    malnutrition;
+                  </li>
+                  <li>
+                    people with severe trauma following man-made and natural
+                    disasters;and
+                  </li>
+                  <li>
+                    many complex medical and surgical procedures and cancer
+                    patients.
+                  </li>
+                </ul>
+                <p>
+                  It is also needed for regular transfusions for people with
+                  conditions such as thalassaemia and sickle cell disease and is
+                  used to make products such as clotting factors for people with
+                  haemophilia.
+                </p>
+                <p>
+                  There is a constant need for regular blood supply because
+                  blood can be stored for only a limited time before use.
+                  Regular blood donations by a sufficient number of healthy
+                  people are needed to ensure that safe blood will be available
+                  whenever and wherever it is needed.
+                </p>
+                <p>
+                  Blood is the most precious gift that anyone can give to
+                  another person — the gift of life. A decision to donate your
+                  blood cans save a life, or even several if your blood is
+                  separated into its components — red cells, platelets and
+                  plasma — which can be used individually for patients with
+                  specific conditions.
+                </p>
+                <br />
+                <p style={{ fontSize: "20px" }}>
+                  Source:&nbsp;
+                  <a
+                    style={{ fontSize: "20px" }}
+                    href="https://www.who.int/news-room/q-a-detail/blood-products-why-should-i-donate-blood#:~:text=Blood%20is%20the%20most%20precious,for%20patients%20with%20specific%20conditions."
+                    target="_blank"
+                  >
+                    World Health Organization →
+                  </a>
+                </p>
               </p>
             </div>
           </div>

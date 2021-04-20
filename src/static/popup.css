@@ -1,56 +1,41 @@
-
-.blood{
-    
-  
-  width: 100%;    
+.blood {
+  width: 100%;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  
+  border-top: 5px solid black;
   margin-top: 2px;
   margin-bottom: 45px;
+  background-color: whitesmoke;
 }
 
-.blood-1{
+.blood-1 {
   width: 100%;
-  
-background: #a2d2ff;
-box-shadow: 4px 4px 20px rgba(147, 147, 147, 0.25);
-border-radius: 15px;
-font-family: Calibri;
-font-style: normal;
-font-weight: 600;
-font-size: 24px;
-padding-left: 30px;
-padding-right: 30px;
-padding-top: 50px;
-padding-bottom: 50px;
-margin: 20px 40px 20px 40px;
-
-
-box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
-
+  border-radius: 15px;
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  margin: 20px 40px 20px 40px;
 }
 
-
-.blood-1 h2{
-  
+.blood-1 h2 {
   width: 100%;
-    margin: 10px ;
-    
-    padding: 10px;
-    font-size: 50px;
-    border-bottom: solid grey 0.5px;
-    font-weight: bolder;
-    color:#6069B4;
+  margin: 10px;
+  padding: 10px;
+  font-size: 40px;
+  border-bottom: solid grey 0.5px;
+  font-weight: 500;
+  color: #6069b4;
 }
 
-.blood-1 p{
-  
+.blood-1 p {
   width: 100%;
-    margin: 10px;
-    padding: 10px;
-    font-weight: bolder;
-    color: rgb(63, 61, 61);
-    
+  margin: 10px;
+  padding: 10px;
+  font-weight: 500;
+  color: rgb(63, 61, 61);
 }
