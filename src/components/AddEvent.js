@@ -84,9 +84,9 @@ class AddEvent extends Component {
                 <div className="menulist">
                   <Link
                     to={{
-                      pathname : "/Hospitaldashboard",
-                      state : { data : this.props.location.state.data}
-                    }}                    
+                      pathname: "/Hospitaldashboard",
+                      state: { data: this.props.location.state.data },
+                    }}
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
@@ -158,18 +158,22 @@ class AddEvent extends Component {
         <div className="containerevent">
           <div className="eventheader">
             <div className="add">
-              <Link to={{
-                pathname :"/AddEvent",
-                state : {data : this.props.location.state.data}
-              }}>
+              <Link
+                to={{
+                  pathname: "/AddEvent",
+                  state: { data: this.props.location.state.data },
+                }}
+              >
                 <h4>Add Event</h4>
               </Link>
             </div>
             <div className="my">
-              <Link to=
-              {{pathname : "/MyEvents",
-                state : {data :this .props.location.state.data}
-            }}>
+              <Link
+                to={{
+                  pathname: "/MyEvents",
+                  state: { data: this.props.location.state.data },
+                }}
+              >
                 <h4>My Events</h4>
               </Link>
             </div>
@@ -179,7 +183,6 @@ class AddEvent extends Component {
             <input type="file" onChange={this.handleChange} />
           </div>
           <br />
-
           <div className="imageUpload">
             <img
               src={this.state.url || "https://via.placeholder.com/400x300"}

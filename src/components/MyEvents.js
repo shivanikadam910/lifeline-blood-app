@@ -105,20 +105,22 @@ class MyEvents extends React.Component {
             </div>
           </div>
         </div>
-        <div class="request-card">
-          <div class="request-card-1">
-            <h3> My Events</h3>
-            {users.map((user) => (
-              <div key={user.uid} class="list">
-                <h5> {user.Title}</h5>
-                <div>
-                  <h6>{user.Description}</h6>
+        <div className="container2">
+          <div class="request-card view event">
+            <div class="request-card-1 view event">
+              <h3> My Events</h3>
+              {users.map((user) => (
+                <div key={user.uid} class="list">
+                  <h5> {user.Title}</h5>
+                  <div>
+                    <h6>{user.Description}</h6>
+                  </div>
+                  <div className="image">
+                    <img src={user.Url} width="300" height="300" />
+                  </div>
                 </div>
-                <div>
-                  <img src={user.Url} width="300" height="300" />
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
