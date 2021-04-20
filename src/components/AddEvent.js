@@ -83,7 +83,10 @@ class AddEvent extends Component {
               <li>
                 <div className="menulist">
                   <Link
-                    to="/Hospitaldashboard"
+                    to={{
+                      pathname : "/Hospitaldashboard",
+                      state : { data : this.props.location.state.data}
+                    }}                    
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
@@ -111,10 +114,12 @@ class AddEvent extends Component {
                       className: "link",
                       state: { data: this.props.location.state.data },
                     }}
+                    style={{ textDecoration: "none" }}
+                    className="link"
                   >
                     <img src="https://img.icons8.com/material-two-tone/24/000000/news.png" />
 
-                    <h3>News and Events</h3>
+                    <h3>Post Event</h3>
                   </Link>
                 </div>
 
@@ -153,12 +158,18 @@ class AddEvent extends Component {
         <div className="containerevent">
           <div className="eventheader">
             <div className="add">
-              <Link to="/AddEvent">
+              <Link to={{
+                pathname :"/AddEvent",
+                state : {data : this.props.location.state.data}
+              }}>
                 <h4>Add Event</h4>
               </Link>
             </div>
             <div className="my">
-              <Link to="/MyEvents">
+              <Link to=
+              {{pathname : "/MyEvents",
+                state : {data :this .props.location.state.data}
+            }}>
                 <h4>My Events</h4>
               </Link>
             </div>
