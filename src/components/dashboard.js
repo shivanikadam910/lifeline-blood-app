@@ -13,8 +13,10 @@ class dashboard extends React.Component {
       Requestcount: "",
       Donation_rqst_cnt: "",
       ReceivedCount: "",
+      users: [],
     };
   }
+
   componentDidMount() {
     const db = firebase.firestore();
     db.collection("Receiver")
@@ -45,8 +47,17 @@ class dashboard extends React.Component {
         this.setState({ ReceivedCount: count2 });
         console.log(count2);
       });
+
+    db.collection("Events")
+      .get()
+      .then((querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => doc.data());
+        console.log("here is data", data);
+        this.setState({ users: data });
+      });
   }
   render() {
+    const { users } = this.state;
     return (
       <div className="containermain">
         <div className="sidebar">
@@ -168,6 +179,23 @@ class dashboard extends React.Component {
             </div>
             <div className="hospital3">
               <div className="hospitalName">City Hospital</div>
+            </div>
+          </div>
+
+          <div class="request-card view event">
+            <div class="request-card-1 view event">
+              <h3> Events </h3>
+              {users.map((user) => (
+                <div key={user.uid} class="list">
+                  <h5> {user.Title}</h5>
+                  <div>
+                    <h6>{user.Description}</h6>
+                  </div>
+                  <div className="image">
+                    <img src={user.Url} width="300" height="300" />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

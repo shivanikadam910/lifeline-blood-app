@@ -10,6 +10,7 @@ import WhyDonateBlood from "./WhyDonateBlood";
 import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
 import { Link } from "react-router-dom";
+import firebase, { auth } from "../firebase/firebase";
 const newdata = data.map((data) => {
   return (
     <Card key={data.post_id} style={{ background: "#f5f5f5" }}>
@@ -29,8 +30,26 @@ const newdata = data.map((data) => {
     </Card>
   );
 });
+
 export default class Main extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      users: [],
+    };
+  }
+  componentDidMount() {
+    const db = firebase.firestore();
+    db.collection("Events")
+      .get()
+      .then((querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => doc.data());
+        console.log("here is data", data);
+        this.setState({ users: data });
+      });
+  }
   render() {
+    const { users } = this.state;
     return (
       <div className="containermain">
         <div className="sidebar">
@@ -117,6 +136,23 @@ export default class Main extends Component {
 
           <div className="nearby">Latest News</div>
           <CardColumns className=" m-3 p-3 owncard "> {newdata} </CardColumns>
+
+          <div class="request-card view event">
+            <div class="request-card-1 view event">
+              <h3> My Events</h3>
+              {users.map((user) => (
+                <div key={user.uid} class="list">
+                  <h5> {user.Title}</h5>
+                  <div>
+                    <h6>{user.Description}</h6>
+                  </div>
+                  <div className="image">
+                    <img src={user.Url} width="300" height="300" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     );
