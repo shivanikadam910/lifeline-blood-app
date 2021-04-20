@@ -22,6 +22,7 @@ import HospitalSignin from "./components/HospitalSignin";
 import ReceivedBlood from "./components/ReceivedBlood";
 import Hospitaldashboard from "./components/Hospitaldashboard";
 import PendingHospitalrequ from "./components/PendingHospitalApp";
+import viewapplication from "./components/ViewApplications";
 import Addevent from "./components/AddEvent";
 import MyEvents from "./components/MyEvents";
 class App extends Component {
@@ -50,6 +51,7 @@ class App extends Component {
           <Route exact path="/PendingHospitalApp" component={PendingHospitalrequ} />
           <Route exact path="/AddEvent" component={Addevent} />
           <Route exact path="/MyEvents" component={MyEvents} />
+          <Route exact path="/ViewApplication" component={viewapplication} />
         </UserProvider>
       </Router>
     );

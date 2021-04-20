@@ -45,8 +45,12 @@ class Hospitaldashboard extends React.Component {
                 </div>
 
                 <div className="menulist">
-                  <Link
-                    to="/Hospitaldashboard"
+                <Link
+                    to={{
+                      pathname: "/PendingHospitalApp",
+                      state: { data: this.props.location.state.data },
+                    }}
+                   
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
@@ -107,7 +111,7 @@ class Hospitaldashboard extends React.Component {
             <div className="card1">
               <Link
                 to={{
-                  pathname: "/PendingHospitalApp",
+                  pathname: "/ViewApplication",
                   state: { data: this.props.location.state.data },
                 }}
               >

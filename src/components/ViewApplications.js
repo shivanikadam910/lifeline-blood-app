@@ -8,7 +8,7 @@ import donate from "../images/donateVector.png";
 
 
 
-class PendingHospitalApp extends Component {
+class ViewApplications extends Component {
     constructor(props) {
         super();
         this.state = {
@@ -17,6 +17,7 @@ class PendingHospitalApp extends Component {
             currentID: "",
             User:""
         };
+
     }
 
     componentDidMount() {
@@ -32,7 +33,7 @@ class PendingHospitalApp extends Component {
             });
 
         db.collection('User')
-        .where("ApplicationStatus", "==", "pending")
+        .where("ApplicationStatus", "!=", "pending")
             .get()
             .then(querySnapshot => {
                 const data = querySnapshot.docs.map(doc => doc.data());
@@ -42,62 +43,13 @@ class PendingHospitalApp extends Component {
 
     }
 
+
     onInputchange(event) {
         this.setState({
             [event.target.name]: event.target.value
         });
     }
 
-    acceptbtn=(user)=>{
-      const db = firebase.firestore();
-      console.log(user.FirstName, user.LastName ,user.Appointment_hospital,user.id)
-        db.collection("User")
-            .where("FirstName","==",user.FirstName)
-            .where("LastName","==",user.LastName)
-            .get()
-            .then(snapshot => {
-              snapshot.docs.forEach(doc => {
-                  this.setState({
-                      currentID : doc.id
-                  },() =>{db.collection('User').doc(this.state.currentID)
-                         .update({
-                              ApplicationStatus: "true"
-                           });
-                          
-                          window.alert("Application successfully accepted")
-                          this.props.history.push({pathname :"/Hospitaldashboard",
-                          state : {data : this.props.location.state.data}});
-                          
-                          // window.location='/PendingHospitalApp'  
-                         })})
-          })
-
-    }
-
-
-    rejectbtn=(user)=>{
-      const db = firebase.firestore();
-      console.log(user.FirstName, user.LastName ,user.Appointment_hospital,user.id)
-        db.collection("User")
-            .where("FirstName","==",user.FirstName)
-            .where("LastName","==",user.LastName)
-            .get()
-            .then(snapshot => {
-              snapshot.docs.forEach(doc => {
-                  this.setState({
-                      currentID : doc.id
-                  },() =>{db.collection('User').doc(this.state.currentID)
-                         .update({
-                              ApplicationStatus: "false"
-                           });
-                           window.alert("Application successfully Denied ")
-                           this.props.history.push({pathname :"/PendingHospitalApp",
-                           state : {data : this.props.location.state.data}});
-                          })              
-              })
-          })
-
-    }
 
     render() {
         const { hospitals } = this.state;
@@ -183,9 +135,12 @@ class PendingHospitalApp extends Component {
           </div>
         </div>
                 <div class="request-card-1">
-                    <h3>Pending Applications</h3>
+                    <h3>Application History</h3>
                     {hospitals.map(user => {
                         nme = user.Hospital;
+
+
+
                     })}
                     {donor.map(user1=> {
 
@@ -201,18 +156,23 @@ class PendingHospitalApp extends Component {
                                         <h6>City : {user1.City} </h6>
                                         <h6>Medical condition :{user1.MedicalCondition}</h6>
                                         <h6>Weight:{user1.Weight}</h6>
+                                        <h6>Application Status:{user1.ApplicationStatus}</h6>
                                       
-                                        <button class="cta-btn" class="buttonform" onClick={this.acceptbtn.bind(this,user1)}><h4>Accept</h4></button>
-                                        <button class="cta-btn" class="buttonform" onClick={this.rejectbtn.bind(this,user1)}><h4>Deny</h4></button>
+                                       
                                     </div>
                                 </div>)
                     })}
+                    
+
+
                 </div>
 
             </div>
         )
 
+
+
     }
 
 }
-export default PendingHospitalApp
+export default ViewApplications
