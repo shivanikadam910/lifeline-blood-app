@@ -118,7 +118,8 @@ class Donor_profile extends Component {
                             City: this.state.city,
                             Contact: this.state.contact,
                             Email: auth.currentUser.email,
-                            Appointment_hospital: this.state.selectValue
+                            Appointment_hospital: this.state.selectValue,
+                            ApplicationStatus: "pending"
 
 
                         })
