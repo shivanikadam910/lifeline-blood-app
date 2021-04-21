@@ -8,17 +8,6 @@ import donate from "../images/donateVector.png";
 import { Link } from "react-router-dom";
 import Request from "./ReceiverRequest";
 
-// add "import Contact_us from './components/contact_us.js'" to App.js
-
-// import { Icon, InlineIcon } from '@iconify/react';
-// import iosLocationOutline from '@iconify-icons/ion/ios-location-outline';
-// import logoInstagram from '@iconify-icons/ion/logo-instagram';
-// import logoLinkedin from '@iconify-icons/ion/logo-linkedin';
-// import telephonereceiver2Icon from '@iconify-icons/fxemoji/telephonereceiver2';
-// import emailIcon from '@iconify-icons/fxemoji/email';
-// npm install --save-dev @iconify/react @iconify-icons/mdi
-// npm install --save-dev @iconify/react @iconify-icons/ion
-
 class Contact_us extends React.Component {
   render() {
     return (
@@ -63,8 +52,14 @@ class Contact_us extends React.Component {
                 </div>
 
                 <div className="menulist">
-                  <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
-                  <h3>Hospitals</h3>
+                  <Link
+                    to="/Hospitalregister"
+                    style={{ textDecoration: "none" }}
+                    className="link"
+                  >
+                    <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
+                    <h3>Hospitals</h3>
+                  </Link>
                 </div>
 
                 <div className="emergency">
@@ -95,7 +90,9 @@ class Contact_us extends React.Component {
                 <br />
                 Save lives!
               </h1>
-              <h3>Donate Now &nbsp; &gt;</h3>
+              <h3>
+                <Link to="/Donor_profile">Donate Now &nbsp; &gt;</Link>
+              </h3>
             </div>
             <div class="banner2">
               <img src={smile} alt="Smiling Woman" />

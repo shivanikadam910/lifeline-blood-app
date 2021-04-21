@@ -3,8 +3,6 @@ import firebase from "../firebase/firebase";
 import "../static/style.css";
 import { Link } from "react-router-dom";
 
-
-
 export default class Register extends Component {
   constructor() {
     super();
@@ -12,13 +10,10 @@ export default class Register extends Component {
       displayName: "",
       email: "",
       password: "",
-
-
     };
 
     this.registerUser = this.registerUser.bind(this);
   }
-
 
   handleEmailChange(e) {
     this.setState({ email: e.target.value });
@@ -30,58 +25,48 @@ export default class Register extends Component {
     this.setState({ displayName: e.target.value });
   }
   signup_google = () => {
-
     const googleAuth = new firebase.auth.GoogleAuthProvider();
 
-
-    firebase.auth().signInWithPopup(googleAuth)
+    firebase
+      .auth()
+      .signInWithPopup(googleAuth)
       .then((result) => {
         let user = result.user;
 
-
-        this.props.history.push('/login')
-
-
-      }).catch((error) => {
-
-        window.alert(error.message)
-
+        this.props.history.push("/login");
+      })
+      .catch((error) => {
+        window.alert(error.message);
       });
-
-
-  }
+  };
   registerUser = () => {
     console.log("register user button pressed");
 
     if (this.state.email === "") {
-      alert('Enter email');
-      window.location = '/Signup';
-
-    }
-    else {
+      alert("Enter email");
+      window.location = "/Signup";
+    } else {
       if (this.state.password === "") {
-        alert('Enter password');
-        window.location = '/Signup';
-
-
-      }
-      else {
+        alert("Enter password");
+        window.location = "/Signup";
+      } else {
         if (this.state.displayName === "") {
-          alert('Enter name');
-          window.location = '/Signup';
-        }
-
-        else {
+          alert("Enter name");
+          window.location = "/Signup";
+        } else {
           console.log(this.state.email);
           firebase
             .auth()
-            .createUserWithEmailAndPassword(this.state.email, this.state.password)
+            .createUserWithEmailAndPassword(
+              this.state.email,
+              this.state.password
+            )
             .catch(function (error) {
               var errorCode = error.code;
               var errorMessage = error.message;
               alert(errorMessage);
-              window.location = '/Signup';
-            })
+              window.location = "/Signup";
+            });
           window.alert("Verify link from email!");
           this.props.history.push("/verificationReq");
           console.log("User registered successfully!");
@@ -144,8 +129,10 @@ export default class Register extends Component {
                 </div>
               </form>
               <div class="social-login">
-                <button class="google-btn" onClick={
-                  this.signup_google.bind(this)}>
+                <button
+                  class="google-btn"
+                  onClick={this.signup_google.bind(this)}
+                >
                   <img
                     style={{ width: "16px" }}
                     alt="Google"

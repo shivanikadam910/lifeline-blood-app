@@ -106,13 +106,13 @@ class dashboard extends React.Component {
                 </div>
 
                 <div className="menulist">
-                <Link
+                  <Link
                     to="/TrackApplication"
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
-                  <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
-                  <h3>Track Application</h3>
+                    <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
+                    <h3>Track Application</h3>
                   </Link>
                 </div>
 
@@ -144,7 +144,9 @@ class dashboard extends React.Component {
                 <br />
                 Save lives!
               </h1>
-              <h3>Donate Now &nbsp; &gt;</h3>
+              <h3>
+                <Link to="/Donor_profile">Donate Now &nbsp; &gt;</Link>
+              </h3>
             </div>
             <div class="banner2">
               <img src={smile} alt="Smiling Woman" />

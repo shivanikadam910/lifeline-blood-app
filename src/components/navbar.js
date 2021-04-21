@@ -22,11 +22,7 @@ class navbar extends React.Component {
                   Home
                 </Link>
               </li>
-              <li>
-                <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>
-                  Why Donate Blood?
-                </Link>
-              </li>
+
               <li>
                 <Link to="/About" style={{ fontWeight: "600" }}>
                   {" "}

@@ -1,4 +1,3 @@
-  
 html {
   height: 100%;
   width: 100%;
@@ -16,17 +15,16 @@ html {
   margin: 0px;
   min-height: 100%;
   width: 100%;
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
 }
 
-
-.nav  {
+.nav {
   width: 100%;
   height: fit-content;
   display: flex;
   flex-flow: row wrap;
-  justify-content:space-between;
-  padding:0;
+  justify-content: space-between;
+  padding: 0;
   margin: 0;
   position: fixed;
   top: 0%;
@@ -37,11 +35,11 @@ html {
   transition: all 0.3s ease-in-out;
 }
 
-.navul{
+.navul {
   width: 80%;
   padding-top: 20px;
   padding-bottom: 5px;
-  padding-left: 16%;
+  padding-left: 30%;
   margin: 0px;
 }
 .ulnav {
@@ -53,13 +51,13 @@ html {
   display: inline;
   text-align: center;
   margin: 0;
-  padding: 5px ;
+  padding: 5px;
 }
 
 .ulnav a {
   text-align: center;
   border-radius: 5px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   color: #fff;
   text-decoration: none;
   padding: 7px 27px;
@@ -73,23 +71,22 @@ html {
   /* font-weight: bold; */
 }
 
-
 .navlogo {
-    border: none;
-    margin: 0px 0px 0px 0px;
-    width: 18%; 
-    height: 100%;
-    padding-top: 0px;
-    padding-bottom: 15px;
-    background-color:#fff;
-    border-radius: 0px 25px 0px 0px;
-    box-shadow:10px -10px 15px rgba(243, 24, 64, 0.07);
+  border: none;
+  margin: 0px 0px 0px 0px;
+  width: 18%;
+  height: 100%;
+  padding-top: 0px;
+  padding-bottom: 15px;
+  background-color: #fff;
+  border-radius: 0px 25px 0px 0px;
+  box-shadow: 10px -10px 15px rgba(243, 24, 64, 0.07);
 }
 .navlogo:hover {
   cursor: pointer;
 }
 
-.navlogo img{
+.navlogo img {
   margin-top: -15px;
   margin-bottom: -30px;
   margin-left: 10px;

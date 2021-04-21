@@ -180,8 +180,14 @@ class ReceiverRequest extends React.Component {
                 </div>
 
                 <div className="menulist">
-                  <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
-                  <h3>Hospitals</h3>
+                  <Link
+                    to="/TrackApplication"
+                    style={{ textDecoration: "none" }}
+                    className="link"
+                  >
+                    <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
+                    <h3>Track Application</h3>
+                  </Link>
                 </div>
 
                 <div className="emergency">

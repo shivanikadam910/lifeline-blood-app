@@ -1,13 +1,10 @@
 import React from "react";
-
 import firebase, { auth } from "../firebase/firebase";
 import { Link } from "react-router-dom";
 import donateblood from "../images/Donating-Blood-1.svg";
 import "../static/receiverrequest.css";
-
 import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
-
 import data from "../Hospitals.json";
 import Select from "react-select";
 
@@ -65,7 +62,7 @@ class ReceivedBlood extends React.Component {
 
                 <div className="menulist">
                   <Link
-                    to="/receiverrequest"
+                    to="/Donor_profile"
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
@@ -76,8 +73,14 @@ class ReceivedBlood extends React.Component {
                 </div>
 
                 <div className="menulist">
-                  <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
-                  <h3>Hospitals</h3>
+                  <Link
+                    to="/TrackApplication"
+                    style={{ textDecoration: "none" }}
+                    className="link"
+                  >
+                    <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
+                    <h3>Track Application</h3>
+                  </Link>
                 </div>
 
                 <div className="emergency">
@@ -88,10 +91,15 @@ class ReceivedBlood extends React.Component {
             </ul>
           </div>
           <div className="why">
-            <h3>Why Donate Blood?</h3>
-
+            <h3>
+              <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>
+                Why Donate Blood?
+              </Link>
+            </h3>
             <div className="donateVector">
-              <img src={donate} alt="why donate" />
+              <Link to="/WhyDonateBlood">
+                <img src={donate} alt="why donate" />
+              </Link>
             </div>
           </div>
         </div>

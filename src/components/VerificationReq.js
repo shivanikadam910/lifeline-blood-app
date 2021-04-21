@@ -59,7 +59,7 @@ class VerificationReq extends Component {
 
                 <div className="menulist">
                   <Link
-                    to="/receiverrequest"
+                    to="/Donor_profile"
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
@@ -70,10 +70,15 @@ class VerificationReq extends Component {
                 </div>
 
                 <div className="menulist">
-                  <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
-                  <h3>Hospitals</h3>
+                  <Link
+                    to="/Hospitalregister"
+                    style={{ textDecoration: "none" }}
+                    className="link"
+                  >
+                    <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
+                    <h3>Hospitals</h3>
+                  </Link>
                 </div>
-
                 <div className="emergency">
                   <img src="https://img.icons8.com/material-outlined/24/000000/error--v1.png" />
                   <h3>Emergency</h3>

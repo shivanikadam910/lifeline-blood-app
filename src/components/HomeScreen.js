@@ -80,7 +80,7 @@ export default class Main extends Component {
 
                 <div className="menulist">
                   <Link
-                    to="/receiverrequest"
+                    to="/Donor_profile"
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
@@ -127,7 +127,7 @@ export default class Main extends Component {
                 <br />
                 Save lives!
               </h1>
-              <h3>Donate Now &nbsp; &gt;</h3>
+              <h3><Link to ="/Donor_profile">Donate Now &nbsp; &gt;</Link></h3>
             </div>
             <div class="banner2">
               <img src={smile} alt="Smiling Woman" />

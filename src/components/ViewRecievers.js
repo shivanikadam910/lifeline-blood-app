@@ -70,7 +70,7 @@ class ViewRecievers extends React.Component {
 
                 <div className="menulist">
                   <Link
-                    to="/receiverrequest"
+                    to="/Donor_Profile"
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
@@ -81,8 +81,14 @@ class ViewRecievers extends React.Component {
                 </div>
 
                 <div className="menulist">
-                  <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
-                  <h3>Hospitals</h3>
+                  <Link
+                    to="/TrackApplication"
+                    style={{ textDecoration: "none" }}
+                    className="link"
+                  >
+                    <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
+                    <h3>Track Application</h3>
+                  </Link>
                 </div>
 
                 <div className="emergency">
@@ -93,10 +99,15 @@ class ViewRecievers extends React.Component {
             </ul>
           </div>
           <div className="why">
-            <h3>Why Donate Blood?</h3>
-
+            <h3>
+              <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>
+                Why Donate Blood?
+              </Link>
+            </h3>
             <div className="donateVector">
-              <img src={donate} alt="why donate" />
+              <Link to="/WhyDonateBlood">
+                <img src={donate} alt="why donate" />
+              </Link>
             </div>
           </div>
         </div>
