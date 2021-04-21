@@ -41,7 +41,14 @@ class Hospitaldashboard extends React.Component {
           <div className="menu">
             <ul>
               <li>
-                <div className="menulist">
+                <div
+                  className="menulist"
+                  style={{
+                    background: "#f2f2f2",
+                    borderRight: "5px solid #fc3d3d",
+                    cursor: "pointer",
+                  }}
+                >
                   <Link
                     to={{
                       pathname: "/Hospitaldashboard",
@@ -51,7 +58,7 @@ class Hospitaldashboard extends React.Component {
                     style={{ textDecoration: "none" }}
                   >
                     <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
-                    <h3>Dashboard</h3>
+                    <h3 style={{ color: "black" }}>Dashboard</h3>
                   </Link>
                 </div>
 
@@ -151,7 +158,10 @@ class Hospitaldashboard extends React.Component {
             </div>
           </div>
 
-          <div class="request-card view event">
+          <div
+            class="request-card view event"
+            style={{ boxShadow: "0px 0 10px rgba(134, 187, 189, 0.5)" }}
+          >
             <div class="request-card-1 view event">
               <h3> My Events</h3>
               {users.map((user) => (

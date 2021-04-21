@@ -1,13 +1,22 @@
-.containerevent {
-  width: fit-content;
-  height: 130%;
+.containerAddEvent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #86bbbd;
   margin-left: 275px;
+  margin-top: 76px;
+}
+
+.containerevent {
+  background-color: rgba(233, 233, 233, 0.699);
+  width: 50%;
+  height: 130%;
   display: flex;
   flex-direction: column;
-  position: absolute;
-  right: 30%;
-  top: 15%;
   font-size: large;
+  align-items: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 .eventheader {
   margin-bottom: 50px;
@@ -15,7 +24,6 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: rgba(255, 160, 122, 0.2);
   padding-top: 10px;
 }
 .eventheader h4 {
@@ -23,8 +31,13 @@
   font-family: Calibri;
   color: black;
 }
-.eventheader .add {
-  border-bottom: 8px solid salmon;
+.progress {
+  width: 400px;
+  height: 8px;
+}
+.textbox {
+  width: 400px;
+  height: 50px;
 }
 .eventheader .my {
   border-bottom: 8px solid transparent;
@@ -45,26 +58,20 @@
   flex-direction: column;
 }
 .containerevent .submit {
-  background-color: lightcoral;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  background-color: firebrick;
   color: white;
   padding: 10px;
   border-radius: 10px;
   font-size: 22px;
   font-weight: 500;
   border: none;
-}
-.containerevent .submit {
-  background-color: lightcoral;
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 22px;
-  font-weight: 600;
-  border: none;
+  width: 30%;
 }
 .containerevent .upload {
   border: none;
-  background-color: lightcoral;
+  background-color: firebrick;
   padding: 10px;
   border-radius: 10px;
   color: whitesmoke;

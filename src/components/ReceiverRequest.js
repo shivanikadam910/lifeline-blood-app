@@ -169,7 +169,7 @@ class ReceiverRequest extends React.Component {
 
                 <div className="menulist">
                   <Link
-                    to="/receiverrequest"
+                    to="/Donor_profile"
                     style={{ textDecoration: "none" }}
                     className="link"
                   >

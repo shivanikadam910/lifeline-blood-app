@@ -3,118 +3,132 @@ import { Redirect } from "react-router-dom";
 import UserProvider, { UserContext } from "../providers/userprovider";
 import firebase from "../firebase/firebase";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import '../static/home.css';
+import "../static/home.css";
 import donate from "../images/donateVector.png";
 
-
-
 class PendingHospitalApp extends Component {
-    constructor(props) {
-        super();
-        this.state = {
-            hospitals: [],
-            donor: [],
-            currentID: "",
-            User:""
-        };
-    }
+  constructor(props) {
+    super();
+    this.state = {
+      hospitals: [],
+      donor: [],
+      currentID: "",
+      User: "",
+    };
+  }
 
-    componentDidMount() {
+  componentDidMount() {
+    const db = firebase.firestore();
+    db.collection("RegisteredHospital")
+      .where("Licence", "==", this.props.location.state.data)
+      .get()
+      .then((querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => doc.data());
+        this.setState({ hospitals: data });
+        console.log("here is data", data);
+      });
 
-        const db = firebase.firestore();
-        db.collection('RegisteredHospital')
-            .where("Licence", "==", this.props.location.state.data)
-            .get()
-            .then(querySnapshot => {
-                const data = querySnapshot.docs.map(doc => doc.data());
-                this.setState({ hospitals: data })
-                console.log("here is data", data);
-            });
+    db.collection("User")
+      .where("ApplicationStatus", "==", "pending")
+      .get()
+      .then((querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => doc.data());
+        this.setState({ donor: data });
+        console.log("here is data", data);
+      });
+  }
 
-        db.collection('User')
-        .where("ApplicationStatus", "==", "pending")
-            .get()
-            .then(querySnapshot => {
-                const data = querySnapshot.docs.map(doc => doc.data());
-                this.setState({ donor: data })
-                console.log("here is data", data);
-            });
+  onInputchange(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  }
 
-    }
+  acceptbtn = (user) => {
+    const db = firebase.firestore();
+    console.log(
+      user.FirstName,
+      user.LastName,
+      user.Appointment_hospital,
+      user.id
+    );
+    db.collection("User")
+      .where("FirstName", "==", user.FirstName)
+      .where("LastName", "==", user.LastName)
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          this.setState(
+            {
+              currentID: doc.id,
+            },
+            () => {
+              db.collection("User").doc(this.state.currentID).update({
+                ApplicationStatus: "true",
+              });
 
-    onInputchange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
+              window.alert("Application successfully accepted");
+              this.props.history.push({
+                pathname: "/Hospitaldashboard",
+                state: { data: this.props.location.state.data },
+              });
+
+              // window.location='/PendingHospitalApp'
+            }
+          );
         });
-    }
+      });
+  };
 
-    acceptbtn=(user)=>{
-      const db = firebase.firestore();
-      console.log(user.FirstName, user.LastName ,user.Appointment_hospital,user.id)
-        db.collection("User")
-            .where("FirstName","==",user.FirstName)
-            .where("LastName","==",user.LastName)
-            .get()
-            .then(snapshot => {
-              snapshot.docs.forEach(doc => {
-                  this.setState({
-                      currentID : doc.id
-                  },() =>{db.collection('User').doc(this.state.currentID)
-                         .update({
-                              ApplicationStatus: "true"
-                           });
-                          
-                          window.alert("Application successfully accepted")
-                          this.props.history.push({pathname :"/Hospitaldashboard",
-                          state : {data : this.props.location.state.data}});
-                          
-                          // window.location='/PendingHospitalApp'  
-                         })})
-          })
+  rejectbtn = (user) => {
+    const db = firebase.firestore();
+    console.log(
+      user.FirstName,
+      user.LastName,
+      user.Appointment_hospital,
+      user.id
+    );
+    db.collection("User")
+      .where("FirstName", "==", user.FirstName)
+      .where("LastName", "==", user.LastName)
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          this.setState(
+            {
+              currentID: doc.id,
+            },
+            () => {
+              db.collection("User").doc(this.state.currentID).update({
+                ApplicationStatus: "false",
+              });
+              window.alert("Application successfully Denied ");
+              this.props.history.push({
+                pathname: "/PendingHospitalApp",
+                state: { data: this.props.location.state.data },
+              });
+            }
+          );
+        });
+      });
+  };
 
-    }
+  render() {
+    const { hospitals } = this.state;
+    const { donor } = this.state;
+    var nme;
 
-
-    rejectbtn=(user)=>{
-      const db = firebase.firestore();
-      console.log(user.FirstName, user.LastName ,user.Appointment_hospital,user.id)
-        db.collection("User")
-            .where("FirstName","==",user.FirstName)
-            .where("LastName","==",user.LastName)
-            .get()
-            .then(snapshot => {
-              snapshot.docs.forEach(doc => {
-                  this.setState({
-                      currentID : doc.id
-                  },() =>{db.collection('User').doc(this.state.currentID)
-                         .update({
-                              ApplicationStatus: "false"
-                           });
-                           window.alert("Application successfully Denied ")
-                           this.props.history.push({pathname :"/PendingHospitalApp",
-                           state : {data : this.props.location.state.data}});
-                          })              
-              })
-          })
-
-    }
-
-    render() {
-        const { hospitals } = this.state;
-        const { donor } = this.state;
-        var nme;
-
-        return (
-            <div className="containermain" >
-                <div className="sidebar">
+    return (
+      <div className="containermain">
+        <div className="sidebar">
           <div className="menu">
             <ul>
               <li>
                 <div className="menulist">
                   <Link
                     to={{
-                      pathname:"/Hospitaldashboard",
-                      state : {data : this.props.location.state.data}
+                      pathname: "/Hospitaldashboard",
+                      state: { data: this.props.location.state.data },
                     }}
                     style={{ textDecoration: "none" }}
                     className="link"
@@ -139,9 +153,9 @@ class PendingHospitalApp extends Component {
                 <div className="menulist">
                   <Link
                     to={{
-                      pathname :"/AddEvent",
-                      state : {data : this.props.location.state.data}
-                  }}
+                      pathname: "/AddEvent",
+                      state: { data: this.props.location.state.data },
+                    }}
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
@@ -182,37 +196,52 @@ class PendingHospitalApp extends Component {
             </div>
           </div>
         </div>
-                <div class="request-card-1">
-                    <h3>Pending Applications</h3>
-                    {hospitals.map(user => {
-                        nme = user.Hospital;
-                    })}
-                    {donor.map(user1=> {
-
-                        if (user1.Appointment_hospital == nme)
-                            return (
-                                <div key={user1.uid} className="list">
-                                    <h5>{user1.FirstName}  {user1.LastName} {user1.Appointment_hospital}</h5>
-                                    <div>
-                                        <h6>Age : {user1.Age}</h6>
-                                        <h6>Blood Group : {user1.Bloodgrp}</h6>
-                                        <h6>Gender : {user1.Gender}</h6>
-                                        <h6>Contact : {user1.Contact}</h6>
-                                        <h6>City : {user1.City} </h6>
-                                        <h6>Medical condition :{user1.MedicalCondition}</h6>
-                                        <h6>Weight:{user1.Weight}</h6>
-                                      
-                                        <button class="cta-btn" class="buttonform" onClick={this.acceptbtn.bind(this,user1)}><h4>Accept</h4></button>
-                                        <button class="cta-btn" class="buttonform" onClick={this.rejectbtn.bind(this,user1)}><h4>Deny</h4></button>
-                                    </div>
-                                </div>)
-                    })}
-                </div>
-
-            </div>
-        )
-
-    }
-
+        <div className="request-card view" style={{ marginLeft: "275px" }}>
+          <div class="request-card-1 view ">
+            <h3>Pending Applications</h3>
+            {hospitals.map((user) => {
+              nme = user.Hospital;
+            })}
+            {donor.map((user1) => {
+              if (user1.Appointment_hospital == nme)
+                return (
+                  <div key={user1.uid} className="list">
+                    <h5>
+                      {user1.FirstName} {user1.LastName}{" "}
+                      {user1.Appointment_hospital}
+                    </h5>
+                    <div>
+                      <h6>Age : {user1.Age}</h6>
+                      <h6>Blood Group : {user1.Bloodgrp}</h6>
+                      <h6>Gender : {user1.Gender}</h6>
+                      <h6>Contact : {user1.Contact}</h6>
+                      <h6>City : {user1.City} </h6>
+                      <h6>Medical condition :{user1.MedicalCondition}</h6>
+                      <h6>Weight:{user1.Weight}</h6>
+                      <div className="application buttons">
+                        <button
+                          class="cta-btn"
+                          class="buttonform"
+                          onClick={this.acceptbtn.bind(this, user1)}
+                        >
+                          <h4>Accept</h4>
+                        </button>
+                        <button
+                          class="cta-btn"
+                          class="buttonform"
+                          onClick={this.rejectbtn.bind(this, user1)}
+                        >
+                          <h4>Deny</h4>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
-export default PendingHospitalApp
+export default PendingHospitalApp;

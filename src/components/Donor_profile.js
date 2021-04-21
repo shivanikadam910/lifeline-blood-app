@@ -154,15 +154,22 @@ class Donor_profile extends Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
+                <div
+                  className="menulist"
+                  style={{
+                    background: "#f2f2f2",
+                    borderRight: "5px solid #fc3d3d",
+                    cursor: "pointer",
+                  }}
+                >
                   <Link
-                    to="/receiverrequest"
+                    to="/Donor_profile"
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
                     <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
 
-                    <h3>Donate Blood</h3>
+                    <h3 style={{ color: "black" }}>Donate Blood</h3>
                   </Link>
                 </div>
 
@@ -179,20 +186,21 @@ class Donor_profile extends Component {
             </ul>
           </div>
           <div className="why">
-            <h3>Why Donate Blood?</h3>
-
+            <h3>
+              <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>
+                Why Donate Blood?
+              </Link>
+            </h3>
             <div className="donateVector">
-              <img src={donate} alt="why donate" />
+              <Link to="/WhyDonateBlood">
+                <img src={donate} alt="why donate" />
+              </Link>
             </div>
           </div>
         </div>
 
         <div className="container2">
-          <div className="banner">
-            <img src={donateblood} alt="some error occured" />
-          </div>
-
-          <div class="request-card">
+          <div class="request-card view">
             <div class="request-card-1">
               <div class="rec-request">
                 <form>
@@ -352,8 +360,9 @@ class Donor_profile extends Component {
                   <label>
                     <b>Have you donated blood in past 112 days</b>
                   </label>
-                  <label for="yes">
+                  <label for="yes" className="radiolabel">
                     <input
+                      className="radiob"
                       name="rct_don"
                       type="radio"
                       id="rct_yes"
@@ -363,8 +372,9 @@ class Donor_profile extends Component {
                     />
                     <b>Yes</b>{" "}
                   </label>
-                  <label for="no">
+                  <label for="no" className="radiolabel">
                     <input
+                      className="radiob"
                       type="radio"
                       id="rct_no"
                       name="rct_don"
@@ -377,7 +387,7 @@ class Donor_profile extends Component {
                   <br />
 
                   <label>
-                    Select the hospital you would like to donate bloood{" "}
+                    <b>Select the hospital you would like to donate bloood</b>{" "}
                   </label>
                   <select
                     className="drpdwn2"
@@ -399,8 +409,10 @@ class Donor_profile extends Component {
                     })}
                   </select>
                 </form>
-                <div>
-                  <button onClick={this.onSubmitForm}>Submit</button>
+                <div className="req-button" style={{ paddingBottom: "40px" }}>
+                  <button className="buttonform" onClick={this.onSubmitForm}>
+                    <h4>Submit</h4>
+                  </button>
                 </div>
               </div>
             </div>

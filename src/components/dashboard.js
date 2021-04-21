@@ -189,7 +189,14 @@ class dashboard extends React.Component {
           </div>
 
           <div class="request-card view event">
-            <div class="request-card-1 view event">
+            <div
+              class="request-card-1 view event"
+              style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
               <h3> Events </h3>
               {users.map((user) => (
                 <div key={user.uid} class="list">

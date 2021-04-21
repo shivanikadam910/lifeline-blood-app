@@ -3,70 +3,64 @@ import { Redirect } from "react-router-dom";
 import UserProvider, { UserContext } from "../providers/userprovider";
 import firebase from "../firebase/firebase";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import '../static/home.css';
+import "../static/home.css";
+import "../static/receiverrequest.css";
 import donate from "../images/donateVector.png";
 
-
-
 class ViewApplications extends Component {
-    constructor(props) {
-        super();
-        this.state = {
-            hospitals: [],
-            donor: [],
-            currentID: "",
-            User:""
-        };
+  constructor(props) {
+    super();
+    this.state = {
+      hospitals: [],
+      donor: [],
+      currentID: "",
+      User: "",
+    };
+  }
 
-    }
+  componentDidMount() {
+    const db = firebase.firestore();
+    db.collection("RegisteredHospital")
+      .where("Licence", "==", this.props.location.state.data)
+      .get()
+      .then((querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => doc.data());
+        this.setState({ hospitals: data });
+        console.log("here is data", data);
+      });
 
-    componentDidMount() {
+    db.collection("User")
+      .where("ApplicationStatus", "!=", "pending")
+      .get()
+      .then((querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => doc.data());
+        this.setState({ donor: data });
+        console.log("here is data", data);
+      });
+  }
 
-        const db = firebase.firestore();
-        db.collection('RegisteredHospital')
-            .where("Licence", "==", this.props.location.state.data)
-            .get()
-            .then(querySnapshot => {
-                const data = querySnapshot.docs.map(doc => doc.data());
-                this.setState({ hospitals: data })
-                console.log("here is data", data);
-            });
+  onInputchange(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  }
 
-        db.collection('User')
-        .where("ApplicationStatus", "!=", "pending")
-            .get()
-            .then(querySnapshot => {
-                const data = querySnapshot.docs.map(doc => doc.data());
-                this.setState({ donor: data })
-                console.log("here is data", data);
-            });
+  render() {
+    const { hospitals } = this.state;
+    const { donor } = this.state;
+    var nme;
 
-    }
-
-
-    onInputchange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
-
-
-    render() {
-        const { hospitals } = this.state;
-        const { donor } = this.state;
-        var nme;
-
-        return (
-            <div className="containermain" >
-                <div className="sidebar">
+    return (
+      <div className="containermain">
+        <div className="sidebar">
           <div className="menu">
             <ul>
               <li>
                 <div className="menulist">
                   <Link
                     to={{
-                      pathname:"/Hospitaldashboard",
-                      state : {data : this.props.location.state.data}
+                      pathname: "/Hospitaldashboard",
+                      state: { data: this.props.location.state.data },
                     }}
                     style={{ textDecoration: "none" }}
                     className="link"
@@ -78,7 +72,7 @@ class ViewApplications extends Component {
 
                 <div className="menulist">
                   <Link
-                    to="/Hospitaldashboard"
+                    to="/PendingHospitalApp"
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
@@ -91,9 +85,9 @@ class ViewApplications extends Component {
                 <div className="menulist">
                   <Link
                     to={{
-                      pathname :"/AddEvent",
-                      state : {data : this.props.location.state.data}
-                  }}
+                      pathname: "/AddEvent",
+                      state: { data: this.props.location.state.data },
+                    }}
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
@@ -134,45 +128,37 @@ class ViewApplications extends Component {
             </div>
           </div>
         </div>
-                <div class="request-card-1">
-                    <h3>Application History</h3>
-                    {hospitals.map(user => {
-                        nme = user.Hospital;
-
-
-
-                    })}
-                    {donor.map(user1=> {
-
-                        if (user1.Appointment_hospital == nme)
-                            return (
-                                <div key={user1.uid} className="list">
-                                    <h5>{user1.FirstName}  {user1.LastName} {user1.Appointment_hospital}</h5>
-                                    <div>
-                                        <h6>Age : {user1.Age}</h6>
-                                        <h6>Blood Group : {user1.Bloodgrp}</h6>
-                                        <h6>Gender : {user1.Gender}</h6>
-                                        <h6>Contact : {user1.Contact}</h6>
-                                        <h6>City : {user1.City} </h6>
-                                        <h6>Medical condition :{user1.MedicalCondition}</h6>
-                                        <h6>Weight:{user1.Weight}</h6>
-                                        <h6>Application Status:{user1.ApplicationStatus}</h6>
-                                      
-                                       
-                                    </div>
-                                </div>)
-                    })}
-                    
-
-
-                </div>
-
-            </div>
-        )
-
-
-
-    }
-
+        <div class="request-card view" style={{ marginLeft: "275px" }}>
+          <div class="request-card-1 view">
+            <h3>Application History</h3>
+            {hospitals.map((user) => {
+              nme = user.Hospital;
+            })}
+            {donor.map((user1) => {
+              if (user1.Appointment_hospital == nme)
+                return (
+                  <div key={user1.uid} className="list">
+                    <h5>
+                      {user1.FirstName} {user1.LastName}{" "}
+                      {user1.Appointment_hospital}
+                    </h5>
+                    <div>
+                      <h6>Age : {user1.Age}</h6>
+                      <h6>Blood Group : {user1.Bloodgrp}</h6>
+                      <h6>Gender : {user1.Gender}</h6>
+                      <h6>Contact : {user1.Contact}</h6>
+                      <h6>City : {user1.City} </h6>
+                      <h6>Medical condition :{user1.MedicalCondition}</h6>
+                      <h6>Weight:{user1.Weight}</h6>
+                      <h6>Application Status:{user1.ApplicationStatus}</h6>
+                    </div>
+                  </div>
+                );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
-export default ViewApplications
+export default ViewApplications;

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import firebase, { storage } from "../firebase/firebase";
 import "../static/main.css";
 import "../static/AddEvents.css";
+import "../static/receiverrequest.css";
 import { Link } from "react-router-dom";
 import donate from "../images/donateVector.png";
 
@@ -97,7 +98,7 @@ class AddEvent extends Component {
 
                 <div className="menulist">
                   <Link
-                    to="/Hospitaldashboard"
+                    to="/PendingHospitalApp"
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
@@ -107,7 +108,14 @@ class AddEvent extends Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
+                <div
+                  className="menulist"
+                  style={{
+                    background: "#f2f2f2",
+                    borderRight: "5px solid #fc3d3d",
+                    cursor: "pointer",
+                  }}
+                >
                   <Link
                     to={{
                       pathname: "/AddEvent",
@@ -119,7 +127,7 @@ class AddEvent extends Component {
                   >
                     <img src="https://img.icons8.com/material-two-tone/24/000000/news.png" />
 
-                    <h3>Post Event</h3>
+                    <h3 style={{ color: "black" }}>Post Event</h3>
                   </Link>
                 </div>
 
@@ -155,75 +163,82 @@ class AddEvent extends Component {
           </div>
         </div>
 
-        <div className="containerevent">
-          <div className="eventheader">
-            <div className="add">
-              <Link
-                to={{
-                  pathname: "/AddEvent",
-                  state: { data: this.props.location.state.data },
-                }}
+        <div className="containerAddEvent">
+          <div className="containerevent">
+            <div className="eventheader">
+              <div
+                className="add"
+                style={{ borderBottom: "8px solid firebrick" }}
               >
-                <h4>Add Event</h4>
-              </Link>
+                <Link
+                  to={{
+                    pathname: "/AddEvent",
+                    state: { data: this.props.location.state.data },
+                  }}
+                >
+                  <h4>Add Event</h4>
+                </Link>
+              </div>
+              <div className="my">
+                <Link
+                  to={{
+                    pathname: "/MyEvents",
+                    state: { data: this.props.location.state.data },
+                  }}
+                >
+                  <h4>My Events</h4>
+                </Link>
+              </div>
             </div>
-            <div className="my">
-              <Link
-                to={{
-                  pathname: "/MyEvents",
-                  state: { data: this.props.location.state.data },
-                }}
-              >
-                <h4>My Events</h4>
-              </Link>
+            <div>
+              <span>File&nbsp;&nbsp;</span>
+              <input type="file" onChange={this.handleChange} />
             </div>
-          </div>
-          <div>
-            <span>File&nbsp;&nbsp;</span>
-            <input type="file" onChange={this.handleChange} />
-          </div>
-          <br />
-          <div className="imageUpload">
-            <img
-              src={this.state.url || "https://via.placeholder.com/400x300"}
-              alt="Uploaded Images"
-              height="300"
-              width="400"
+            <br />
+            <div className="imageUpload">
+              <img
+                src={this.state.url || "https://via.placeholder.com/400x300"}
+                alt="Uploaded Images"
+                height="300"
+                width="400"
+              />
+              <button className="upload" onClick={this.handleUpload}>
+                Upload
+              </button>
+            </div>
+            <br />
+            <progress
+              value={this.state.progress}
+              max="100"
+              className="progress"
             />
-            <button className="upload" onClick={this.handleUpload}>
-              Upload
+            <br />
+            <div className="imageinfo">
+              <label> Title </label>
+              <input
+                type="text"
+                className="textbox"
+                placeholder="ex. Blood Donation Camp"
+                name="title"
+                value={this.state.title}
+                onChange={this.handleTitleChange.bind(this)}
+                required
+              />
+              <label> Description </label>
+              <input
+                type="text"
+                className="textbox"
+                placeholder="ex. Time, details etc."
+                name="description"
+                value={this.state.description}
+                onChange={this.handleDescriptionChange.bind(this)}
+                required
+              />
+            </div>
+            <button className="submit" onClick={this.handlePost}>
+              Post
             </button>
           </div>
-          <br />
-          <progress
-            value={this.state.progress}
-            max="100"
-            className="progress"
-          />
-          <br />
-          <div className="imageinfo">
-            <label> Title </label>
-            <input
-              type="text"
-              placeholder="ex. Blood Donation Camp"
-              name="title"
-              value={this.state.title}
-              onChange={this.handleTitleChange.bind(this)}
-              required
-            />
-            <label> Description </label>
-            <input
-              type="text"
-              placeholder="ex. Time, details etc."
-              name="description"
-              value={this.state.description}
-              onChange={this.handleDescriptionChange.bind(this)}
-              required
-            />
-          </div>
-          <button className="submit" onClick={this.handlePost}>
-            Post
-          </button>
         </div>
       </div>
     );

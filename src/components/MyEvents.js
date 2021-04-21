@@ -59,7 +59,14 @@ class MyEvents extends React.Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
+                <div
+                  className="menulist"
+                  style={{
+                    background: "#f2f2f2",
+                    borderRight: "5px solid #fc3d3d",
+                    cursor: "pointer",
+                  }}
+                >
                   <Link
                     to={{
                       pathname: "/AddEvent",
@@ -70,7 +77,7 @@ class MyEvents extends React.Component {
                   >
                     <img src="https://img.icons8.com/material-two-tone/24/000000/news.png" />
 
-                    <h3>Post Event</h3>
+                    <h3 style={{ color: "black" }}>Post Event</h3>
                   </Link>
                 </div>
 
@@ -108,6 +115,32 @@ class MyEvents extends React.Component {
         <div className="container2">
           <div class="request-card view event">
             <div class="request-card-1 view event">
+              <div className="eventheader" style={{ marginBottom: "0px  " }}>
+                <div className="add">
+                  <Link
+                    to={{
+                      pathname: "/AddEvent",
+                      state: { data: this.props.location.state.data },
+                    }}
+                  >
+                    <h4>Add Event</h4>
+                  </Link>
+                </div>
+                <div
+                  className="my"
+                  style={{ borderBottom: "8px solid firebrick" }}
+                >
+                  <Link
+                    to={{
+                      pathname: "/MyEvents",
+                      state: { data: this.props.location.state.data },
+                    }}
+                  >
+                    <h4>My Events</h4>
+                  </Link>
+                </div>
+              </div>
+
               <h3> My Events</h3>
               {users.map((user) => (
                 <div key={user.uid} class="list">

@@ -5,9 +5,8 @@
   flex-flow: row wrap;
   justify-content: center;
   width: 100%;
-  background: white;
   height: 900px;
-  background-image: url("../images/red.jpg");
+  background-color: #86bbbd;
   box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.2);
 }
 .rec-request form {
@@ -67,6 +66,16 @@
   line-height: 30px;
   font-style: normal;
 }
+.rec-request .radiolabel {
+  width: 200px;
+  text-align: right;
+  color: #156374;
+  margin: 0px;
+  font-family: Source Sans Pro;
+  font-weight: 600;
+  font-size: 20px;
+  font-style: normal;
+}
 
 .list {
   margin: 25px;
@@ -113,6 +122,16 @@
   border: none;
   background-color: rgb(228, 241, 245);
 }
+.rec-request .radiob {
+  width: 40px;
+  color: black;
+  font-size: 18px;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(228, 241, 245);
+}
 
 .drpdwn2 {
   height: 50px;
@@ -138,4 +157,12 @@
   border-radius: 5px;
   border: none;
   color: white;
+}
+.application.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.application.buttons button {
+  height: 50px;
 }
