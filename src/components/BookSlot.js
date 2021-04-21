@@ -3,17 +3,23 @@ import React, { Component } from "react";
 import Calendar from "react-calendar";
 
 class BookSlot extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       date: new Date(),
-      currentID:"",
+      currentID: "",
     };
   }
   bookDate = (date) => {
+    console.log("Passed parameters:----");
+    console.log(this.props.location.state.Donation_Request);
+    console.log(this.props.location.state.Lname);
+
     const db = firebase.firestore();
     db.collection("User")
       .where("Email", "==", auth.currentUser.email)
+      .where("FirstName", "==", this.props.location.state.Donation_Request)
+      .where("LastName", "==", this.props.location.state.Lname)
       .get()
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
@@ -31,7 +37,7 @@ class BookSlot extends Component {
           );
         });
       });
-}
+  };
 
   onChange = (date) =>
     this.setState({

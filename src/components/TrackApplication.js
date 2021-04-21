@@ -7,14 +7,14 @@ import donateblood from "../images/Donating-Blood-1.svg";
 import "../static/receiverrequest.css";
 
 class TrackApplication extends React.Component {
-    constructor() {
-        console.log("Emaillllllll");
-        console.log(auth.currentUser.email);
-        super();
-        this.state = {
-          Donation_Request: [],
-        };
-      }
+  constructor() {
+    console.log("Emaillllllll");
+    console.log(auth.currentUser.email);
+    super();
+    this.state = {
+      Donation_Request: [],
+    };
+  }
   componentDidMount() {
     console.log("helooooooo");
     const db = firebase.firestore();
@@ -27,12 +27,27 @@ class TrackApplication extends React.Component {
         this.setState({ Donation_Request: data });
       });
   }
-  bookApp = (user) => {   
-    this.props.history.push({pathname: "/BookSlot", state :{Donation_Request : user.FirstName}});
+  bookApp = (user) => {
+    console.log(user.ApplicationStatus);
+    if (user.ApplicationStatus == "true") {
+      this.props.history.push({
+        pathname: "/BookSlot",
+        state: { Donation_Request: user.FirstName, Lname: user.LastName },
+      });
+    } else {
+      if (user.ApplicationStatus == "pending") {
+        window.alert("Your status is pending you cannot book appointment yet ");
+      } else {
+        window.alert(
+          "Your Application is rejected by the hospital you cannot book an appointment"
+        );
+      }
+    }
   };
 
   render() {
     const { Donation_Request } = this.state;
+
     return (
       <div className="containermain">
         <div className="sidebar">
@@ -116,12 +131,19 @@ class TrackApplication extends React.Component {
                     <h6>Appointment_hospital : {user.Appointment_hospital}</h6>
                     <h6>Contact : {user.Contact}</h6>
                     <h6>City : {user.City} </h6>
-                    <h6>Application Status : {user.ApplicationStatus}</h6>
+                    {/* {status = user.ApplicationStatus} */}
+                    {user.ApplicationStatus === "true" ? (
+                      <h6>ApplicationStatus : Accepted</h6>
+                    ) : user.ApplicationStatus === "false" ? (
+                      <h6>ApplicationStatus : Rejected</h6>
+                    ) : (
+                      <h6>ApplicationStatus : Pending</h6>
+                    )}
                   </div>
                   <div className="buttons">
                     <button
                       class="cta-btn"
-                      onClick={this.bookApp.bind(this.user)}
+                      onClick={this.bookApp.bind(this, user)}
                       class="buttonform"
                     >
                       <h4>Book your slot</h4>
