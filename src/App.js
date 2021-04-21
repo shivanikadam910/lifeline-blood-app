@@ -25,6 +25,8 @@ import PendingHospitalrequ from "./components/PendingHospitalApp";
 import viewapplication from "./components/ViewApplications";
 import Addevent from "./components/AddEvent";
 import MyEvents from "./components/MyEvents";
+import TrackApplication from "./components/TrackApplication";
+import BookSlot from "./components/BookSlot";
 class App extends Component {
   render() {
     return (
@@ -47,6 +49,8 @@ class App extends Component {
           <Route exact path="/Hsignin" component={HospitalSignin} />
           <Route exact path="/WhyDonateBlood" component={WhyDonateBlood} />
           <Route exact path="/ReceivedBlood" component={ReceivedBlood} />
+          <Route exact path="/TrackApplication" component={TrackApplication} />
+          <Route exact path="/BookSlot" component={BookSlot} />
           <Route
             exact
             path="/Hospitaldashboard"
