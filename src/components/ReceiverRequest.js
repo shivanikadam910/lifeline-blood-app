@@ -24,6 +24,7 @@ class ReceiverRequest extends React.Component {
       users: [],
       users1: [],
       selectValue: "",
+      email:"",
       ApplicationStatus: false,
       stat: new Boolean(null),
     };
@@ -118,18 +119,22 @@ class ReceiverRequest extends React.Component {
     }
   };
   componentDidMount() {
-    console.log(auth.currentUser.email);
-    const db = firebase.firestore();
-    db.collection("Receiver")
-      .where("Email", "==", auth.currentUser.email)
-      .get()
-      .then((querySnapshot) => {
-        const data = querySnapshot.docs.map((doc) => doc.data());
-        console.log("here is data", data);
-        this.setState({ users1: data });
-      });
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log(user)
+      this.setState({ email: user.email },() => {
+        const db = firebase.firestore();
+        db.collection("Receiver")
+        .where("Email", "==", this.state.email)
+        .get()
+        .then((querySnapshot) => {
+          const data = querySnapshot.docs.map((doc) => doc.data());
+          console.log("here is data", data);
+          this.setState({ users1: data });
+        });
+      
+  });
+    }.bind(this));
   }
-
   render() {
     const { users } = this.state;
     return (
@@ -215,7 +220,7 @@ class ReceiverRequest extends React.Component {
             <div class="request-card-1">
               <div class="rec-request">
                 <form>
-                  <h3>Recieve Request</h3>
+                  <h3>Receive Request</h3>
                   <label for="firstname">
                     <b>First Name</b>
                   </label>

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import firebase from "./firebase/firebase";
 import UserProvider from "./providers/userprovider";
 import Navbar from "./components/navbar";
+import Navbar_Home from "./components/navbar_sout";
 import LoginPage from "./components/LoginPage";
 import Register from "./components/Register";
 import HomeScreen from "./components/HomeScreen";
@@ -26,43 +27,64 @@ import Addevent from "./components/AddEvent";
 import MyEvents from "./components/MyEvents";
 import TrackApplication from "./components/TrackApplication";
 import BookSlot from "./components/BookSlot";
+
+const RouteWithNavbar = ({exact, path, component:Component}) => {
+  return(
+    <div>
+    <Navbar/>
+    <Route exact={exact} path={path} component={Component} />
+    </div>
+  );
+}
+
+const Route1 = ({exact, path, component:Component}) => {
+  return(
+    <div>
+    <Navbar_Home/>
+    <Route exact={exact} path={path} component={Component} />
+    </div>
+  );
+}
 class App extends Component {
+  
   render() {
     return (
       <Router>
         <UserProvider>
-          <Navbar />
-          <Route exact path="/" component={HomeScreen} />
-          <Route exact path="/Signup" component={Register} />
-          <Route exact path="/Login" component={LoginPage} />
-          <Route exact path="/Home" component={HomeScreen} />
-          <Route exact path="/dashboard" component={dashboard} />
-          <Route exact path="/verificationReq" component={Verification} />
-          <Route exact path="/receiverrequest" component={Request} />
-          <Route exact path="/Donor_profile" component={Donorprofile} />
-          <Route exact path="/ViewMyRequest" component={ViewMyRequest} />
-          <Route exact path="/ViewRecievers" component={View_reciever} />
-          <Route exact path="/Hospitalregister" component={HospitalRegister} />
-          <Route exact path="/Contact" component={Contact_us} />
-          <Route exact path="/About" component={About_us} />
-          <Route exact path="/Hsignin" component={HospitalSignin} />
-          <Route exact path="/WhyDonateBlood" component={WhyDonateBlood} />
-          <Route exact path="/ReceivedBlood" component={ReceivedBlood} />
-          <Route exact path="/TrackApplication" component={TrackApplication} />
-          <Route exact path="/BookSlot" component={BookSlot} />
-          <Route
+          <Switch>
+          <RouteWithNavbar exact path="/" component={HomeScreen} />
+          <RouteWithNavbar exact path="/Signup" component={Register} />
+          <RouteWithNavbar exact path="/Login" component={LoginPage} />
+          <RouteWithNavbar exact path="/Home" component={HomeScreen} />
+         
+          <Route1 exact path="/dashboard" component={dashboard} />
+          <Route1 exact path="/verificationReq" component={Verification} />
+          <Route1 exact path="/receiverrequest" component={Request} />
+          <Route1 exact path="/Donor_profile" component={Donorprofile} />
+          <Route1 exact path="/ViewMyRequest" component={ViewMyRequest} />
+          <Route1 exact path="/ViewRecievers" component={View_reciever} />
+          <Route1 exact path="/Hospitalregister" component={HospitalRegister} />
+          <Route1 exact path="/Contact" component={Contact_us} />
+          <Route1 exact path="/About" component={About_us} />
+          <Route1 exact path="/Hsignin" component={HospitalSignin} />
+          <Route1 exact path="/WhyDonateBlood" component={WhyDonateBlood} />
+          <Route1 exact path="/ReceivedBlood" component={ReceivedBlood} />
+          <Route1 exact path="/TrackApplication" component={TrackApplication} />
+          <Route1 exact path="/BookSlot" component={BookSlot} />
+          <Route1
             exact
             path="/Hospitaldashboard"
             component={Hospitaldashboard}
           />
-          <Route
+          <Route1
             exact
             path="/PendingHospitalApp"
             component={PendingHospitalrequ}
           />
-          <Route exact path="/AddEvent" component={Addevent} />
-          <Route exact path="/MyEvents" component={MyEvents} />
-          <Route exact path="/ViewApplication" component={viewapplication} />
+          <Route1 exact path="/AddEvent" component={Addevent} />
+          <Route1 exact path="/MyEvents" component={MyEvents} />
+          <Route1 exact path="/ViewApplication" component={viewapplication} />
+          </Switch>  
         </UserProvider>
       </Router>
     );
