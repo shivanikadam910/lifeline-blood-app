@@ -27,7 +27,7 @@ import Addevent from "./components/AddEvent";
 import MyEvents from "./components/MyEvents";
 import TrackApplication from "./components/TrackApplication";
 import BookSlot from "./components/BookSlot";
-
+import Appointments from "./components/Appointments";
 const RouteWithNavbar = ({exact, path, component:Component}) => {
   return(
     <div>
