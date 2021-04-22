@@ -18,34 +18,40 @@ class ViewMyRequest extends React.Component {
       users: [],
       donors: [],
       currentID: "",
+      email:""
     };
   }
   componentDidMount() {
-    const db = firebase.firestore();
-    db.collection("Receiver")
-      .where("Email", "==", auth.currentUser.email)
-      .where("ApplicationStatus", "==", false)
-      .get()
-      .then((querySnapshot) => {
-        const data = querySnapshot.docs.map((doc) => doc.data());
-        console.log("here is data", data);
-        this.setState({ users: data });
-      });
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log(user)
+      this.setState({ email: user.email },() => {
+        const db = firebase.firestore();
+        db.collection("Receiver")
+          .where("Email", "==", this.state.email)
+          .where("ApplicationStatus", "==", false)
+          .get()
+          .then((querySnapshot) => {
+            const data = querySnapshot.docs.map((doc) => doc.data());
+            console.log("here is data", data);
+            this.setState({ users: data });
+          });
 
-    db.collection("User")
-      .where("EmergencyDonor", "==", "True")
-      .get()
-      .then((querySnapshot) => {
-        const data = querySnapshot.docs.map((doc) => doc.data());
-        console.log("here is data", data);
-        this.setState({ donors: data });
-      });
+        db.collection("User")
+          .where("EmergencyDonor", "==", "True")
+          .get()
+          .then((querySnapshot) => {
+            const data = querySnapshot.docs.map((doc) => doc.data());
+            console.log("here is data", data);
+            this.setState({ donors: data });
+          });
+        });
+      }.bind(this));
   }
 
   applicationUpdate = (user) => {
     const db = firebase.firestore();
     db.collection("Receiver")
-      .where("Email", "==", auth.currentUser.email)
+      .where("Email", "==", this.state.email)
       .where("ApplicationStatus", "==", false)
       .where("FirstName", "==", user.FirstName)
       .where("LastName", "==", user.LastName)
@@ -71,7 +77,7 @@ class ViewMyRequest extends React.Component {
   applicationDelete = (user) => {
     const db = firebase.firestore();
     db.collection("Receiver")
-      .where("Email", "==", auth.currentUser.email)
+      .where("Email", "==", this.state.email)
       .where("ApplicationStatus", "==", false)
       .where("FirstName", "==", user.FirstName)
       .where("LastName", "==", user.LastName)

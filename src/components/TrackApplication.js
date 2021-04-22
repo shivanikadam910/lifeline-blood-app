@@ -8,24 +8,27 @@ import "../static/receiverrequest.css";
 
 class TrackApplication extends React.Component {
   constructor() {
-    console.log("Emaillllllll");
-    console.log(auth.currentUser.email);
     super();
     this.state = {
       Donation_Request: [],
+      email:""
     };
   }
   componentDidMount() {
-    console.log("helooooooo");
-    const db = firebase.firestore();
-    db.collection("User")
-      .where("Email", "==", auth.currentUser.email)
-      .get()
-      .then((querySnapshot) => {
-        const data = querySnapshot.docs.map((doc) => doc.data());
-        console.log("here is data", data);
-        this.setState({ Donation_Request: data });
-      });
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log(user)
+      this.setState({ email: user.email },() => {
+        const db = firebase.firestore();
+        db.collection("User")
+          .where("Email", "==", this.state.email)
+          .get()
+          .then((querySnapshot) => {
+            const data = querySnapshot.docs.map((doc) => doc.data());
+            console.log("here is data", data);
+            this.setState({ Donation_Request: data });
+          });
+        });
+      }.bind(this));   
   }
   bookApp = (user) => {
     console.log(user.ApplicationStatus);
@@ -89,14 +92,7 @@ class TrackApplication extends React.Component {
                   </Link>
                 </div>
 
-                <div
-                  className="menulist"
-                  style={{
-                    background: "#f2f2f2",
-                    borderRight: "5px solid #fc3d3d",
-                    cursor: "pointer",
-                  }}
-                >
+                <div className="menulist">
                   <Link
                     to="/TrackApplication"
                     style={{ textDecoration: "none" }}

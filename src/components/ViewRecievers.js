@@ -8,32 +8,35 @@ import "../static/receiverrequest.css";
 
 class ViewRecievers extends React.Component {
   constructor() {
-    console.log("Emaillllllll");
-    console.log(auth.currentUser.email);
     super();
     this.state = {
       Donation_Request: [],
       Recievers: [],
+      email:""
     };
   }
   componentDidMount() {
-    console.log("helooooooo");
-    const db = firebase.firestore();
-    db.collection("User")
-      .where("Email", "==", auth.currentUser.email)
-      .get()
-      .then((querySnapshot) => {
-        const data = querySnapshot.docs.map((doc) => doc.data());
-        console.log("here is data", data);
-        this.setState({ Donation_Request: data });
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log(user)
+      this.setState({ email: user.email },() => {
+      const db = firebase.firestore();
+      db.collection("User")
+        .where("Email", "==", this.state.email)
+        .get()
+        .then((querySnapshot) => {
+          const data = querySnapshot.docs.map((doc) => doc.data());
+          console.log("here is data", data);
+          this.setState({ Donation_Request: data });
+        });
+      db.collection("Receiver")
+        .get()
+        .then((querySnapshot) => {
+          const data = querySnapshot.docs.map((doc) => doc.data());
+          console.log("here is data", data);
+          this.setState({ Recievers: data });
+        });
       });
-    db.collection("Receiver")
-      .get()
-      .then((querySnapshot) => {
-        const data = querySnapshot.docs.map((doc) => doc.data());
-        console.log("here is data", data);
-        this.setState({ Recievers: data });
-      });
+    }.bind(this));
   }
 
   render() {

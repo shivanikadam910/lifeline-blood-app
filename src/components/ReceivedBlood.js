@@ -13,19 +13,25 @@ class ReceivedBlood extends React.Component {
     super();
     this.state = {
       users: [],
+      email:""
     };
   }
   componentDidMount() {
-    const db = firebase.firestore();
-    db.collection("Receiver")
-      .where("Email", "==", auth.currentUser.email)
-      .where("ApplicationStatus", "==", true)
-      .get()
-      .then((querySnapshot) => {
-        const data = querySnapshot.docs.map((doc) => doc.data());
-        console.log("here is data", data);
-        this.setState({ users: data });
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log(user)
+      this.setState({ email: user.email },() => {
+      const db = firebase.firestore();
+      db.collection("Receiver")
+        .where("Email", "==", this.state.email)
+        .where("ApplicationStatus", "==", true)
+        .get()
+        .then((querySnapshot) => {
+          const data = querySnapshot.docs.map((doc) => doc.data());
+          console.log("here is data", data);
+          this.setState({ users: data });
+        });
       });
+    }.bind(this));
   }
 
   render() {

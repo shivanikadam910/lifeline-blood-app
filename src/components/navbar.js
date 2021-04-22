@@ -35,10 +35,18 @@ class navbar extends React.Component {
                   Contact Us
                 </Link>
               </li>
+
+              <li>
+                <Link to="/Hospitalregister" style={{ fontWeight: "600" }}>
+                  {" "}
+                  Hospital Sign in
+                </Link>
+              </li>
+
               <li>
                 <Link to="/Login" style={{ fontWeight: "600" }}>
                   {" "}
-                  Sign in{" "}
+                  User Sign in{" "}
                 </Link>
               </li>
             </ul>

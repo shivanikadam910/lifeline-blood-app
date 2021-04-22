@@ -56,18 +56,18 @@ class App extends Component {
           <RouteWithNavbar exact path="/Signup" component={Register} />
           <RouteWithNavbar exact path="/Login" component={LoginPage} />
           <RouteWithNavbar exact path="/Home" component={HomeScreen} />
-         
+          <RouteWithNavbar exact path="/Hospitalregister" component={HospitalRegister} />
+          <RouteWithNavbar exact path="/About" component={About_us} />
+          <RouteWithNavbar exact path="/Contact" component={Contact_us} />
+          <RouteWithNavbar exact path="/WhyDonateBlood" component={WhyDonateBlood} />
+
           <Route1 exact path="/dashboard" component={dashboard} />
           <Route1 exact path="/verificationReq" component={Verification} />
           <Route1 exact path="/receiverrequest" component={Request} />
           <Route1 exact path="/Donor_profile" component={Donorprofile} />
           <Route1 exact path="/ViewMyRequest" component={ViewMyRequest} />
           <Route1 exact path="/ViewRecievers" component={View_reciever} />
-          <Route1 exact path="/Hospitalregister" component={HospitalRegister} />
-          <Route1 exact path="/Contact" component={Contact_us} />
-          <Route1 exact path="/About" component={About_us} />
-          <Route1 exact path="/Hsignin" component={HospitalSignin} />
-          <Route1 exact path="/WhyDonateBlood" component={WhyDonateBlood} />
+          <RouteWithNavbar exact path="/Hsignin" component={HospitalSignin} />
           <Route1 exact path="/ReceivedBlood" component={ReceivedBlood} />
           <Route1 exact path="/TrackApplication" component={TrackApplication} />
           <Route1 exact path="/BookSlot" component={BookSlot} />

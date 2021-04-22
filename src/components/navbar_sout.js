@@ -18,7 +18,7 @@ class navbar extends React.Component {
             <img src={logo} alt="LifeLine" />
           </div>
 
-          <div class="navul">
+          <div class="navul" >
             <ul class="ulnav">
               <li>
                 <Link to="/Home" style={{ fontWeight: "600" }}>

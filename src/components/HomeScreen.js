@@ -50,6 +50,11 @@ export default class Main extends Component {
   }
   render() {
     const { users } = this.state;
+    var flag=false;
+    if(auth.currentUser==null)
+    {
+      flag=true;
+    }
     return (
       <div className="containermain">
         <div className="sidebar">
@@ -57,17 +62,40 @@ export default class Main extends Component {
             <ul>
               <li>
                 <div className="menulist">
+                  {flag &&
                   <Link
-                    to="/dashboard"
+                    to="/Login"
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
                     <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
                     <h3>Dashboard</h3>
                   </Link>
+                  }
+                  {!flag &&
+                  <Link
+                  to="/dashboard"
+                  style={{ textDecoration: "none" }}
+                  className="link"
+                >
+                  <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
+                  <h3>Dashboard</h3>
+                </Link>
+                  }
                 </div>
 
                 <div className="menulist">
+                {flag &&
+                  <Link
+                    to="/Login"
+                    style={{ textDecoration: "none" }}
+                    className="link"
+                  >
+                    <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
+                    <h3>Request Blood</h3>
+                  </Link>
+                  }
+                  {!flag &&
                   <Link
                     to="/receiverrequest"
                     style={{ textDecoration: "none" }}
@@ -76,9 +104,21 @@ export default class Main extends Component {
                     <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
                     <h3>Request Blood</h3>
                   </Link>
+                  }
                 </div>
 
                 <div className="menulist">
+                {flag &&
+                  <Link
+                    to="/Login"
+                    style={{ textDecoration: "none" }}
+                    className="link"
+                  >
+                    <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
+                    <h3>Donate Blood</h3>
+                  </Link>
+                  }
+                  { !flag &&
                   <Link
                     to="/Donor_profile"
                     style={{ textDecoration: "none" }}
@@ -87,6 +127,7 @@ export default class Main extends Component {
                     <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
                     <h3>Donate Blood</h3>
                   </Link>
+                  }
                 </div>
 
                 <div className="menulist">

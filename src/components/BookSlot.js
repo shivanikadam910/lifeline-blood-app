@@ -12,7 +12,14 @@ class BookSlot extends Component {
     this.state = {
       date: new Date(),
       currentID: "",
+      email:""
     };
+  }
+  componentDidMount(){
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log(user)
+      this.setState({ email: user.email })
+      }.bind(this));
   }
   bookDate = (date) => {
     console.log("Passed parameters:----");
@@ -21,7 +28,7 @@ class BookSlot extends Component {
 
     const db = firebase.firestore();
     db.collection("User")
-      .where("Email", "==", auth.currentUser.email)
+      .where("Email", "==", this.state.email)
       .where("FirstName", "==", this.props.location.state.Donation_Request)
       .where("LastName", "==", this.props.location.state.Lname)
       .get()
@@ -36,7 +43,7 @@ class BookSlot extends Component {
                 Date: this.state.date,
               });
               window.alert("Date booked");
-              this.props.history.push("/");
+              this.props.history.push("/dashboard");
             }
           );
         });
