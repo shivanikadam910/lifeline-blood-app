@@ -24,7 +24,7 @@ class Donor_profile extends Component {
     this.onSubmitForm = this.onSubmitForm.bind(this);
   }
   componentDidMount() {
-    console.log(auth.currentUser.email);
+
     const db = firebase.firestore();
     db.collection("RegisteredHospital")
 

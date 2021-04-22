@@ -11,7 +11,8 @@ class Hospitaldashboard extends React.Component {
     super();
     this.state = {
       users: [],
-    };
+      hospital:"",
+      };
   }
   componentDidMount() {
     const db = firebase.firestore();
@@ -31,6 +32,33 @@ class Hospitaldashboard extends React.Component {
         console.log("here is data", data);
         this.setState({ users: data });
       });
+
+    db.collection("RegisteredHospital")
+      .where("Licence", "==", this.props.location.state.data)
+      .get()
+      .then((querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => doc.data());
+        this.setState({ hospital: data },() => {
+          db.collection("User")
+            .where("ApplicationStatus","==","true" || "ApplicationStatus","==","false")
+            .where("Appointment_hospital", "==", this.state.hospital[0].Hospital)
+            .get()
+            .then((querySnapshot) => {
+              const count1 = querySnapshot.size;
+              this.setState({ app_count: count1 });
+            });
+
+            db.collection("User")
+            .where("ApplicationStatus","==","false")
+            .where("Appointment_hospital", "==", this.state.hospital[0].Hospital)
+            .get()
+            .then((querySnapshot) => {
+              const count1 = querySnapshot.size;
+              this.setState({ don_count: count1 });
+            });
+        });
+        
+      });  
   }
 
   render() {
@@ -132,14 +160,18 @@ class Hospitaldashboard extends React.Component {
               >
                 <div>My Applications</div>
                 <div className="total">Total</div>
-                <div className="num">0</div>
+                <div className="num">{this.state.app_count}</div>
               </Link>
             </div>
             <div className="card2">
-              <Link to="">
-                <div>My Report</div>
+              <Link to={{
+                pathname:"/SuccessfulDonations",
+                state: { data: this.props.location.state.data },
+              }}
+                >
+                <div>Successful Donations</div>
                 <div className="total">Total</div>
-                <div className="num">0</div>
+                <div className="num">{this.state.don_count}</div>
               </Link>
             </div>
             <div className="card3">

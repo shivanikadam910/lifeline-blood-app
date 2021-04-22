@@ -28,6 +28,7 @@ import MyEvents from "./components/MyEvents";
 import TrackApplication from "./components/TrackApplication";
 import BookSlot from "./components/BookSlot";
 import Appointments from "./components/Appointments";
+import SuccessfulDonations from "./components/Successfuldonations";
 const RouteWithNavbar = ({exact, path, component:Component}) => {
   return(
     <div>
@@ -85,6 +86,7 @@ class App extends Component {
           <Route1 exact path="/AddEvent" component={Addevent} />
           <Route1 exact path="/MyEvents" component={MyEvents} />
           <Route1 exact path="/ViewApplication" component={viewapplication} />
+          <Route1 exact path="/SuccessfulDonations" component={SuccessfulDonations} />
           </Switch>  
         </UserProvider>
       </Router>
