@@ -102,6 +102,7 @@ class Donor_profile extends Component {
                 Email: auth.currentUser.email,
                 Appointment_hospital: this.state.selectValue,
                 ApplicationStatus: "pending",
+                EmergencyDonor: this.state.eme_don,
               })
               .then(() => {
                 console.log("Document successfully written!");
@@ -382,6 +383,37 @@ class Donor_profile extends Component {
                       type="radio"
                       id="rct_no"
                       name="rct_don"
+                      value="False"
+                      onChange={this.onInputchange}
+                      style={{ margin: "20px" }}
+                    ></input>
+                    <b>No</b>
+                  </label>
+                  <br />
+
+                  <br />
+
+                  <label>
+                    <b>Would You like to donate blood directly to patients</b>
+                  </label>
+                  <label for="yes" className="radiolabel">
+                    <input
+                      className="radiob"
+                      name="eme_don"
+                      type="radio"
+                      id="rct_yes"
+                      value="True"
+                      onChange={this.onInputchange}
+                      style={{ margin: "20px" }}
+                    />
+                    <b>Yes</b>{" "}
+                  </label>
+                  <label for="no" className="radiolabel">
+                    <input
+                      className="radiob"
+                      type="radio"
+                      id="rct_no"
+                      name="eme_don"
                       value="False"
                       onChange={this.onInputchange}
                       style={{ margin: "20px" }}

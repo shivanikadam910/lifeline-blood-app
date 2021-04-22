@@ -98,7 +98,10 @@ class AddEvent extends Component {
 
                 <div className="menulist">
                   <Link
-                    to="/PendingHospitalApp"
+                    to={{
+                      pathname: "/PendingHospitalApp",
+                      state: { data: this.props.location.state.data },
+                    }}
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
@@ -133,7 +136,10 @@ class AddEvent extends Component {
 
                 <div className="menulist">
                   <Link
-                    to="/Hospitaldashboard"
+                    to={{
+                      pathname: "/Appointments",
+                      state: { data: this.props.location.state.data },
+                    }}
                     style={{ textDecoration: "none" }}
                     className="link"
                   >
