@@ -94,9 +94,12 @@ class Hospitaldashboard extends React.Component {
 
                 <div className="menulist">
                   <Link
-                    to="/Hospitaldashboard"
-                    style={{ textDecoration: "none" }}
+                    to={{
+                      pathname: "/Appointments",
+                      state: { data: this.props.location.state.data },
+                    }}
                     className="link"
+                    style={{ textDecoration: "none" }}
                   >
                     <img src="https://img.icons8.com/material-rounded/24/000000/calendar-minus.png" />
                     <h3>Appointments</h3>
@@ -163,7 +166,7 @@ class Hospitaldashboard extends React.Component {
             style={{ boxShadow: "0px 0 10px rgba(134, 187, 189, 0.5)" }}
           >
             <div class="request-card-1 view event">
-              <h3> My Events</h3>
+              <h3>Events</h3>
               {users.map((user) => (
                 <div key={user.uid} class="list">
                   <h5> {user.Title}</h5>

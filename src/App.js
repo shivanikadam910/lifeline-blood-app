@@ -26,6 +26,7 @@ import Addevent from "./components/AddEvent";
 import MyEvents from "./components/MyEvents";
 import TrackApplication from "./components/TrackApplication";
 import BookSlot from "./components/BookSlot";
+import Appointments from "./components/Appointments";
 class App extends Component {
   render() {
     return (
@@ -50,6 +51,7 @@ class App extends Component {
           <Route exact path="/ReceivedBlood" component={ReceivedBlood} />
           <Route exact path="/TrackApplication" component={TrackApplication} />
           <Route exact path="/BookSlot" component={BookSlot} />
+          <Route exact path="/Appointments" component={Appointments} />
           <Route
             exact
             path="/Hospitaldashboard"

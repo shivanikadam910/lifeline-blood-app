@@ -4,18 +4,26 @@ import UserProvider, { UserContext } from "../providers/userprovider";
 import firebase from "../firebase/firebase";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "../static/home.css";
+import "../static/receiverrequest.css";
 import donate from "../images/donateVector.png";
+import Calendar from "react-calendar";
+import "../static/Calendar.css";
 
-class PendingHospitalApp extends Component {
+class Appointments extends Component {
   constructor(props) {
     super();
     this.state = {
-      hospitals: [],
+      appointments: [],
       donor: [],
       currentID: "",
       User: "",
+      date: new Date(),
     };
   }
+  onChange = (date) =>
+    this.setState({
+      date,
+    });
 
   componentDidMount() {
     const db = firebase.firestore();
@@ -24,19 +32,21 @@ class PendingHospitalApp extends Component {
       .get()
       .then((querySnapshot) => {
         const data = querySnapshot.docs.map((doc) => doc.data());
-        this.setState({ hospitals: data });
+        this.setState({ appointments: data });
         console.log("here is data", data);
       });
-
+  }
+  showAppointments = () => {
+    const db = firebase.firestore();
     db.collection("User")
-      .where("ApplicationStatus", "==", "pending")
+      .where("Date", "==", this.state.date)
       .get()
       .then((querySnapshot) => {
         const data = querySnapshot.docs.map((doc) => doc.data());
         this.setState({ donor: data });
         console.log("here is data", data);
       });
-  }
+  };
 
   onInputchange(event) {
     this.setState({
@@ -44,77 +54,8 @@ class PendingHospitalApp extends Component {
     });
   }
 
-  acceptbtn = (user) => {
-    const db = firebase.firestore();
-    console.log(
-      user.FirstName,
-      user.LastName,
-      user.Appointment_hospital,
-      user.id
-    );
-    db.collection("User")
-      .where("FirstName", "==", user.FirstName)
-      .where("LastName", "==", user.LastName)
-      .get()
-      .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          this.setState(
-            {
-              currentID: doc.id,
-            },
-            () => {
-              db.collection("User").doc(this.state.currentID).update({
-                ApplicationStatus: "true",
-              });
-
-              window.alert("Application successfully accepted");
-              this.props.history.push({
-                pathname: "/Hospitaldashboard",
-                state: { data: this.props.location.state.data },
-              });
-
-              // window.location='/PendingHospitalApp'
-            }
-          );
-        });
-      });
-  };
-
-  rejectbtn = (user) => {
-    const db = firebase.firestore();
-    console.log(
-      user.FirstName,
-      user.LastName,
-      user.Appointment_hospital,
-      user.id
-    );
-    db.collection("User")
-      .where("FirstName", "==", user.FirstName)
-      .where("LastName", "==", user.LastName)
-      .get()
-      .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          this.setState(
-            {
-              currentID: doc.id,
-            },
-            () => {
-              db.collection("User").doc(this.state.currentID).update({
-                ApplicationStatus: "false",
-              });
-              window.alert("Application successfully Denied ");
-              this.props.history.push({
-                pathname: "/PendingHospitalApp",
-                state: { data: this.props.location.state.data },
-              });
-            }
-          );
-        });
-      });
-  };
-
   render() {
-    const { hospitals } = this.state;
+    const { appointments } = this.state;
     const { donor } = this.state;
     var nme;
 
@@ -138,14 +79,7 @@ class PendingHospitalApp extends Component {
                   </Link>
                 </div>
 
-                <div
-                  className="menulist"
-                  style={{
-                    background: "#f2f2f2",
-                    borderRight: "5px solid #fc3d3d",
-                    cursor: "pointer",
-                  }}
-                >
+                <div className="menulist">
                   <Link
                     to={{
                       pathname: "/PendingHospitalApp",
@@ -166,8 +100,8 @@ class PendingHospitalApp extends Component {
                       pathname: "/AddEvent",
                       state: { data: this.props.location.state.data },
                     }}
-                    className="link"
                     style={{ textDecoration: "none" }}
+                    className="link"
                   >
                     <img src="https://img.icons8.com/material-two-tone/24/000000/news.png" />
 
@@ -175,14 +109,21 @@ class PendingHospitalApp extends Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
+                <div
+                  className="menulist"
+                  style={{
+                    background: "#f2f2f2",
+                    borderRight: "5px solid #fc3d3d",
+                    cursor: "pointer",
+                  }}
+                >
                   <Link
                     to={{
                       pathname: "/Appointments",
                       state: { data: this.props.location.state.data },
                     }}
-                    className="link"
                     style={{ textDecoration: "none" }}
+                    className="link"
                   >
                     <img src="https://img.icons8.com/material-rounded/24/000000/calendar-minus.png" />
                     <h3>Appointments</h3>
@@ -209,10 +150,22 @@ class PendingHospitalApp extends Component {
             </div>
           </div>
         </div>
-        <div className="request-card view" style={{ marginLeft: "275px" }}>
-          <div class="request-card-1 view ">
-            <h3>Pending Applications</h3>
-            {hospitals.map((user) => {
+        <div class="request-card view" style={{ marginLeft: "275px" }}>
+          <div class="request-card-1 view">
+            <h3>Appointment List</h3>
+            <Calendar onChange={this.onChange} value={this.state.date} />
+            {console.log(this.state.date)}
+            <div className="buttons">
+              <button
+                class="cta-btn"
+                onClick={this.showAppointments}
+                class="buttonform"
+              >
+                <h4>Show Appointments</h4>
+              </button>
+            </div>
+
+            {appointments.map((user) => {
               nme = user.Hospital;
             })}
             {donor.map((user1) => {
@@ -231,22 +184,6 @@ class PendingHospitalApp extends Component {
                       <h6>City : {user1.City} </h6>
                       <h6>Medical condition :{user1.MedicalCondition}</h6>
                       <h6>Weight:{user1.Weight}</h6>
-                      <div className="application buttons">
-                        <button
-                          class="cta-btn"
-                          class="buttonform"
-                          onClick={this.acceptbtn.bind(this, user1)}
-                        >
-                          <h4>Accept</h4>
-                        </button>
-                        <button
-                          class="cta-btn"
-                          class="buttonform"
-                          onClick={this.rejectbtn.bind(this, user1)}
-                        >
-                          <h4>Deny</h4>
-                        </button>
-                      </div>
                     </div>
                   </div>
                 );
@@ -257,4 +194,4 @@ class PendingHospitalApp extends Component {
     );
   }
 }
-export default PendingHospitalApp;
+export default Appointments;
