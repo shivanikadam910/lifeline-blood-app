@@ -33,6 +33,7 @@ class ViewMyRequest extends React.Component {
       });
 
     db.collection("User")
+      .where("EmergencyDonor", "==", "True")
       .get()
       .then((querySnapshot) => {
         const data = querySnapshot.docs.map((doc) => doc.data());
