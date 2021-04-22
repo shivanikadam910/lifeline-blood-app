@@ -41,6 +41,7 @@ class BookSlot extends Component {
             () => {
               db.collection("User").doc(this.state.currentID).update({
                 Date: this.state.date,
+                Booked: "true"
               });
               window.alert("Date booked");
               this.props.history.push("/dashboard");

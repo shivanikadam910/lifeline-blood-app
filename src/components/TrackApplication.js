@@ -11,24 +11,27 @@ class TrackApplication extends React.Component {
     super();
     this.state = {
       Donation_Request: [],
-      email:""
+      email: "",
+      date: new Date(),
     };
   }
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(function(user) {
-      console.log(user)
-      this.setState({ email: user.email },() => {
-        const db = firebase.firestore();
-        db.collection("User")
-          .where("Email", "==", this.state.email)
-          .get()
-          .then((querySnapshot) => {
-            const data = querySnapshot.docs.map((doc) => doc.data());
-            console.log("here is data", data);
-            this.setState({ Donation_Request: data });
-          });
+    firebase.auth().onAuthStateChanged(
+      function (user) {
+        console.log(user);
+        this.setState({ email: user.email }, () => {
+          const db = firebase.firestore();
+          db.collection("User")
+            .where("Email", "==", this.state.email)
+            .get()
+            .then((querySnapshot) => {
+              const data = querySnapshot.docs.map((doc) => doc.data());
+              console.log("here is data", data);
+              this.setState({ Donation_Request: data });
+            });
         });
-      }.bind(this));   
+      }.bind(this)
+    );
   }
   bookApp = (user) => {
     console.log(user.ApplicationStatus);
@@ -102,7 +105,6 @@ class TrackApplication extends React.Component {
                     <h3>Track Application</h3>
                   </Link>
                 </div>
-
               </li>
             </ul>
           </div>
@@ -135,23 +137,37 @@ class TrackApplication extends React.Component {
                     <h6>Appointment_hospital : {user.Appointment_hospital}</h6>
                     <h6>Contact : {user.Contact}</h6>
                     <h6>City : {user.City} </h6>
+
                     {/* {status = user.ApplicationStatus} */}
-                    {user.ApplicationStatus === "true" ? (
-                      <h6>ApplicationStatus : Accepted</h6>
+                    {user.Booked === "true" ? (
+                      [
+                        <h6>ApplicationStatus : Accepted</h6>,
+                        <h6>Time slot:Booked</h6>,
+                        <h6>
+                          Date:{" "}
+                          {new Date(
+                            user.Date.seconds * 1000
+                          ).toLocaleDateString("en-US")}
+                        </h6>,
+                      ]
                     ) : user.ApplicationStatus === "false" ? (
                       <h6>ApplicationStatus : Rejected</h6>
+                    ) : user.ApplicationStatus === "true" ? (
+                      [
+                        <h6>ApplicationStatus : Accepted</h6>,
+                        <div className="buttons">
+                          <button
+                            class="cta-btn"
+                            onClick={this.bookApp.bind(this, user)}
+                            class="buttonform"
+                          >
+                            <h4>Book your slot</h4>
+                          </button>
+                        </div>,
+                      ]
                     ) : (
                       <h6>ApplicationStatus : Pending</h6>
                     )}
-                  </div>
-                  <div className="buttons">
-                    <button
-                      class="cta-btn"
-                      onClick={this.bookApp.bind(this, user)}
-                      class="buttonform"
-                    >
-                      <h4>Book your slot</h4>
-                    </button>
                   </div>
                 </div>
               ))}

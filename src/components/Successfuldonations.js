@@ -30,7 +30,7 @@ class Successfuldonations extends Component {
       });
 
     db.collection("User")
-      .where("ApplicationStatus", "==", "false")
+      .where("Donation_complete", "==", "true")
       .get()
       .then((querySnapshot) => {
         const data = querySnapshot.docs.map((doc) => doc.data());

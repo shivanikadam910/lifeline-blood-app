@@ -11,8 +11,8 @@ class Hospitaldashboard extends React.Component {
     super();
     this.state = {
       users: [],
-      hospital:"",
-      };
+      hospital: "",
+    };
   }
   componentDidMount() {
     const db = firebase.firestore();
@@ -38,27 +38,40 @@ class Hospitaldashboard extends React.Component {
       .get()
       .then((querySnapshot) => {
         const data = querySnapshot.docs.map((doc) => doc.data());
-        this.setState({ hospital: data },() => {
+        this.setState({ hospital: data }, () => {
           db.collection("User")
-            .where("ApplicationStatus","==","true" || "ApplicationStatus","==","false")
-            .where("Appointment_hospital", "==", this.state.hospital[0].Hospital)
+            .where(
+              "ApplicationStatus",
+              "==",
+              "true" || "ApplicationStatus",
+              "==",
+              "false"
+            )
+            .where(
+              "Appointment_hospital",
+              "==",
+              this.state.hospital[0].Hospital
+            )
             .get()
             .then((querySnapshot) => {
               const count1 = querySnapshot.size;
               this.setState({ app_count: count1 });
             });
 
-            db.collection("User")
-            .where("ApplicationStatus","==","false")
-            .where("Appointment_hospital", "==", this.state.hospital[0].Hospital)
+          db.collection("User")
+            .where("Donation_complete", "==", "true")
+            .where(
+              "Appointment_hospital",
+              "==",
+              this.state.hospital[0].Hospital
+            )
             .get()
             .then((querySnapshot) => {
               const count1 = querySnapshot.size;
               this.setState({ don_count: count1 });
             });
         });
-        
-      });  
+      });
   }
 
   render() {
@@ -164,11 +177,12 @@ class Hospitaldashboard extends React.Component {
               </Link>
             </div>
             <div className="card2">
-              <Link to={{
-                pathname:"/SuccessfulDonations",
-                state: { data: this.props.location.state.data },
-              }}
-                >
+              <Link
+                to={{
+                  pathname: "/SuccessfulDonations",
+                  state: { data: this.props.location.state.data },
+                }}
+              >
                 <div>Successful Donations</div>
                 <div className="total">Total</div>
                 <div className="num">{this.state.don_count}</div>

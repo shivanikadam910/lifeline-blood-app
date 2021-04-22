@@ -12,31 +12,34 @@ class ViewRecievers extends React.Component {
     this.state = {
       Donation_Request: [],
       Recievers: [],
-      email:""
+      email: "",
     };
   }
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(function(user) {
-      console.log(user)
-      this.setState({ email: user.email },() => {
-      const db = firebase.firestore();
-      db.collection("User")
-        .where("Email", "==", this.state.email)
-        .get()
-        .then((querySnapshot) => {
-          const data = querySnapshot.docs.map((doc) => doc.data());
-          console.log("here is data", data);
-          this.setState({ Donation_Request: data });
+    firebase.auth().onAuthStateChanged(
+      function (user) {
+        console.log(user);
+        this.setState({ email: user.email }, () => {
+          const db = firebase.firestore();
+          db.collection("User")
+            .where("Email", "==", this.state.email)
+            .where("Donation_complete", "==", "true")
+            .get()
+            .then((querySnapshot) => {
+              const data = querySnapshot.docs.map((doc) => doc.data());
+              console.log("here is data", data);
+              this.setState({ Donation_Request: data });
+            });
+          db.collection("Receiver")
+            .get()
+            .then((querySnapshot) => {
+              const data = querySnapshot.docs.map((doc) => doc.data());
+              console.log("here is data", data);
+              this.setState({ Recievers: data });
+            });
         });
-      db.collection("Receiver")
-        .get()
-        .then((querySnapshot) => {
-          const data = querySnapshot.docs.map((doc) => doc.data());
-          console.log("here is data", data);
-          this.setState({ Recievers: data });
-        });
-      });
-    }.bind(this));
+      }.bind(this)
+    );
   }
 
   render() {
@@ -93,7 +96,6 @@ class ViewRecievers extends React.Component {
                     <h3>Track Application</h3>
                   </Link>
                 </div>
-
               </li>
             </ul>
           </div>
@@ -126,6 +128,7 @@ class ViewRecievers extends React.Component {
                     <h6>Appointment_hospital : {user.Appointment_hospital}</h6>
                     <h6>Contact : {user.Contact}</h6>
                     <h6>City : {user.City} </h6>
+                    <h6>Donation: {user.Donation_complete}</h6>
                   </div>
                 </div>
               ))}

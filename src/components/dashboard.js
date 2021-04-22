@@ -9,61 +9,63 @@ import Request from "./ReceiverRequest";
 class dashboard extends React.Component {
   constructor() {
     super();
-    
+
     this.state = {
       Requestcount: "",
       Donation_rqst_cnt: "",
       ReceivedCount: "",
       users: [],
-      email :""
+      email: "",
     };
   }
 
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(function(user) {
-      console.log(user)
-      this.setState({ email: user.email },() => {
-        const db = firebase.firestore();
-        console.log("email",this.state.email)
-        db.collection("Receiver")
-          .where("Email", "==", this.state.email)
-          .where("ApplicationStatus", "==", false)
-          .get()
-          .then((querySnapshot) => {
-            const count = querySnapshot.size;
-            this.setState({ Requestcount: count });
-            console.log(count);
-          });
-    
-        db.collection("User")
-          .where("Email", "==", this.state.email)
-          .get()
-          .then((querySnapshot) => {
-            const count1 = querySnapshot.size;
-            this.setState({ Donation_rqst_cnt: count1 });
-            console.log(count1);
-          });
-    
-        db.collection("Receiver")
-          .where("Email", "==", this.state.email)
-          .where("ApplicationStatus", "==", true)
-          .get()
-          .then((querySnapshot) => {
-            const count2 = querySnapshot.size;
-            this.setState({ ReceivedCount: count2 });
-            console.log(count2);
-          });
-    
-        db.collection("Events")
-          .get()
-          .then((querySnapshot) => {
-            const data = querySnapshot.docs.map((doc) => doc.data());
-            console.log("here is data", data);
-            this.setState({ users: data });
-          });
-      }) ;
-    }.bind(this));
-   
+    firebase.auth().onAuthStateChanged(
+      function (user) {
+        console.log(user);
+        this.setState({ email: user.email }, () => {
+          const db = firebase.firestore();
+          console.log("email", this.state.email);
+          db.collection("Receiver")
+            .where("Email", "==", this.state.email)
+            .where("ApplicationStatus", "==", false)
+            .get()
+            .then((querySnapshot) => {
+              const count = querySnapshot.size;
+              this.setState({ Requestcount: count });
+              console.log(count);
+            });
+
+          db.collection("User")
+            .where("Email", "==", this.state.email)
+            .where("Donation_complete", "==", "true")
+            .get()
+            .then((querySnapshot) => {
+              const count1 = querySnapshot.size;
+              this.setState({ Donation_rqst_cnt: count1 });
+              console.log(count1);
+            });
+
+          db.collection("Receiver")
+            .where("Email", "==", this.state.email)
+            .where("ApplicationStatus", "==", true)
+            .get()
+            .then((querySnapshot) => {
+              const count2 = querySnapshot.size;
+              this.setState({ ReceivedCount: count2 });
+              console.log(count2);
+            });
+
+          db.collection("Events")
+            .get()
+            .then((querySnapshot) => {
+              const data = querySnapshot.docs.map((doc) => doc.data());
+              console.log("here is data", data);
+              this.setState({ users: data });
+            });
+        });
+      }.bind(this)
+    );
   }
   render() {
     const { users } = this.state;
@@ -124,7 +126,6 @@ class dashboard extends React.Component {
                     <h3>Track Application</h3>
                   </Link>
                 </div>
-
               </li>
             </ul>
           </div>
