@@ -107,11 +107,6 @@ class ViewApplications extends Component {
                     <h3>Appointments</h3>
                   </Link>
                 </div>
-
-                <div className="emergency">
-                  <img src="https://img.icons8.com/material-outlined/24/000000/error--v1.png" />
-                  <h3>Emergency</h3>
-                </div>
               </li>
             </ul>
           </div>

@@ -67,10 +67,11 @@ class App extends Component {
           <Route1 exact path="/Donor_profile" component={Donorprofile} />
           <Route1 exact path="/ViewMyRequest" component={ViewMyRequest} />
           <Route1 exact path="/ViewRecievers" component={View_reciever} />
-          <RouteWithNavbar exact path="/Hsignin" component={HospitalSignin} />
+          <Route1 exact path="/Hsignin" component={HospitalSignin} />
           <Route1 exact path="/ReceivedBlood" component={ReceivedBlood} />
           <Route1 exact path="/TrackApplication" component={TrackApplication} />
           <Route1 exact path="/BookSlot" component={BookSlot} />
+          <Route1 exact path="/Appointments" component={Appointments} />
           <Route1
             exact
             path="/Hospitaldashboard"
