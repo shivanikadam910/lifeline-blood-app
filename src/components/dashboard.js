@@ -161,25 +161,56 @@ class dashboard extends React.Component {
 
           <div className="card-grid">
             <div className="card1">
-              <Link to="/ViewRecievers">
-                <div>My Donations</div>
-                <div className="total">Total</div>
-                <div className="num">{this.state.Donation_rqst_cnt}</div>
-              </Link>
+              {this.state.Donation_rqst_cnt != 0 ? (
+                [
+                  <Link to="/ViewRecievers">
+                    <div>My Donations</div>
+                    <div className="total">Total</div>
+                    <div className="num">{this.state.Donation_rqst_cnt}</div>
+                  </Link>,
+                ]
+              ) : (
+                <Link to="/dashboard">
+                  <div>My Donations</div>
+                  <div className="total">Total</div>
+                  <div className="num">{this.state.Donation_rqst_cnt}</div>
+                </Link>
+              )}
             </div>
             <div className="card2">
-              <Link to="/ReceivedBlood">
-                <div>Received</div>
-                <div className="total">Total</div>
-                <div className="num">{this.state.ReceivedCount}</div>
-              </Link>
+            {this.state.ReceivedCount != 0 ? (
+                [
+                  <Link to="/ReceivedBlood">
+                  <div>Received</div>
+                  <div className="total">Total</div>
+                  <div className="num">{this.state.ReceivedCount}</div>
+                </Link>,
+                ]
+              ) : (
+                <Link to="/dashboard">
+                  <div>Received</div>
+                  <div className="total">Total</div>
+                  <div className="num">{this.state.ReceivedCount}</div>
+                </Link>
+              )}
+              
             </div>
             <div className="card3">
-              <Link to="/ViewMyRequest">
-                <div>Request Pending</div>
-                <div className="total">Total</div>
-                <div className="num">{this.state.Requestcount}</div>
-              </Link>
+              {this.state.Requestcount != 0 ? (
+                [
+                  <Link to="/ViewMyRequest">
+                    <div>Request Pending</div>
+                    <div className="total">Total</div>
+                    <div className="num">{this.state.Requestcount}</div>
+                  </Link>,
+                ]
+              ) : (
+                <Link to="/dashboard">
+                  <div>Request Pending</div>
+                  <div className="total">Total</div>
+                  <div className="num">{this.state.Requestcount}</div>
+                </Link>
+              )}
             </div>
           </div>
 
