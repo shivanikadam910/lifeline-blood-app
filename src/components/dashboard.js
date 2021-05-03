@@ -6,6 +6,15 @@ import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
 import { Link } from "react-router-dom";
 import Request from "./ReceiverRequest";
+import { BeatLoader } from "react-spinners"
+import { css } from "@emotion/core";
+const override = css`
+  margin-top: 250px;
+  margin-left: 650px;
+  position: fixed; 
+  top: 100px;  
+`;
+
 class dashboard extends React.Component {
   constructor() {
     super();
@@ -16,10 +25,12 @@ class dashboard extends React.Component {
       ReceivedCount: "",
       users: [],
       email: "",
+      isLoading: true
     };
   }
 
   componentDidMount() {
+    this.setState({ isLoading: true });
     firebase.auth().onAuthStateChanged(
       function (user) {
         console.log(user);
@@ -34,6 +45,7 @@ class dashboard extends React.Component {
               const count = querySnapshot.size;
               this.setState({ Requestcount: count });
               console.log(count);
+              this.setState({ isLoading: false });
             });
 
           db.collection("User")
@@ -44,6 +56,7 @@ class dashboard extends React.Component {
               const count1 = querySnapshot.size;
               this.setState({ Donation_rqst_cnt: count1 });
               console.log(count1);
+              this.setState({ isLoading: false });
             });
 
           db.collection("Receiver")
@@ -54,6 +67,7 @@ class dashboard extends React.Component {
               const count2 = querySnapshot.size;
               this.setState({ ReceivedCount: count2 });
               console.log(count2);
+              this.setState({ isLoading: false });
             });
 
           db.collection("Events")
@@ -62,6 +76,7 @@ class dashboard extends React.Component {
               const data = querySnapshot.docs.map((doc) => doc.data());
               console.log("here is data", data);
               this.setState({ users: data });
+              this.setState({ isLoading: false });
             });
         });
       }.bind(this)
@@ -69,6 +84,15 @@ class dashboard extends React.Component {
   }
   render() {
     const { users } = this.state;
+    const { isLoading } = this.state;
+
+    if (isLoading) {
+      return <BeatLoader        
+      color='red'
+      size={70}
+      css = {override}
+      loading/>;
+    }
     return (
       <div className="containermain">
         <div className="sidebar">
@@ -91,7 +115,7 @@ class dashboard extends React.Component {
                     <h3 style={{ color: "black" }}>Dashboard</h3>
                   </Link>
                 </div>
-
+               
                 <div className="menulist">
                   <Link
                     to="/receiverrequest"

@@ -5,6 +5,14 @@ import firebase, { auth } from "../firebase/firebase";
 import donate from "../images/donateVector.png";
 import donateblood from "../images/Donating-Blood-1.svg";
 import "../static/receiverrequest.css";
+import { BeatLoader } from "react-spinners"
+import { css } from "@emotion/core";
+const override = css`
+  margin-top: 250px;
+  margin-left: 650px;
+  position: fixed; 
+  top: 100px;  
+`;
 
 class ViewRecievers extends React.Component {
   constructor() {
@@ -13,9 +21,11 @@ class ViewRecievers extends React.Component {
       Donation_Request: [],
       Recievers: [],
       email: "",
+      isLoading: true
     };
   }
   componentDidMount() {
+    this.setState({ isLoading: true });
     firebase.auth().onAuthStateChanged(
       function (user) {
         console.log(user);
@@ -29,6 +39,7 @@ class ViewRecievers extends React.Component {
               const data = querySnapshot.docs.map((doc) => doc.data());
               console.log("here is data", data);
               this.setState({ Donation_Request: data });
+              this.setState({ isLoading: false });
             });
           db.collection("Receiver")
             .get()
@@ -36,6 +47,7 @@ class ViewRecievers extends React.Component {
               const data = querySnapshot.docs.map((doc) => doc.data());
               console.log("here is data", data);
               this.setState({ Recievers: data });
+              this.setState({ isLoading: false });
             });
         });
       }.bind(this)
@@ -45,6 +57,15 @@ class ViewRecievers extends React.Component {
   render() {
     const { Recievers } = this.state;
     const { Donation_Request } = this.state;
+    const { isLoading } = this.state;
+
+    if (isLoading) {
+      return <BeatLoader        
+      color='red'
+      size={70}
+      css = {override}
+      loading/>;
+    }
     return (
       <div className="containermain">
         <div className="sidebar">

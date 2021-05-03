@@ -5,6 +5,14 @@ import firebase, { auth } from "../firebase/firebase";
 import donate from "../images/donateVector.png";
 import donateblood from "../images/Donating-Blood-1.svg";
 import "../static/receiverrequest.css";
+import { BeatLoader } from "react-spinners"
+import { css } from "@emotion/core";
+const override = css`
+  margin-top: 250px;
+  margin-left: 650px;
+  position: fixed; 
+  top: 100px;  
+`;
 
 class TrackApplication extends React.Component {
   constructor() {
@@ -13,9 +21,11 @@ class TrackApplication extends React.Component {
       Donation_Request: [],
       email: "",
       date: new Date(),
+      isLoading: true
     };
   }
   componentDidMount() {
+    this.setState({ isLoading: true });
     firebase.auth().onAuthStateChanged(
       function (user) {
         console.log(user);
@@ -28,6 +38,7 @@ class TrackApplication extends React.Component {
               const data = querySnapshot.docs.map((doc) => doc.data());
               console.log("here is data", data);
               this.setState({ Donation_Request: data });
+              this.setState({ isLoading: false });
             });
         });
       }.bind(this)
@@ -53,6 +64,15 @@ class TrackApplication extends React.Component {
 
   render() {
     const { Donation_Request } = this.state;
+    const { isLoading } = this.state;
+
+    if (isLoading) {
+      return <BeatLoader        
+      color='red'
+      size={70}
+      css = {override}
+      loading/>;
+    }
 
     return (
       <div className="containermain">

@@ -7,16 +7,27 @@ import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
 import data from "../Hospitals.json";
 import Select from "react-select";
+import { BeatLoader } from "react-spinners"
+import { css } from "@emotion/core";
+const override = css`
+  margin-top: 250px;
+  margin-left: 650px;
+  position: fixed; 
+  top: 100px;  
+`;
 
 class ReceivedBlood extends React.Component {
   constructor() {
     super();
     this.state = {
       users: [],
-      email:""
+      email:"",
+      isLoading: true
+
     };
   }
   componentDidMount() {
+    this.setState({ isLoading: true });
     firebase.auth().onAuthStateChanged(function(user) {
       console.log(user)
       this.setState({ email: user.email },() => {
@@ -29,6 +40,7 @@ class ReceivedBlood extends React.Component {
           const data = querySnapshot.docs.map((doc) => doc.data());
           console.log("here is data", data);
           this.setState({ users: data });
+          this.setState({ isLoading: false });
         });
       });
     }.bind(this));
@@ -37,6 +49,15 @@ class ReceivedBlood extends React.Component {
   render() {
     const { users } = this.state;
     const { donors } = this.state;
+     const { isLoading } = this.state;
+
+    if (isLoading) {
+      return <BeatLoader        
+      color='red'
+      size={70}
+      css = {override}
+      loading/>;
+    }
     return (
       <div className="containermain">
         <div className="sidebar">
