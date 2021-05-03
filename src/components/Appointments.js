@@ -18,21 +18,23 @@ class Appointments extends Component {
       currentID: "",
       User: "",
       date: new Date(),
-      email: ""
+      email: "",
     };
   }
   onChange = (date) =>
     this.setState({
       date,
-      donor: []
+      donor: [],
     });
 
   componentDidMount() {
     const db = firebase.firestore();
-    firebase.auth().onAuthStateChanged(function(user) {
-      console.log(user)
-      this.setState({ email: user.email })
-      }.bind(this));
+    firebase.auth().onAuthStateChanged(
+      function (user) {
+        console.log(user);
+        this.setState({ email: user.email });
+      }.bind(this)
+    );
     db.collection("RegisteredHospital")
       .where("Licence", "==", this.props.location.state.data)
       .get()
@@ -42,10 +44,10 @@ class Appointments extends Component {
         console.log("here is data", data);
       });
   }
-  donation_done = (user) =>{
+  donation_done = (user) => {
     const db = firebase.firestore();
     db.collection("User")
-    .where("Email", "==", this.state.email)
+      .where("Email", "==", this.state.email)
       .where("FirstName", "==", user.FirstName)
       .where("LastName", "==", user.LastName)
       .get()
@@ -57,16 +59,18 @@ class Appointments extends Component {
             },
             () => {
               db.collection("User").doc(this.state.currentID).update({
-               Donation_complete: "true"
+                Donation_complete: "true",
               });
               window.alert("Donation completed successfully !!");
-              this.props.history.push("/Hospitaldashboard");
+              this.props.history.push({
+                pathname: "/Hospitaldashboard",
+                state: { data: this.props.location.state.data },
+              });
             }
           );
         });
       });
-   
-  }
+  };
   showAppointments = () => {
     const db = firebase.firestore();
     db.collection("User")
@@ -160,7 +164,6 @@ class Appointments extends Component {
                     <h3>Appointments</h3>
                   </Link>
                 </div>
-
               </li>
             </ul>
           </div>
@@ -211,7 +214,10 @@ class Appointments extends Component {
                       <h6>City : {user1.City} </h6>
                       <h6>Medical condition :{user1.MedicalCondition}</h6>
                       <h6>Weight:{user1.Weight}</h6>
-                      <div className="buttons">
+                      {user1.Donation_complete === "true" ? (
+                        <h6>Donation status : updated</h6>
+                      ) : (
+                        <div className="buttons">
                           <button
                             class="cta-btn"
                             onClick={this.donation_done.bind(this, user1)}
@@ -220,8 +226,8 @@ class Appointments extends Component {
                             <h4>Donation completed</h4>
                           </button>
                         </div>
+                      )}
                     </div>
-
                   </div>
                 );
             })}
