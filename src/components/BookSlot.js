@@ -11,15 +11,27 @@ class BookSlot extends Component {
     super();
     this.state = {
       date: new Date(),
+      min: new Date(
+        new Date().getFullYear(),
+        new Date().getMonth(),
+        new Date().getDate()
+      ),
+      max: new Date(
+        new Date().getFullYear(),
+        new Date().getMonth(),
+        new Date().getDate() + 15
+      ),
       currentID: "",
-      email:""
+      email: "",
     };
   }
-  componentDidMount(){
-    firebase.auth().onAuthStateChanged(function(user) {
-      console.log(user)
-      this.setState({ email: user.email })
-      }.bind(this));
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(
+      function (user) {
+        console.log(user);
+        this.setState({ email: user.email });
+      }.bind(this)
+    );
   }
   bookDate = (date) => {
     console.log("Passed parameters:----");
@@ -41,10 +53,10 @@ class BookSlot extends Component {
             () => {
               db.collection("User").doc(this.state.currentID).update({
                 Date: this.state.date,
-                Booked: "true"
+                Booked: "true",
               });
               window.alert("Date booked");
-              this.props.history.push("/dashboard");
+              this.props.history.push("/TrackApplication");
             }
           );
         });
@@ -98,7 +110,13 @@ class BookSlot extends Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
+                <div
+                  className="menulist"
+                  style={{
+                    background: "#f2f2f2",
+                    borderRight: "5px solid #fc3d3d",
+                  }}
+                >
                   <Link
                     to="/TrackApplication"
                     style={{ textDecoration: "none" }}
@@ -108,7 +126,6 @@ class BookSlot extends Component {
                     <h3>Track Application</h3>
                   </Link>
                 </div>
-
               </li>
             </ul>
           </div>
@@ -129,24 +146,28 @@ class BookSlot extends Component {
           <div class="request-card view">
             <div class="request-card-1 view">
               <h3>Book your date</h3>
-              <div class = "list">
-              <Calendar onChange={this.onChange} value={this.state.date} />
-              {console.log(this.state.date)}
-              <div className="buttons">
-                <button
-                  class="cta-btn"
-                  onClick={this.bookDate}
-                  class="buttonform"
-                >
-                  <h4>Book your slot</h4>
-                </button>
+              <div class="list">
+                <Calendar
+                  onChange={this.onChange}
+                  value={this.state.date}
+                  minDate={this.state.min}
+                  maxDate={this.state.max}
+                />
+                {console.log(this.state.date)}
+                <div className="buttons">
+                  <button
+                    class="cta-btn"
+                    onClick={this.bookDate}
+                    class="buttonform"
+                  >
+                    <h4>Book your slot</h4>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     );
   }
 }
