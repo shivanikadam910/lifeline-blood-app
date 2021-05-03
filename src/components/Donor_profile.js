@@ -12,6 +12,7 @@ class Donor_profile extends Component {
       Medic_condition: "",
       bloodgrp: "",
       selectValue: "",
+      gender: "",
       users: [],
 
       onInputchange(event) {
@@ -24,7 +25,6 @@ class Donor_profile extends Component {
     this.onSubmitForm = this.onSubmitForm.bind(this);
   }
   componentDidMount() {
-
     const db = firebase.firestore();
     db.collection("RegisteredHospital")
 
@@ -61,59 +61,147 @@ class Donor_profile extends Component {
         this.setState({ donors: data });
       });
 
-    if (this.state.age > 65 || this.state.age < 18) {
-      window.alert("Sorry ,You cannot donate blood at this age");
-      window.location = "/dashboard";
-    } else {
-      if (this.state.weight < 50) {
-        window.alert("You are underweight to donate blood :(");
-        window.location = "/dashboard";
-      } else {
-        if (this.state.Medic_condition != "None") {
-          window.alert(
-            "Sorry you cannot donate blood with this medical condition"
-          );
-          window.location = "/dashboard";
-        } else {
-          if (this.state.rct_don === "True") {
-            window.alert(
-              "Sorry you cannot donate blood , as you have donated recently"
-            );
-            window.location = "/dashboard";
-          } else {
-            const db = firebase.firestore();
+    console.log("fname");
+    console.log(this.state.fname);
 
-            const userRef = db
-              .collection("User")
-              .add({
-                FirstName: this.state.fname,
-                LastName: this.state.lname,
-                DonorType: "Regular",
-                Gender: this.state.gender,
-                Height: this.state.height,
-                Weight: this.state.weight,
-                Age: this.state.age,
-                RecentDonation: this.state.rct_don,
-                Contact: this.state.contact,
-                Bloodgrp: this.state.bloodgrp,
-                MedicalCondition: this.state.Medic_condition,
-                City: this.state.city,
-                Contact: this.state.contact,
-                Email: auth.currentUser.email,
-                Appointment_hospital: this.state.selectValue,
-                ApplicationStatus: "pending",
-                EmergencyDonor: this.state.eme_don,
-              })
-              .then(() => {
-                console.log("Document successfully written!");
-                console.log(this.state.special_med_con);
-                alert("Profile Created successfully ");
-                this.props.history.push("/TrackApplication");
-              })
-              .catch((error) => {
-                console.error("Error writing document: ", error);
-                alert(error.message);
-              });
+    if (this.state.fname == undefined) {
+      window.alert("Enter your First Name");
+    } else {
+      if (this.state.lname == undefined) {
+        window.alert("Enter your Last Name");
+      } else {
+        if (this.state.gender == "") {
+          window.alert("Enter your Gender");
+        } else {
+          if (this.state.age == undefined) {
+            window.alert("Enter your Age");
+          } else {
+            if (this.state.city == undefined) {
+              window.alert("Enter your city");
+            } else {
+              if (this.state.contact == undefined) {
+                window.alert("Enter your contact");
+              } else {
+                if (this.state.weight == undefined) {
+                  window.alert("Enter your Weight");
+                } else {
+                  if (this.state.height == undefined) {
+                    window.alert("Enter your Height");
+                  } else {
+                    if (this.state.Medic_condition == "") {
+                      window.alert("Enter your Medical Condition");
+                    } else {
+                      if (this.state.bloodgrp == "") {
+                        window.alert("Enter your Blood Group");
+                      } else {
+                        if (this.state.rct_don == undefined) {
+                          window.alert("Enter your Recent Donation");
+                        } else {
+                          if (this.state.eme_don == undefined) {
+                            window.alert(
+                              "Enter if you would like to donate directly to patients"
+                            );
+                          } else {
+                            if (this.state.selectValue == "") {
+                              window.alert(
+                                "Enter the hospital where you would like to place a request"
+                              );
+                            } else {
+                              if (this.state.contact.length !== 13) {
+                                window.alert(
+                                  "Required 10 digits, match format!"
+                                );
+                              } else {
+                                console.log("length");
+                                console.log(this.state.contact.length);
+
+                                if (
+                                  this.state.age > 65 ||
+                                  this.state.age < 18
+                                ) {
+                                  window.alert(
+                                    "Sorry ,You cannot donate blood at this age"
+                                  );
+                                  window.location = "/dashboard";
+                                } else {
+                                  if (this.state.weight < 50) {
+                                    window.alert(
+                                      "You are underweight to donate blood :("
+                                    );
+                                    window.location = "/dashboard";
+                                  } else {
+                                    if (this.state.Medic_condition != "None") {
+                                      window.alert(
+                                        "Sorry you cannot donate blood with this medical condition"
+                                      );
+                                      window.location = "/dashboard";
+                                    } else {
+                                      if (this.state.rct_don === "True") {
+                                        window.alert(
+                                          "Sorry you cannot donate blood , as you have donated recently"
+                                        );
+                                        window.location = "/dashboard";
+                                      } else {
+                                        const db = firebase.firestore();
+
+                                        const userRef = db
+                                          .collection("User")
+                                          .add({
+                                            FirstName: this.state.fname,
+                                            LastName: this.state.lname,
+                                            DonorType: "Regular",
+                                            Gender: this.state.gender,
+                                            Height: this.state.height,
+                                            Weight: this.state.weight,
+                                            Age: this.state.age,
+                                            RecentDonation: this.state.rct_don,
+                                            Contact: this.state.contact,
+                                            Bloodgrp: this.state.bloodgrp,
+                                            MedicalCondition: this.state
+                                              .Medic_condition,
+                                            City: this.state.city,
+                                            Contact: this.state.contact,
+                                            Email: auth.currentUser.email,
+                                            Appointment_hospital: this.state
+                                              .selectValue,
+                                            ApplicationStatus: "pending",
+                                            EmergencyDonor: this.state.eme_don,
+                                          })
+                                          .then(() => {
+                                            console.log(
+                                              "Document successfully written!"
+                                            );
+                                            console.log(
+                                              this.state.special_med_con
+                                            );
+                                            alert(
+                                              "Profile Created successfully "
+                                            );
+                                            this.props.history.push(
+                                              "/TrackApplication"
+                                            );
+                                          })
+                                          .catch((error) => {
+                                            console.error(
+                                              "Error writing document: ",
+                                              error
+                                            );
+                                            alert(error.message);
+                                          });
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -182,7 +270,6 @@ class Donor_profile extends Component {
                     <h3>Track Application</h3>
                   </Link>
                 </div>
-
               </li>
             </ul>
           </div>
@@ -254,15 +341,24 @@ class Donor_profile extends Component {
                   </select>
 
                   <br />
-                  <label>
-                    <b>Gender </b>
+                  <label for="Gender">
+                    <b>Gender</b>
                   </label>
-                  <input
+
+                  <select
+                    className="drpdwn"
                     name="gender"
-                    type="text"
+                    id="gender"
                     value={this.state.gender}
-                    onChange={this.onInputchange}
-                  />
+                    onChange={(e) => this.setState({ gender: e.target.value })}
+                  >
+                    <option selected> -- select an option -- </option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+
+                  <br />
 
                   <br />
                   <label>
@@ -295,7 +391,8 @@ class Donor_profile extends Component {
                   </label>
                   <input
                     name="contact"
-                    type="string"
+                    type="tel"
+                    placeholder="+91-9120034561"
                     value={this.state.contact}
                     onChange={this.onInputchange}
                   />
