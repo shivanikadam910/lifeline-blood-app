@@ -28,13 +28,19 @@ class navbar extends React.Component {
               </li>
 
               <li>
-                <Link to="/About" style={{ fontWeight: "600" }}>
+                <Link  to={{
+                    pathname: "/About_us_hosp",
+                    // state: { data: this.props.location.state.data },
+                  }} style={{ fontWeight: "600" }}>
                   {" "}
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/Contact" style={{ fontWeight: "600" }}>
+                <Link  to={{
+                    pathname: "/Contact_us_hosp",
+                    // state: { data: this.props.location.state.data },
+                  }} style={{ fontWeight: "600" }}>
                   {" "}
                   Contact Us
                 </Link>

@@ -153,12 +153,18 @@ class AddEvent extends Component {
           </div>
           <div className="why">
             <h3>
-              <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>
+              <Link to={{
+                      pathname: "/WhyDonateBloodhp",
+                      state: { data: this.props.location.state.data },
+                    }} style={{ fontWeight: "600" }}>
                 Why Donate Blood?
               </Link>
             </h3>
             <div className="donateVector">
-              <Link to="/WhyDonateBlood">
+              <Link to={{
+                      pathname: "/WhyDonateBloodhp",
+                      state: { data: this.props.location.state.data },
+                    }}>
                 <img src={donate} alt="why donate" />
               </Link>
             </div>

@@ -40,18 +40,18 @@ export default class HospitalRegister extends Component {
 
         if (this.state.Hlicence === "") {
             alert('Enter Licence number proper.');
-            window.location = '/Hsignup';
+            window.location = '/Hospitalregister';
         }
         else {
             if (this.state.Hcity === "") {
                 alert('Enter city');
-                window.location = '/Hsignup';
+                window.location = '/Hospitalregister';
             }
 
             else {
                 if (this.state.Hpassword === "") {
                     alert('Enter Password');
-                    window.location = '/Hsignup';
+                    window.location = '/Hospitalregister';
                 }
                 else {
                     {
@@ -70,7 +70,7 @@ export default class HospitalRegister extends Component {
                                     Url: "https://thumbs.dreamstime.com/z/hospital-building-modern-parking-lot-59693686.jpg"
                                 });
                                 window.alert("Hospital is registered successfully!");
-                                this.props.history.push("/Hsignin");
+                                this.props.history.push("/Hospitalregister");
                             }
                         })
                         // window.alert("Licence number not matched try again!")
