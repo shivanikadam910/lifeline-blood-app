@@ -6,16 +6,25 @@ import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
 import { Link } from "react-router-dom";
 import Request from "./ReceiverRequest";
+import { BeatLoader } from "react-spinners";
+import { css } from "@emotion/core";
+const override = css`
+  margin-top: 250px;
+  margin-left: 650px;
+  position: fixed;
+  top: 100px;
+`;
 class MyEvents extends React.Component {
   constructor(props) {
     super();
     this.state = {
       users: [],
+      isLoading: true,
     };
   }
   componentDidMount() {
     const db = firebase.firestore();
-
+    this.setState({ isLoading: true });
     db.collection("Events")
       .where("Licence", "==", this.props.location.state.data)
       .get()
@@ -23,10 +32,17 @@ class MyEvents extends React.Component {
         const data = querySnapshot.docs.map((doc) => doc.data());
         console.log("here is data", data);
         this.setState({ users: data });
+        this.setState({ isLoading: false });
       });
   }
   render() {
     const { users } = this.state;
+    const { isLoading } = this.state;
+
+    if (isLoading) {
+      return <BeatLoader color="red" size={70} css={override} loading />;
+    }
+
     return (
       <div className="containermain">
         <div className="sidebar">
@@ -48,10 +64,13 @@ class MyEvents extends React.Component {
                 </div>
 
                 <div className="menulist">
-                  <Link
-                    to="/Hospitaldashboard"
-                    style={{ textDecoration: "none" }}
+                <Link
+                    to={{
+                      pathname: "/PendingHospitalApp",
+                      state: { data: this.props.location.state.data },
+                    }}
                     className="link"
+                    style={{ textDecoration: "none" }}
                   >
                     <img src="https://img.icons8.com/windows/32/000000/approve-and-update.png" />
 
@@ -82,10 +101,13 @@ class MyEvents extends React.Component {
                 </div>
 
                 <div className="menulist">
-                  <Link
-                    to="/Hospitaldashboard"
-                    style={{ textDecoration: "none" }}
+                <Link
+                    to={{
+                      pathname: "/Appointments",
+                      state: { data: this.props.location.state.data },
+                    }}
                     className="link"
+                    style={{ textDecoration: "none" }}
                   >
                     <img src="https://img.icons8.com/material-rounded/24/000000/calendar-minus.png" />
                     <h3>Appointments</h3>

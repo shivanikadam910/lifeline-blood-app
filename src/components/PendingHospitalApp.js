@@ -5,6 +5,14 @@ import firebase from "../firebase/firebase";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "../static/home.css";
 import donate from "../images/donateVector.png";
+import { BeatLoader } from "react-spinners";
+import { css } from "@emotion/core";
+const override = css`
+  margin-top: 250px;
+  margin-left: 650px;
+  position: fixed;
+  top: 100px;
+`;
 
 class PendingHospitalApp extends Component {
   constructor(props) {
@@ -14,11 +22,13 @@ class PendingHospitalApp extends Component {
       donor: [],
       currentID: "",
       User: "",
+      isLoading: true,
     };
   }
 
   componentDidMount() {
     const db = firebase.firestore();
+    this.setState({ isLoading: true });
     db.collection("RegisteredHospital")
       .where("Licence", "==", this.props.location.state.data)
       .get()
@@ -26,6 +36,7 @@ class PendingHospitalApp extends Component {
         const data = querySnapshot.docs.map((doc) => doc.data());
         this.setState({ hospitals: data });
         console.log("here is data", data);
+        this.setState({ isLoading: false });
       });
 
     db.collection("User")
@@ -35,6 +46,7 @@ class PendingHospitalApp extends Component {
         const data = querySnapshot.docs.map((doc) => doc.data());
         this.setState({ donor: data });
         console.log("here is data", data);
+        this.setState({ isLoading: false });
       });
   }
 
@@ -117,6 +129,11 @@ class PendingHospitalApp extends Component {
     const { hospitals } = this.state;
     const { donor } = this.state;
     var nme;
+    const { isLoading } = this.state;
+
+    if (isLoading) {
+      return <BeatLoader color="red" size={70} css={override} loading />;
+    }
 
     return (
       <div className="containermain">

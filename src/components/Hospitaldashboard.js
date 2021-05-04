@@ -6,15 +6,25 @@ import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
 import { Link } from "react-router-dom";
 import Request from "./ReceiverRequest";
-class Hospitaldashboard extends React.Component {
+import { BeatLoader } from "react-spinners";
+import { css } from "@emotion/core";
+const override = css`
+  margin-top: 250px;
+  margin-left: 650px;
+  position: fixed;
+  top: 100px;
+`;
+class Hospitaldashboard extends React.Component {  
   constructor(props) {
     super();
     this.state = {
       users: [],
       hospital: "",
+      isLoading: true,
     };
   }
   componentDidMount() {
+    this.setState({ isLoading: true });
     const db = firebase.firestore();
     db.collection("Events")
       .where("Licence", "==", this.props.location.state.data)
@@ -23,6 +33,7 @@ class Hospitaldashboard extends React.Component {
         const count = querySnapshot.size;
         this.setState({ Eventcount: count });
         console.log(count);
+        this.setState({ isLoading: false });
       });
 
     db.collection("Events")
@@ -31,6 +42,7 @@ class Hospitaldashboard extends React.Component {
         const data = querySnapshot.docs.map((doc) => doc.data());
         console.log("here is data", data);
         this.setState({ users: data });
+        this.setState({ isLoading: false });
       });
 
     db.collection("RegisteredHospital")
@@ -56,6 +68,7 @@ class Hospitaldashboard extends React.Component {
             .then((querySnapshot) => {
               const count1 = querySnapshot.size;
               this.setState({ app_count: count1 });
+              this.setState({ isLoading: false });
             });
 
           db.collection("User")
@@ -69,6 +82,7 @@ class Hospitaldashboard extends React.Component {
             .then((querySnapshot) => {
               const count1 = querySnapshot.size;
               this.setState({ don_count: count1 });
+              this.setState({ isLoading: false });
             });
         });
       });
@@ -76,6 +90,11 @@ class Hospitaldashboard extends React.Component {
 
   render() {
     const { users } = this.state;
+    const { isLoading } = this.state;
+
+    if (isLoading) {
+      return <BeatLoader color="red" size={70} css={override} loading />;
+    }
     return (
       <div className="containermain">
         <div className="sidebar">
