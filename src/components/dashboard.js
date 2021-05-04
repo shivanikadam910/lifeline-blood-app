@@ -6,15 +6,33 @@ import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
 import { Link } from "react-router-dom";
 import Request from "./ReceiverRequest";
-import { BeatLoader } from "react-spinners"
+import { BeatLoader } from "react-spinners";
 import { css } from "@emotion/core";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 const override = css`
   margin-top: 250px;
   margin-left: 650px;
-  position: fixed; 
-  top: 100px;  
+  position: fixed;
+  top: 100px;
 `;
-
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    slidesToSlide: 3, // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2, // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1, // optional, default to 1.
+  },
+};
 class dashboard extends React.Component {
   constructor() {
     super();
@@ -25,17 +43,17 @@ class dashboard extends React.Component {
       ReceivedCount: "",
       users: [],
       email: "",
-      isLoading: true
+      isLoading: true,
     };
   }
 
   componentDidMount() {
+    const db = firebase.firestore();
     this.setState({ isLoading: true });
     firebase.auth().onAuthStateChanged(
       function (user) {
         console.log(user);
         this.setState({ email: user.email }, () => {
-          const db = firebase.firestore();
           console.log("email", this.state.email);
           db.collection("Receiver")
             .where("Email", "==", this.state.email)
@@ -81,17 +99,23 @@ class dashboard extends React.Component {
         });
       }.bind(this)
     );
+    db.collection("RegisteredHospital")
+      .get()
+      .then((querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => doc.data());
+        console.log("here is data", data);
+        this.setState({ hospitals: data });
+        this.setState({ isLoading: false });
+      });
   }
+
   render() {
     const { users } = this.state;
     const { isLoading } = this.state;
+    const { hospitals } = this.state;
 
     if (isLoading) {
-      return <BeatLoader        
-      color='red'
-      size={70}
-      css = {override}
-      loading/>;
+      return <BeatLoader color="red" size={70} css={override} loading />;
     }
     return (
       <div className="containermain">
@@ -115,7 +139,7 @@ class dashboard extends React.Component {
                     <h3 style={{ color: "black" }}>Dashboard</h3>
                   </Link>
                 </div>
-               
+
                 <div className="menulist">
                   <Link
                     to="/receiverrequest"
@@ -182,7 +206,6 @@ class dashboard extends React.Component {
               <img src={smile} alt="Smiling Woman" />
             </div>
           </div>
-
           <div className="card-grid">
             <div className="card1">
               {this.state.Donation_rqst_cnt != 0 ? (
@@ -202,13 +225,13 @@ class dashboard extends React.Component {
               )}
             </div>
             <div className="card2">
-            {this.state.ReceivedCount != 0 ? (
+              {this.state.ReceivedCount != 0 ? (
                 [
                   <Link to="/ReceivedBlood">
-                  <div>Received</div>
-                  <div className="total">Total</div>
-                  <div className="num">{this.state.ReceivedCount}</div>
-                </Link>,
+                    <div>Received</div>
+                    <div className="total">Total</div>
+                    <div className="num">{this.state.ReceivedCount}</div>
+                  </Link>,
                 ]
               ) : (
                 <Link to="/dashboard">
@@ -217,7 +240,6 @@ class dashboard extends React.Component {
                   <div className="num">{this.state.ReceivedCount}</div>
                 </Link>
               )}
-              
             </div>
             <div className="card3">
               {this.state.Requestcount != 0 ? (
@@ -238,7 +260,31 @@ class dashboard extends React.Component {
             </div>
           </div>
 
-          <div className="nearby">Nearby Hospitals</div>
+          <div>
+            <div className="nearby">Hospitals connected with us!</div>
+            <div>
+              <Carousel responsive={responsive}>
+                {hospitals.map((user) => (
+                  <div key={user.uid} className="card-grid">
+                    <div>
+                    <h5> {user.Hospital}</h5>
+                    <h6>{user.City}</h6>
+                    </div>
+                    <div>
+                      <img
+                        src={
+                          user.Url
+                        }
+                        width="300"
+                        height="300"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </Carousel>
+            </div>
+          </div>
+          {/* <div className="nearby">Nearby Hospitals</div>
           <div className="card-grid">
             <div className="hospital1">
               <div className="hospitalName">City Hospital</div>
@@ -249,8 +295,7 @@ class dashboard extends React.Component {
             <div className="hospital3">
               <div className="hospitalName">City Hospital</div>
             </div>
-          </div>
-
+          </div> */}
           <div class="request-card view event">
             <div
               class="request-card-1 view event"

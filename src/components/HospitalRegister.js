@@ -66,7 +66,8 @@ export default class HospitalRegister extends Component {
                                     Hospital: this.state.selectValue,
                                     City: this.state.Hcity,
                                     Licence: this.state.Hlicence,
-                                    Password: this.state.Hpassword
+                                    Password: this.state.Hpassword,
+                                    Url: "https://thumbs.dreamstime.com/z/hospital-building-modern-parking-lot-59693686.jpg"
                                 });
                                 window.alert("Hospital is registered successfully!");
                                 this.props.history.push("/Hsignin");
