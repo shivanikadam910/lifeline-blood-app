@@ -13,18 +13,25 @@ import { Link } from "react-router-dom";
 import firebase, { auth } from "../firebase/firebase";
 const newdata = data.map((data) => {
   return (
-    <Card key={data.post_id} style={{ background: "#f5f5f5" }}>
+    <Card key={data.post_id} style={{ background: "white" }}>
       <Card.Body>
         <Card.Title>{data.post_title}</Card.Title>
         <Card.Text>-{data.post_author}</Card.Text>
 
         <a
-          className="btn-primary"
+          className="readmore"
           href={data.post_url}
           target="_blank"
           rel=" noopener noreferrer"
+          style={{
+            color: "black",
+            fontWeight: "600",
+            textDecoration: "underline",
+            textDecorationColor: "#1ad48d",
+            textDecorationThickness: "30%",
+          }}
         >
-          Go to link
+          Read more
         </a>
       </Card.Body>
     </Card>
@@ -50,10 +57,9 @@ export default class Main extends Component {
   }
   render() {
     const { users } = this.state;
-    var flag=false;
-    if(auth.currentUser==null)
-    {
-      flag=true;
+    var flag = false;
+    if (auth.currentUser == null) {
+      flag = true;
     }
     return (
       <div className="containermain">
@@ -62,72 +68,72 @@ export default class Main extends Component {
             <ul>
               <li>
                 <div className="menulist">
-                  {flag &&
-                  <Link
-                    to="/Login"
-                    style={{ textDecoration: "none" }}
-                    className="link"
-                  >
-                    <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
-                    <h3>Dashboard</h3>
-                  </Link>
-                  }
-                  {!flag &&
-                  <Link
-                  to="/dashboard"
-                  style={{ textDecoration: "none" }}
-                  className="link"
-                >
-                  <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
-                  <h3>Dashboard</h3>
-                </Link>
-                  }
+                  {flag && (
+                    <Link
+                      to="/Login"
+                      style={{ textDecoration: "none" }}
+                      className="link"
+                    >
+                      <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
+                      <h3>Dashboard</h3>
+                    </Link>
+                  )}
+                  {!flag && (
+                    <Link
+                      to="/dashboard"
+                      style={{ textDecoration: "none" }}
+                      className="link"
+                    >
+                      <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
+                      <h3>Dashboard</h3>
+                    </Link>
+                  )}
                 </div>
 
                 <div className="menulist">
-                {flag &&
-                  <Link
-                    to="/Login"
-                    style={{ textDecoration: "none" }}
-                    className="link"
-                  >
-                    <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
-                    <h3>Request Blood</h3>
-                  </Link>
-                  }
-                  {!flag &&
-                  <Link
-                    to="/receiverrequest"
-                    style={{ textDecoration: "none" }}
-                    className="link"
-                  >
-                    <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
-                    <h3>Request Blood</h3>
-                  </Link>
-                  }
+                  {flag && (
+                    <Link
+                      to="/Login"
+                      style={{ textDecoration: "none" }}
+                      className="link"
+                    >
+                      <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
+                      <h3>Request Blood</h3>
+                    </Link>
+                  )}
+                  {!flag && (
+                    <Link
+                      to="/receiverrequest"
+                      style={{ textDecoration: "none" }}
+                      className="link"
+                    >
+                      <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
+                      <h3>Request Blood</h3>
+                    </Link>
+                  )}
                 </div>
 
                 <div className="menulist">
-                {flag &&
-                  <Link
-                    to="/Login"
-                    style={{ textDecoration: "none" }}
-                    className="link"
-                  >
-                    <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
-                    <h3>Donate Blood</h3>
-                  </Link>
-                  }
-                  { !flag &&
-                  <Link
-                    to="/Donor_profile"
-                    style={{ textDecoration: "none" }}
-                    className="link"
-                  >
-                    <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
-                    <h3>Donate Blood</h3>
-                  </Link>
-                  }
+                  {flag && (
+                    <Link
+                      to="/Login"
+                      style={{ textDecoration: "none" }}
+                      className="link"
+                    >
+                      <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
+                      <h3>Donate Blood</h3>
+                    </Link>
+                  )}
+                  {!flag && (
+                    <Link
+                      to="/Donor_profile"
+                      style={{ textDecoration: "none" }}
+                      className="link"
+                    >
+                      <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
+                      <h3>Donate Blood</h3>
+                    </Link>
+                  )}
                 </div>
 
                 <div className="menulist">
@@ -140,7 +146,6 @@ export default class Main extends Component {
                     <h3>Register Hospital</h3>
                   </Link>
                 </div>
-      
               </li>
             </ul>
           </div>
@@ -165,7 +170,11 @@ export default class Main extends Component {
                 <br />
                 Save lives!
               </h1>
-              <h3><Link to ="/Donor_profile">Donate Now &nbsp; &gt;</Link></h3>
+              <h3>
+                <Link to="/Donor_profile" style={{ color: "white" }}>
+                  Donate Now &nbsp; &gt;
+                </Link>
+              </h3>
             </div>
             <div class="banner2">
               <img src={smile} alt="Smiling Woman" />

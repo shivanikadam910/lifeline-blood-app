@@ -82,7 +82,7 @@ class AddEvent extends Component {
           <div className="menu">
             <ul>
               <li>
-                <div className="menulist">
+                <div className="menulist H">
                   <Link
                     to={{
                       pathname: "/Hospitaldashboard",
@@ -96,7 +96,7 @@ class AddEvent extends Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
+                <div className="menulist H">
                   <Link
                     to={{
                       pathname: "/PendingHospitalApp",
@@ -112,7 +112,7 @@ class AddEvent extends Component {
                 </div>
 
                 <div
-                  className="menulist"
+                  className="menulist H"
                   style={{
                     background: "#f2f2f2",
                     borderRight: "5px solid #fc3d3d",
@@ -134,7 +134,7 @@ class AddEvent extends Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
+                <div className="menulist H">
                   <Link
                     to={{
                       pathname: "/Appointments",
@@ -147,7 +147,6 @@ class AddEvent extends Component {
                     <h3>Appointments</h3>
                   </Link>
                 </div>
-
               </li>
             </ul>
           </div>

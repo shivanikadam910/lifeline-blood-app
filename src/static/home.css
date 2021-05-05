@@ -5,26 +5,35 @@
     background: rgb(230,110,171);
     background: linear-gradient(90deg, rgba(230,110,171,0.9808298319327731) 20%, rgba(198,98,226,1) 80%);
   } */
-  
-  .card{
-    border: black 1px solid!important;
-    border-radius: 10px !important;
-    padding: 10px;
-    background-color: black;
-  }
-  .card-body {
-    padding: 1.60px !important;
-  }
-  .card-title {
-    margin-bottom: 1.4rem !important;
-  }
-  
-  p {
-    margin-top: 4px !important;
-    margin-bottom: 1.5rem !important;
-  }
+.readmore {
+  background: white;
+}
+.readmore a {
+  color: black;
+}
+.readmore a:hover {
+  color: black;
+  text-decoration: none;
+}
 
-  .owncard{
-    display: block;
-   
-  }
+.card {
+  border-radius: 0px !important;
+  padding: 10px;
+  background-color: white;
+}
+.card-body {
+  padding: 1.6px !important;
+}
+.card-title {
+  margin-bottom: 1.4rem !important;
+}
+
+p {
+  margin-top: 4px !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.owncard {
+  display: block;
+  background-color: whitesmoke;
+}

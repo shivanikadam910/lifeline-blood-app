@@ -119,7 +119,7 @@ export default class LoginPage extends Component {
               </form>
               <div class="social-login">
                 <button
-                  class="google-btn"
+                  className="google-btn"
                   onClick={this.login_google.bind(this)}
                 >
                   <img

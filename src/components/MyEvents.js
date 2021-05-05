@@ -49,7 +49,7 @@ class MyEvents extends React.Component {
           <div className="menu">
             <ul>
               <li>
-                <div className="menulist">
+                <div className="menulist H">
                   <Link
                     to={{
                       pathname: "/Hospitaldashboard",
@@ -63,8 +63,8 @@ class MyEvents extends React.Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
-                <Link
+                <div className="menulist H">
+                  <Link
                     to={{
                       pathname: "/PendingHospitalApp",
                       state: { data: this.props.location.state.data },
@@ -79,7 +79,7 @@ class MyEvents extends React.Component {
                 </div>
 
                 <div
-                  className="menulist"
+                  className="menulist H"
                   style={{
                     background: "#f2f2f2",
                     borderRight: "5px solid #fc3d3d",
@@ -100,8 +100,8 @@ class MyEvents extends React.Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
-                <Link
+                <div className="menulist H">
+                  <Link
                     to={{
                       pathname: "/Appointments",
                       state: { data: this.props.location.state.data },

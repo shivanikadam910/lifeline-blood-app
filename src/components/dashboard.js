@@ -7,7 +7,7 @@ import donate from "../images/donateVector.png";
 import { Link } from "react-router-dom";
 import Request from "./ReceiverRequest";
 import { BeatLoader } from "react-spinners";
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 const override = css`
@@ -122,7 +122,7 @@ class dashboard extends React.Component {
         <div className="sidebar">
           <div className="menu">
             <ul>
-              <li>
+              <li style={{ listStyle: "none" }}>
                 <div
                   className="menulist"
                   style={{
@@ -199,7 +199,9 @@ class dashboard extends React.Component {
                 Save lives!
               </h1>
               <h3>
-                <Link to="/Donor_profile">Donate Now &nbsp; &gt;</Link>
+                <Link to="/Donor_profile" style={{ color: "white" }}>
+                  Donate Now &nbsp; &gt;
+                </Link>
               </h3>
             </div>
             <div class="banner2">
@@ -260,24 +262,18 @@ class dashboard extends React.Component {
             </div>
           </div>
 
-          <div>
+          <div className="hospitals">
             <div className="nearby">Hospitals connected with us!</div>
             <div>
               <Carousel responsive={responsive}>
                 {hospitals.map((user) => (
                   <div key={user.uid} className="card-grid">
-                    <div>
-                    <h5> {user.Hospital}</h5>
-                    <h6>{user.City}</h6>
+                    <div className="hImage">
+                      <img src={user.Url} width="300" height="300" />
                     </div>
                     <div>
-                      <img
-                        src={
-                          user.Url
-                        }
-                        width="300"
-                        height="300"
-                      />
+                      <h5> {user.Hospital}</h5>
+                      <h6>{user.City}</h6>
                     </div>
                   </div>
                 ))}
@@ -296,7 +292,7 @@ class dashboard extends React.Component {
               <div className="hospitalName">City Hospital</div>
             </div>
           </div> */}
-          <div class="request-card view event">
+          <div class="request-card dash view event">
             <div
               class="request-card-1 view event"
               style={{

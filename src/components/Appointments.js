@@ -100,7 +100,7 @@ class Appointments extends Component {
           <div className="menu">
             <ul>
               <li>
-                <div className="menulist">
+                <div className="menulist H">
                   <Link
                     to={{
                       pathname: "/Hospitaldashboard",
@@ -114,7 +114,7 @@ class Appointments extends Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
+                <div className="menulist H">
                   <Link
                     to={{
                       pathname: "/PendingHospitalApp",
@@ -129,7 +129,7 @@ class Appointments extends Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
+                <div className="menulist H">
                   <Link
                     to={{
                       pathname: "/AddEvent",
@@ -145,7 +145,7 @@ class Appointments extends Component {
                 </div>
 
                 <div
-                  className="menulist"
+                  className="menulist H"
                   style={{
                     background: "#f2f2f2",
                     borderRight: "5px solid #fc3d3d",
@@ -186,8 +186,21 @@ class Appointments extends Component {
             </div>
           </div>
         </div>
-        <div class="request-card view" style={{ marginLeft: "275px" }}>
-          <div class="request-card-1 view">
+        <div
+          class="request-card view"
+          style={{
+            marginLeft: "275px",
+          }}
+        >
+          <div
+            class="request-card-1 view"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
             <h3>Appointment List</h3>
             <Calendar onChange={this.onChange} value={this.state.date} />
             {console.log(this.state.date)}
@@ -196,6 +209,7 @@ class Appointments extends Component {
                 class="cta-btn"
                 onClick={this.showAppointments}
                 class="buttonform"
+                style={{ width: "100%" }}
               >
                 <h4>Show Appointments</h4>
               </button>

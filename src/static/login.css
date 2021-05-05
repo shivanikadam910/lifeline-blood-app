@@ -39,7 +39,8 @@ a {
   margin-top: 12px;
 }
 .btn-text {
-  margin: 0;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 /* .social-login {

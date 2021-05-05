@@ -14,7 +14,7 @@ const override = css`
   position: fixed;
   top: 100px;
 `;
-class Hospitaldashboard extends React.Component {  
+class Hospitaldashboard extends React.Component {
   constructor(props) {
     super();
     this.state = {
@@ -102,7 +102,7 @@ class Hospitaldashboard extends React.Component {
             <ul>
               <li>
                 <div
-                  className="menulist"
+                  className="menulist H"
                   style={{
                     background: "#f2f2f2",
                     borderRight: "5px solid #fc3d3d",
@@ -122,7 +122,7 @@ class Hospitaldashboard extends React.Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
+                <div className="menulist H">
                   <Link
                     to={{
                       pathname: "/PendingHospitalApp",
@@ -137,7 +137,7 @@ class Hospitaldashboard extends React.Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
+                <div className="menulist H">
                   <Link
                     to={{
                       pathname: "/AddEvent",
@@ -152,7 +152,7 @@ class Hospitaldashboard extends React.Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
+                <div className="menulist H">
                   <Link
                     to={{
                       pathname: "/Appointments",
@@ -275,8 +275,15 @@ class Hospitaldashboard extends React.Component {
           </div>
 
           <div
-            class="request-card view event"
-            style={{ boxShadow: "0px 0 10px rgba(134, 187, 189, 0.5)" }}
+            class="request-card dash view event"
+            style={{
+              backgroundColor: "salmon",
+              marginLeft: "25px",
+              marginRight: "25px",
+              marginTop: "25px",
+              borderRadius: "15px",
+              width: "96%",
+            }}
           >
             <div class="request-card-1 view event">
               <h3>Events</h3>

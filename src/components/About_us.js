@@ -1,11 +1,11 @@
 import React from "react";
 import lifeline from "../images/lifeline.png";
 import firebase, { auth } from "../firebase/firebase";
-import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
 import { Link } from "react-router-dom";
 import Request from "./ReceiverRequest";
 import "../static/contact.css";
+import "../static/about.css";
 
 class About_us extends React.Component {
   render() {
@@ -60,7 +60,6 @@ class About_us extends React.Component {
                     <h3>Register Hospital</h3>
                   </Link>
                 </div>
-
               </li>
             </ul>
           </div>
@@ -78,25 +77,12 @@ class About_us extends React.Component {
           </div>
         </div>
         <div className="container2">
-          <div className="banner">
-            <div class="banner1">
-              <h1>
-                Donate Blood
-                <br />
-                Save lives!
-              </h1>
-              <h3>
-                <Link to="/Donor_profile">Donate Now &nbsp; &gt;</Link>
-              </h3>
-            </div>
-            <div class="banner2">
-              <img src={smile} alt="Smiling Woman" />
-            </div>
+          <div className="banner-about">
+            <h1>ABOUT US</h1>
           </div>
 
-          <div class="contact-info">
+          <div class="contact-info about">
             <div class="contactinfo1">
-              <h2>About Us</h2>
               <p>
                 {" "}
                 Lifeline Blood App is developed as a part of Software

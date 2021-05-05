@@ -61,7 +61,6 @@ class Contact_us extends React.Component {
                     <h3>Register Hospital</h3>
                   </Link>
                 </div>
-
               </li>
             </ul>
           </div>
@@ -78,38 +77,27 @@ class Contact_us extends React.Component {
             </div>
           </div>
         </div>
-        <div className="container2">
-          <div className="banner">
-            <div class="banner1">
-              <h1>
-                Donate Blood
-                <br />
-                Save lives!
-              </h1>
-              <h3>
-                <Link to="/Donor_profile">Donate Now &nbsp; &gt;</Link>
-              </h3>
-            </div>
-            <div class="banner2">
-              <img src={smile} alt="Smiling Woman" />
-            </div>
+        <div className="container2 contact">
+          <div className="banner-contact">
+            <h1>GET IN TOUCH</h1>
           </div>
 
-          <div class="contact-info">
-            <div class="contactinfo1">
-              <h2>Contact Us</h2>
-            </div>
-            <div class="contactinfo1">
-              {/* &emsp;&emsp;&emsp;<Icon icon={telephonereceiver2Icon} /> */}
-              <h3>Phone Number</h3>
+          <div class="contact-info contact">
+            <div class="contactinfo-1">
+              <div>
+                <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" />
+              </div>
+              <h2>Phone</h2>
               <p>
                 <a href="tel:+91987456321">+91 987456321</a>
               </p>
             </div>
 
-            <div class="contactinfo1">
-              {/* &emsp;<Icon icon={emailIcon} /> */}
-              <h3>Email</h3>
+            <div class="contactinfo-1">
+              <div>
+                <img src="https://img.icons8.com/ios-filled/50/000000/apple-mail.png" />
+              </div>
+              <h2>Email</h2>
               <p>
                 <a href="mailto:lifeline@gmail.com">lifeline@gmail.com</a>
               </p>

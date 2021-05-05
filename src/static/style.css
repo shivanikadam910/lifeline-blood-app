@@ -83,7 +83,7 @@
   margin-top: 10px;
   margin-bottom: 20px;
   height: 40px;
-  min-width: 248px;
+  width: 280px;
   color: whitesmoke;
   background-color: rgb(30, 89, 180);
   cursor: pointer;
@@ -98,7 +98,8 @@
 
 .google-btn {
   height: 40px;
-  width: 248px;
+  width: 280px;
+
   background: #fff;
   border: solid 2px rgb(226, 226, 226);
   border-radius: 3px;
@@ -106,19 +107,28 @@
   font-size: 14px;
   display: flex;
   padding: 10px 10px;
-  flex: auto;
+
+  display: flex;
   align-items: center;
   gap: 15px;
   cursor: pointer;
   justify-content: center;
 }
-
+.btn-text {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-top: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+}
 .google-btn:hover {
   background: rgb(241, 241, 241);
 }
 
 .social-login {
+  margin-left: 12px;
   margin-bottom: 10px;
+  width: 280px;
 }
 
 .social-login img {
@@ -127,7 +137,9 @@
 
 .textArea input {
   padding-left: 10px;
+  margin-top: 10px;
   height: 40px;
+  width: 280px;
   border: 1px solid rgba(46, 46, 46, 0.5);
   border-radius: 3px;
   font-weight: 500;
