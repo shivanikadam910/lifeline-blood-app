@@ -190,7 +190,9 @@ class Hospitaldashboard extends React.Component {
         <div className="container2">
           <div className="card-grid">
             <div className="card1">
-              <Link
+            {this.state.app_count != 0 ? (
+                [
+                  <Link
                 to={{
                   pathname: "/ViewApplication",
                   state: { data: this.props.location.state.data },
@@ -199,12 +201,40 @@ class Hospitaldashboard extends React.Component {
                 <div>My Applications</div>
                 <div className="total">Total</div>
                 <div className="num">{this.state.app_count}</div>
+              </Link>,
+                ]
+              ) : (
+                <Link
+                to={{
+                  pathname: "/Hospitaldashboard",
+                  state: { data: this.props.location.state.data },
+                }}
+              >
+                <div>My Applications</div>
+                <div className="total">Total</div>
+                <div className="num">{this.state.app_count}</div>
               </Link>
+              )}
+              
             </div>
             <div className="card2">
-              <Link
+            {this.state.don_count != 0 ? (
+                [
+                  <Link
+                  to={{
+                    pathname: "/SuccessfulDonations",
+                    state: { data: this.props.location.state.data },
+                  }}
+                >
+                  <div>Successful Donations</div>
+                  <div className="total">Total</div>
+                  <div className="num">{this.state.don_count}</div>
+                </Link>,
+                ]
+              ) : (
+                <Link
                 to={{
-                  pathname: "/SuccessfulDonations",
+                  pathname: "/Hospitaldashboard",
                   state: { data: this.props.location.state.data },
                 }}
               >
@@ -212,9 +242,13 @@ class Hospitaldashboard extends React.Component {
                 <div className="total">Total</div>
                 <div className="num">{this.state.don_count}</div>
               </Link>
+              )}
+              
             </div>
             <div className="card3">
-              <Link
+            {this.state.don_count != 0 ? (
+                [
+                  <Link
                 to={{
                   pathname: "/MyEvents",
                   state: { data: this.props.location.state.data },
@@ -223,7 +257,20 @@ class Hospitaldashboard extends React.Component {
                 <div>My Events</div>
                 <div className="total">Total</div>
                 <div className="num">{this.state.Eventcount}</div>
+              </Link>,
+                ]
+              ) : (
+                <Link
+                to={{
+                  pathname: "/Hospitaldashboard",
+                  state: { data: this.props.location.state.data },
+                }}
+              >
+                <div>My Events</div>
+                <div className="total">Total</div>
+                <div className="num">{this.state.Eventcount}</div>
               </Link>
+              )}
             </div>
           </div>
 
