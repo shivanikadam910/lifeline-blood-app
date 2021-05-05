@@ -12,96 +12,7 @@ class Contact_us_hosp extends React.Component {
   render() {
     return (
       <div className="containermain">
-         {/* <div className="sidebar">
-        <div className="menu">
-          <ul>
-            <li>
-              <div
-                className="menulist"
-                style={{
-                  background: "#f2f2f2",
-                  borderRight: "5px solid #fc3d3d",
-                  cursor: "pointer",
-                }}
-              >
-                <Link
-                  to={{
-                    pathname: "/Hospitaldashboard",
-                    state: { data: this.props.location.state.data },
-                  }}
-                  className="link"
-                  style={{ textDecoration: "none" }}
-                >
-                  <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
-                  <h3 style={{ color: "black" }}>Dashboard</h3>
-                </Link>
-              </div>
-
-              <div className="menulist">
-                <Link
-                  to={{
-                    pathname: "/PendingHospitalApp",
-                    state: { data: this.props.location.state.data },
-                  }}
-                  style={{ textDecoration: "none" }}
-                  className="link"
-                >
-                  <img src="https://img.icons8.com/windows/32/000000/approve-and-update.png" />
-
-                  <h3>Update Applications</h3>
-                </Link>
-              </div>
-
-              <div className="menulist">
-                <Link
-                  to={{
-                    pathname: "/AddEvent",
-                    state: { data: this.props.location.state.data },
-                  }}
-                  className="link"
-                  style={{ textDecoration: "none" }}
-                >
-                  <img src="https://img.icons8.com/material-two-tone/24/000000/news.png" />
-
-                  <h3>Post Event</h3>
-                </Link>
-              </div>
-
-              <div className="menulist">
-                <Link
-                  to={{
-                    pathname: "/Appointments",
-                    state: { data: this.props.location.state.data },
-                  }}
-                  className="link"
-                  style={{ textDecoration: "none" }}
-                >
-                  <img src="https://img.icons8.com/material-rounded/24/000000/calendar-minus.png" />
-                  <h3>Appointments</h3>
-                </Link>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div className="why">
-          <h3>
-            <Link to={{
-                      pathname: "/WhyDonateBloodhp",
-                      state: { data: this.props.location.state.data },
-                    }}style={{ fontWeight: "600" }}>
-              Why Donate Blood?
-            </Link>
-          </h3>
-          <div className="donateVector">
-            <Link to={{
-                      pathname: "/WhyDonateBloodhp",
-                      state: { data: this.props.location.state.data },
-                    }}>
-              <img src={donate} alt="why donate" />
-            </Link>
-          </div>
-        </div>
-     </div> */}
+        
         <div className="container2">
           <div className="banner">
             <div class="banner1">
@@ -140,7 +51,7 @@ class Contact_us_hosp extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+     </div>
     );
   }
 }

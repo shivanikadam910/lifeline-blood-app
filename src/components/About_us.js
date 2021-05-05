@@ -57,7 +57,7 @@ class About_us extends React.Component {
                     className="link"
                   >
                     <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
-                    <h3>Hospitals</h3>
+                    <h3>Register Hospital</h3>
                   </Link>
                 </div>
 
@@ -114,39 +114,31 @@ class About_us extends React.Component {
                 customization to easily incorporate specific requirements from
                 nationwide stakeholders.
               </p>
-              <h2>
+              
+              
+            </div>
+            <div class="contactinfo1">
+            <h2>
                 <a>Objectives</a>
               </h2>
               <ul>
-                <li>Safe and Adequate Blood Supplies</li>
-                <li>Reduced Turnaround Time</li>
-                <li>Networking of Blood Banks</li>
-                <li>Donor Repository</li>
+                Safe and Adequate Blood Supplies<br/>
+                Reduced Turnaround Time<br/>
+                Networking of Blood Banks<br/>
+                Donor Repository<br/>
               </ul>
-              <h2>
-                <a>Salient Features</a>
-              </h2>
-              <ul>
-                <li>Web Based Application</li>
-                <li>Dashboard</li>
-                <li>List of Blood Donors</li>
-                <li>List of Receivers</li>
-              </ul>
-            </div>
-            <div class="contactinfo1">
-              {/* &emsp;&emsp;&emsp;<Icon icon={telephonereceiver2Icon} /> */}
-              <h3>Phone Number</h3>
-              <p>
-                <a href="tel:+91987456321">+91 987456321</a>
-              </p>
             </div>
 
             <div class="contactinfo1">
-              {/* &emsp;<Icon icon={emailIcon} /> */}
-              <h3>Email</h3>
-              <p>
-                <a href="mailto:lifeline@gmail.com">lifeline@gmail.com</a>
-              </p>
+            <h2>
+                <a>Salient Features</a>
+              </h2>
+              <ul>
+                Web Based Application<br/>
+                Dashboard<br/>
+                List of Blood Donors<br/>
+                List of Receivers<br/>
+              </ul>
             </div>
           </div>
         </div>

@@ -1,7 +1,5 @@
-
-.contact-info{
-    
-  width: 100%;    
+.contact-info {
+  width: 100%;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -9,75 +7,72 @@
   margin-bottom: 45px;
 }
 
-.contactinfo1{
-    width: 100%;
-    
-background: #a2d2ff;
-box-shadow: 4px 4px 20px rgba(147, 147, 147, 0.25);
-border-radius: 15px;
-font-family: Calibri;
-font-style: normal;
-font-weight: 600;
-font-size: 24px;
-padding-left: 30px;
-padding-top: 50px;
-padding-bottom: 50px;
-margin: 20px 40px 20px 40px;
+.contactinfo1 {
+  width: 100%;
 
-box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
+  background: #a2d2ff;
+  box-shadow: 4px 4px 20px rgba(147, 147, 147, 0.25);
+  border-radius: 15px;
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  padding-left: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin: 20px 40px 20px 40px;
+
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
 }
 
 .section-header h3::before {
-    background: #ddd;
-  }
-  
-.section-header h3::after {
-    
-    
-    background: #18d26e;
-    
-    
+  background: #ddd;
 }
-  
+
+.section-header h3::after {
+  background: #18d26e;
+}
+
 .section-header p {
-    text-align: center;
-    
-    color: #333;
+  text-align: center;
+
+  color: #333;
 }
 
 .contact-info {
-    
-    text-align: center;
-}
-  
-.contact-info i {
-    font-size: 48px;
-    display: inline-block;
-    
-    color: #18d26e;
-}
-  
-.contact-info address, .contact-info p {
-    margin-bottom: 0;
-    color: #000;
-}
-  
-.contact-info h3 {
-    font-size: 18px;
-    
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #999;
-}
-  
-.contact-info a {
-    color: #000;
-}
-  
-.contact-info a:hover {
-    color: #18d26e;
+  text-align: center;
 }
 
-.contact-address, .contact-phone, .contact-email {
-    
+.contact-info i {
+  font-size: 48px;
+  display: inline-block;
+
+  color: #18d26e;
+}
+
+.contact-info address,
+.contact-info p {
+  margin-bottom: 0;
+  color: #000;
+}
+
+.contact-info h3 {
+  font-size: 18px;
+
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.contact-info a {
+  color: #000;
+}
+
+.contact-info a:hover {
+  color: #18d26e;
+}
+
+.contact-address,
+.contact-phone,
+.contact-email {
 }

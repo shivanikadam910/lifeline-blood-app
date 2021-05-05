@@ -5,6 +5,7 @@ import "../static/receiverrequest.css";
 import donate from "../images/donateVector.png";
 import donateblood from "../images/Donating-Blood-1.svg";
 
+
 class Donor_profile extends Component {
   constructor() {
     super();
@@ -107,9 +108,9 @@ class Donor_profile extends Component {
                                 "Enter the hospital where you would like to place a request"
                               );
                             } else {
-                              if (this.state.contact.length !== 13) {
+                              if (this.state.contact.length !== 14 || isNaN(this.state.contact)) {
                                 window.alert(
-                                  "Required 10 digits, match format!"
+                                  "Required 10 digits, match format and write numeric data!"
                                 );
                               } else {
                                 console.log("length");
@@ -392,6 +393,7 @@ class Donor_profile extends Component {
                   <input
                     name="contact"
                     type="tel"
+                    pattern="[0-9*]"
                     placeholder="+91-9120034561"
                     value={this.state.contact}
                     onChange={this.onInputchange}

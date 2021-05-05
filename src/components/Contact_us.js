@@ -58,7 +58,7 @@ class Contact_us extends React.Component {
                     className="link"
                   >
                     <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
-                    <h3>Hospitals</h3>
+                    <h3>Register Hospital</h3>
                   </Link>
                 </div>
 
