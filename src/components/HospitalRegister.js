@@ -64,6 +64,7 @@ export default class HospitalRegister extends Component {
                   Password: this.state.Hpassword,
                   Url:
                     "https://thumbs.dreamstime.com/z/hospital-building-modern-parking-lot-59693686.jpg",
+                  Login_status: false,
                 });
                 window.alert("Hospital is registered successfully!");
                 this.props.history.push("/Hsignin");

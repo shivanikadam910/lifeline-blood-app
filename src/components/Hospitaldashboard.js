@@ -21,11 +21,30 @@ class Hospitaldashboard extends React.Component {
       users: [],
       hospital: "",
       isLoading: true,
+      currentID: "",
     };
   }
   componentDidMount() {
     this.setState({ isLoading: true });
     const db = firebase.firestore();
+    db.collection("RegisteredHospital")
+      .where("Licence", "==", this.props.location.state.data)
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          this.setState(
+            {
+              currentID: doc.id,
+            },
+            () => {
+              db.collection("RegisteredHospital").doc(this.state.currentID).update({
+                Login_status: true,
+              });
+            }
+          );
+        });
+      });
+
     db.collection("Events")
       .where("Licence", "==", this.props.location.state.data)
       .get()
@@ -170,18 +189,23 @@ class Hospitaldashboard extends React.Component {
           </div>
           <div className="why">
             <h3>
-              <Link to={{
-                      pathname: "/WhyDonateBloodhp",
-                      state: { data: this.props.location.state.data },
-                    }} style={{ fontWeight: "600" }}>
+              <Link
+                to={{
+                  pathname: "/WhyDonateBloodhp",
+                  state: { data: this.props.location.state.data },
+                }}
+                style={{ fontWeight: "600" }}
+              >
                 Why Donate Blood?
               </Link>
             </h3>
             <div className="donateVector">
-              <Link to={{
-                      pathname: "/WhyDonateBloodhp",
-                      state: { data: this.props.location.state.data },
-                    }}>
+              <Link
+                to={{
+                  pathname: "/WhyDonateBloodhp",
+                  state: { data: this.props.location.state.data },
+                }}
+              >
                 <img src={donate} alt="why donate" />
               </Link>
             </div>
@@ -190,86 +214,84 @@ class Hospitaldashboard extends React.Component {
         <div className="container2">
           <div className="card-grid">
             <div className="card1">
-            {this.state.app_count != 0 ? (
+              {this.state.app_count != 0 ? (
                 [
                   <Link
-                to={{
-                  pathname: "/ViewApplication",
-                  state: { data: this.props.location.state.data },
-                }}
-              >
-                <div>My Applications</div>
-                <div className="total">Total</div>
-                <div className="num">{this.state.app_count}</div>
-              </Link>,
+                    to={{
+                      pathname: "/ViewApplication",
+                      state: { data: this.props.location.state.data },
+                    }}
+                  >
+                    <div>My Applications</div>
+                    <div className="total">Total</div>
+                    <div className="num">{this.state.app_count}</div>
+                  </Link>,
                 ]
               ) : (
                 <Link
-                to={{
-                  pathname: "/Hospitaldashboard",
-                  state: { data: this.props.location.state.data },
-                }}
-              >
-                <div>My Applications</div>
-                <div className="total">Total</div>
-                <div className="num">{this.state.app_count}</div>
-              </Link>
+                  to={{
+                    pathname: "/Hospitaldashboard",
+                    state: { data: this.props.location.state.data },
+                  }}
+                >
+                  <div>My Applications</div>
+                  <div className="total">Total</div>
+                  <div className="num">{this.state.app_count}</div>
+                </Link>
               )}
-              
             </div>
             <div className="card2">
-            {this.state.don_count != 0 ? (
+              {this.state.don_count != 0 ? (
                 [
                   <Link
+                    to={{
+                      pathname: "/SuccessfulDonations",
+                      state: { data: this.props.location.state.data },
+                    }}
+                  >
+                    <div>Successful Donations</div>
+                    <div className="total">Total</div>
+                    <div className="num">{this.state.don_count}</div>
+                  </Link>,
+                ]
+              ) : (
+                <Link
                   to={{
-                    pathname: "/SuccessfulDonations",
+                    pathname: "/Hospitaldashboard",
                     state: { data: this.props.location.state.data },
                   }}
                 >
                   <div>Successful Donations</div>
                   <div className="total">Total</div>
                   <div className="num">{this.state.don_count}</div>
-                </Link>,
-                ]
-              ) : (
-                <Link
-                to={{
-                  pathname: "/Hospitaldashboard",
-                  state: { data: this.props.location.state.data },
-                }}
-              >
-                <div>Successful Donations</div>
-                <div className="total">Total</div>
-                <div className="num">{this.state.don_count}</div>
-              </Link>
+                </Link>
               )}
-              
             </div>
             <div className="card3">
-            {this.state.don_count != 0 ? (
+              {this.state.Eventcount != 0 ? (
                 [
                   <Link
-                to={{
-                  pathname: "/MyEvents",
-                  state: { data: this.props.location.state.data },
-                }}
-              >
-                <div>My Events</div>
-                <div className="total">Total</div>
-                <div className="num">{this.state.Eventcount}</div>
-              </Link>,
+                    to={{
+                      pathname: "/MyEvents",
+                      state: { data: this.props.location.state.data },
+                    }}
+                  >
+                    <div>My Events</div>
+                    <div className="total">Total</div>
+                    <div className="num">{this.state.Eventcount}</div>
+                  </Link>,
                 ]
               ) : (
                 <Link
-                to={{
-                  pathname: "/Hospitaldashboard",
-                  state: { data: this.props.location.state.data },
-                }}
-              >
-                <div>My Events</div>
-                <div className="total">Total</div>
-                <div className="num">{this.state.Eventcount}</div>
-              </Link>
+                  to={{
+                    pathname: "/Hospitaldashboard",
+                    state: { data: this.props.location.state.data },
+                  }}
+                >
+                  <div>My Events</div>
+                  <div className="total">Total</div>
+                  <div className="num">{this.state.Eventcount}</div>
+                </Link>
               )}
             </div>
           </div>
