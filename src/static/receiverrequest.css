@@ -79,14 +79,23 @@
   font-size: 20px;
   font-style: normal;
 }
+.list-1{
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  justify-content: center;
+}
 
 .list {
   margin: 25px;
   padding: 15px;
   border-radius: 10px;
+  
+  width: 45%;
   background: white;
   box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
 }
+
 .list h5 {
   margin: 10px;
   font-size: 25px;

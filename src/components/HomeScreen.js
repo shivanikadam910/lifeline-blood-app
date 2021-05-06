@@ -185,10 +185,19 @@ export default class Main extends Component {
           <CardColumns className=" m-3 p-3 owncard "> {newdata} </CardColumns>
 
           <div class="request-card view event">
-            <div class="request-card-1 view event">
-              <h3> Events</h3>
+            <div
+              class="request-card-1 view event"
+              style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <h3> Events </h3>
+              <div class="list-1">
               {users.map((user) => (
                 <div key={user.uid} class="list">
+                  
                   <h5> {user.Title}</h5>
                   <div>
                     <h6>{user.Description}</h6>
@@ -196,8 +205,10 @@ export default class Main extends Component {
                   <div className="image">
                     <img src={user.Url} width="300" height="300" />
                   </div>
+                  
                 </div>
               ))}
+              </div>
             </div>
           </div>
         </div>

@@ -292,7 +292,7 @@ class dashboard extends React.Component {
               <div className="hospitalName">City Hospital</div>
             </div>
           </div> */}
-          <div class="request-card dash view event">
+          <div class="request-card view event">
             <div
               class="request-card-1 view event"
               style={{
@@ -302,8 +302,10 @@ class dashboard extends React.Component {
               }}
             >
               <h3> Events </h3>
+              <div class="list-1">
               {users.map((user) => (
                 <div key={user.uid} class="list">
+                  
                   <h5> {user.Title}</h5>
                   <div>
                     <h6>{user.Description}</h6>
@@ -311,8 +313,10 @@ class dashboard extends React.Component {
                   <div className="image">
                     <img src={user.Url} width="300" height="300" />
                   </div>
+                  
                 </div>
               ))}
+              </div>
             </div>
           </div>
         </div>
