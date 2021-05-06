@@ -21,7 +21,7 @@ class navbar extends React.Component {
           <div class="navul" >
             <ul class="ulnav">
               <li>
-                <Link to="/Home" style={{ fontWeight: "600" }}>
+                <Link to="/dashboard" style={{ fontWeight: "600" }}>
                   {" "}
                   Home
                 </Link>
