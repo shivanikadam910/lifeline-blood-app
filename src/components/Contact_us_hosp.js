@@ -22,33 +22,33 @@ class Contact_us_hosp extends React.Component {
       flag = true;
     }
     return (
-      <div className="containermain">
-       
-        <div className="container2 contact">
-          <div className="banner-contact">
-            <h1>GET IN TOUCH</h1>
+      <div
+        className="containermain"
+        style={{ backgroundColor: "#0a12371a", height: "92vh" }}
+      >
+        <div className="banner-contact">
+          <h1>GET IN TOUCH</h1>
+        </div>
+
+        <div class="contact-info contact">
+          <div class="contactinfo-1">
+            <div>
+              <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" />
+            </div>
+            <h2>Phone</h2>
+            <p>
+              <a href="tel:+91987456321">+91 987456321</a>
+            </p>
           </div>
 
-          <div class="contact-info contact">
-            <div class="contactinfo-1">
-              <div>
-                <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" />
-              </div>
-              <h2>Phone</h2>
-              <p>
-                <a href="tel:+91987456321">+91 987456321</a>
-              </p>
+          <div class="contactinfo-1">
+            <div>
+              <img src="https://img.icons8.com/ios-filled/50/000000/apple-mail.png" />
             </div>
-
-            <div class="contactinfo-1">
-              <div>
-                <img src="https://img.icons8.com/ios-filled/50/000000/apple-mail.png" />
-              </div>
-              <h2>Email</h2>
-              <p>
-                <a href="mailto:lifeline@gmail.com">lifeline@gmail.com</a>
-              </p>
-            </div>
+            <h2>Email</h2>
+            <p>
+              <a href="mailto:lifeline@gmail.com">lifeline@gmail.com</a>
+            </p>
           </div>
         </div>
       </div>
