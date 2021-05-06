@@ -30,8 +30,8 @@ import BookSlot from "./components/BookSlot";
 import Appointments from "./components/Appointments";
 import SuccessfulDonations from "./components/Successfuldonations";
 import WhydonatebloodHop from "./components/WhydonatebloodHosp";
-import About_us_hp from "./components/About_us_hosp";
-import Contact_us_hp from "./components/Contact_us_hosp";
+import Aboutus_dash from "./components/Aboutus_dashboard";
+import Contactus_dash from "./components/Contactus_dashboard";
 import Navbar_hosp from "./components/Navbar_hosp";
 
 const RouteWithNavbar = ({exact, path, component:Component}) => {
@@ -90,8 +90,8 @@ class App extends Component {
           <Route1 exact path="/TrackApplication" component={TrackApplication} />
           <Route1 exact path="/BookSlot" component={BookSlot} />
           <Route2 exact path="/Appointments" component={Appointments} />
-          <Route1 exact path="/About_us_hosp" component={About_us_hp} />
-          <Route1 exact path="/Contact_us_hosp" component={Contact_us_hp} />
+          <Route1 exact path="/Aboutus_dashboard" component={Aboutus_dash} />
+          <Route1 exact path="/Contactus_dashboard" component={Contactus_dash} />
           <Route2 exact path="/WhyDonateBloodhp" component={WhydonatebloodHop} />
 
           <Route2
