@@ -135,7 +135,7 @@ class ViewRecievers extends React.Component {
         <div className="container2">
           <div class="request-card view">
             <div class="request-card-1 view">
-              <h3> My Requests</h3>
+              <h3> My Donations</h3>
               {Donation_Request.map((user) => (
                 <div key={user.uid} class="list">
                   <h5>
@@ -149,6 +149,12 @@ class ViewRecievers extends React.Component {
                     <h6>Contact : {user.Contact}</h6>
                     <h6>City : {user.City} </h6>
                     <h6>Donation: {user.Donation_complete}</h6>
+                    {user.Donation_complete === "true" ? (
+                      
+                      <h6>Donation Status : Complete</h6>
+                    ): (
+                      <h6>Donation Status : Not Complete</h6>
+                    )}
                   </div>
                 </div>
               ))}

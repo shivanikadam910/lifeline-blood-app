@@ -108,7 +108,7 @@ class Donor_profile extends Component {
                                 "Enter the hospital where you would like to place a request"
                               );
                             } else {
-                              if (this.state.contact.length !== 14 || isNaN(this.state.contact)) {
+                              if (this.state.contact.length !== 13 || isNaN(this.state.contact)) {
                                 window.alert(
                                   "Required 10 digits, match format and write numeric data!"
                                 );
@@ -395,7 +395,7 @@ class Donor_profile extends Component {
                     name="contact"
                     type="tel"
                     pattern="[0-9*]"
-                    placeholder="+91-9120034561"
+                    placeholder="+919120034561"
                     value={this.state.contact}
                     onChange={this.onInputchange}
                   />

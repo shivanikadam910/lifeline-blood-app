@@ -131,7 +131,7 @@ class Successfuldonations extends Component {
         </div>
         <div class="request-card view" style={{ marginLeft: "275px" }}>
           <div class="request-card-1 view">
-            <h3>Application History</h3>
+            <h3>Successful Donations</h3>
             {hospitals.map((user) => {
               nme = user.Hospital;
             })}

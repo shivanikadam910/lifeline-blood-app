@@ -83,7 +83,7 @@ class ReceiverRequest extends React.Component {
           if (this.state.City === "") {
             window.alert("Enter your City");
           } else {
-            if (this.state.ContactDetails.length != 14 || isNaN(this.state.ContactDetails)) {
+            if (this.state.ContactDetails.length != 13 || isNaN(this.state.ContactDetails)) {
               window.alert("Required 10 digits, match format!");
             } else {
               if (this.state.Post === "") {
@@ -287,7 +287,7 @@ class ReceiverRequest extends React.Component {
                   </label>
                   <input
                     type="tel"
-                    placeholder="+91-9120034561"
+                    placeholder="+919120034561"
                     name="contactno"
                     value={this.state.ContactDetails}
                     onChange={this.handleContactDetailsChange.bind(this)}
