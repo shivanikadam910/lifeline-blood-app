@@ -186,7 +186,7 @@ export default class Main extends Component {
 
           <div class="request-card view event">
             <div class="request-card-1 view event">
-              <h3> My Events</h3>
+              <h3> Events</h3>
               {users.map((user) => (
                 <div key={user.uid} class="list">
                   <h5> {user.Title}</h5>

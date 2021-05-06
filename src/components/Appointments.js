@@ -29,12 +29,7 @@ class Appointments extends Component {
 
   componentDidMount() {
     const db = firebase.firestore();
-    firebase.auth().onAuthStateChanged(
-      function (user) {
-        console.log(user);
-        this.setState({ email: user.email });
-      }.bind(this)
-    );
+    
     db.collection("RegisteredHospital")
       .where("Licence", "==", this.props.location.state.data)
       .get()

@@ -151,7 +151,12 @@ class ViewApplications extends Component {
                       <h6>City : {user1.City} </h6>
                       <h6>Medical condition :{user1.MedicalCondition}</h6>
                       <h6>Weight:{user1.Weight}</h6>
-                      <h6>Application Status:{user1.ApplicationStatus}</h6>
+                      {user1.ApplicationStatus === "true" ? (
+                      
+                        <h6>ApplicationStatus : Accepted</h6>
+                      ): (
+                        <h6>ApplicationStatus : Denied</h6>
+                      )}
                     </div>
                   </div>
                 );

@@ -31,7 +31,8 @@ import Appointments from "./components/Appointments";
 import SuccessfulDonations from "./components/Successfuldonations";
 import WhydonatebloodHop from "./components/WhydonatebloodHosp";
 import About_us_hp from "./components/About_us_hosp";
-import Contact_us_hp from "./components/Contact_us_hosp"
+import Contact_us_hp from "./components/Contact_us_hosp";
+import Navbar_hosp from "./components/Navbar_hosp";
 
 const RouteWithNavbar = ({exact, path, component:Component}) => {
   return(
@@ -51,13 +52,22 @@ const Route1 = ({exact, path, component:Component}) => {
   );
 }
 
+const Route2 = ({exact, path, component:Component}) => {
+  return(
+    <div>
+    <Navbar_hosp/>
+    <Route exact={exact} path={path} component={Component} />
+    </div>
+  );
+}
+
 
 
 class App extends Component {
   
   render() {
     return (
-      <Router>
+      <Router >
         <UserProvider>
           <Switch>
           <RouteWithNavbar exact path="/" component={HomeScreen} />
@@ -79,25 +89,27 @@ class App extends Component {
           <Route1 exact path="/ReceivedBlood" component={ReceivedBlood} />
           <Route1 exact path="/TrackApplication" component={TrackApplication} />
           <Route1 exact path="/BookSlot" component={BookSlot} />
-          <Route1 exact path="/Appointments" component={Appointments} />
+          <Route2 exact path="/Appointments" component={Appointments} />
           <Route1 exact path="/About_us_hosp" component={About_us_hp} />
           <Route1 exact path="/Contact_us_hosp" component={Contact_us_hp} />
-          <Route1 exact path="/WhyDonateBloodhp" component={WhydonatebloodHop} />
+          <Route2 exact path="/WhyDonateBloodhp" component={WhydonatebloodHop} />
 
-          <Route1
+          <Route2
             exact
             path="/Hospitaldashboard"
             component={Hospitaldashboard}
-          />
-          <Route1
+          >
+            
+            </Route2>
+          <Route2
             exact
             path="/PendingHospitalApp"
             component={PendingHospitalrequ}
           />
-          <Route1 exact path="/AddEvent" component={Addevent} />
-          <Route1 exact path="/MyEvents" component={MyEvents} />
-          <Route1 exact path="/ViewApplication" component={viewapplication} />
-          <Route1 exact path="/SuccessfulDonations" component={SuccessfulDonations} />
+          <Route2 exact path="/AddEvent" component={Addevent} />
+          <Route2 exact path="/MyEvents" component={MyEvents} />
+          <Route2 exact path="/ViewApplication" component={viewapplication} />
+          <Route2 exact path="/SuccessfulDonations" component={SuccessfulDonations} />
           </Switch>  
         </UserProvider>
       </Router>

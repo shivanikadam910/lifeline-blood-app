@@ -45,6 +45,7 @@ export default class HospitalRegister extends Component {
           }
         });
         this.props.history.push({pathname : "/Hospitaldashboard",state :{data : this.state.Hlicence}});
+        
     }
   };
   render() {
