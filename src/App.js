@@ -37,76 +37,113 @@ import Whydonateblood_dashboard from "./components/Whydonateblood_dashboard";
 import About_us_hosp from "./components/About_us_hosp";
 import Contact_us_hosp from "./components/Contact_us_hosp";
 
-const RouteWithNavbar = ({exact, path, component:Component}) => {
-  return(
+const RouteWithNavbar = ({ exact, path, component: Component }) => {
+  return (
     <div>
-    <Navbar/>
-    <Route exact={exact} path={path} component={Component} />
+      <Navbar />
+      <Route exact={exact} path={path} component={Component} />
     </div>
   );
-}
+};
 
-const Route1 = ({exact, path, component:Component}) => {
-  return(
+const Route1 = ({ exact, path, component: Component }) => {
+  return (
     <div>
-    <Navbar_Home/>
-    <Route exact={exact} path={path} component={Component} />
+      <Navbar_Home />
+      <Route exact={exact} path={path} component={Component} />
     </div>
   );
-}
+};
 
-const Route2 = ({exact, path, component:Component}) => {
-  return(
+const Route2 = ({ exact, path, component: Component }) => {
+  return (
     <div>
-    <Navbar_hosp/>
-    <Route exact={exact} path={path} component={Component} />
+      <Navbar_hosp />
+      <Route exact={exact} path={path} component={Component} />
     </div>
   );
-}
-
-
+};
 
 class App extends Component {
-  
   render() {
     return (
-      <Router >
+      <Router>
         <UserProvider>
           <Switch>
-          <RouteWithNavbar exact path="/" component={HomeScreen} />
-          <RouteWithNavbar exact path="/Signup" component={Register} />
-          <RouteWithNavbar exact path="/Login" component={LoginPage} />
-          <RouteWithNavbar exact path="/Home" component={HomeScreen} />
-          <RouteWithNavbar exact path="/Hospitalregister" component={HospitalRegister} />
-          <RouteWithNavbar exact path="/About" component={About_us} />
-          <RouteWithNavbar exact path="/Contact" component={Contact_us} />
-          <RouteWithNavbar exact path="/WhyDonateBlood" component={WhyDonateBlood} />
-          <RouteWithNavbar exact path="/verificationReq" component={Verification} />
+            <RouteWithNavbar exact path="/" component={HomeScreen} />
+            <RouteWithNavbar exact path="/Signup" component={Register} />
+            <RouteWithNavbar exact path="/Login" component={LoginPage} />
+            <RouteWithNavbar exact path="/Home" component={HomeScreen} />
+            <RouteWithNavbar
+              exact
+              path="/Hospitalregister"
+              component={HospitalRegister}
+            />
+            <RouteWithNavbar exact path="/About" component={About_us} />
+            <RouteWithNavbar exact path="/Contact" component={Contact_us} />
+            <RouteWithNavbar
+              exact
+              path="/WhyDonateBlood"
+              component={WhyDonateBlood}
+            />
+            <RouteWithNavbar
+              exact
+              path="/verificationReq"
+              component={Verification}
+            />
 
-          <Route1 exact path="/dashboard" component={dashboard} />          
-          <Route1 exact path="/receiverrequest" component={Request} />
-          <Route1 exact path="/Donor_profile" component={Donorprofile} />
-          <Route1 exact path="/ViewMyRequest" component={ViewMyRequest} />
-          <Route1 exact path="/ViewRecievers" component={View_reciever} />
-          <Route1 exact path="/ReceivedBlood" component={ReceivedBlood} />
-          <Route1 exact path="/TrackApplication" component={TrackApplication} />
-          <Route1 exact path="/BookSlot" component={BookSlot} />
-          <Route2 exact path="/Appointments" component={Appointments} />
-          <Route1 exact path="/Aboutus_dashboard" component={Aboutus_dash} />
-          <Route1 exact path="/Contactus_dashboard" component={Contactus_dash} />
-          <Route1 exact path="/Whydonateblood_dashboard" component={Whydonateblood_dashboard} />
+            <Route1 exact path="/dashboard" component={dashboard} />
+            <Route1 exact path="/receiverrequest" component={Request} />
+            <Route1 exact path="/Donor_profile" component={Donorprofile} />
+            <Route1 exact path="/ViewMyRequest" component={ViewMyRequest} />
+            <Route1 exact path="/ViewRecievers" component={View_reciever} />
+            <Route1 exact path="/ReceivedBlood" component={ReceivedBlood} />
+            <Route1
+              exact
+              path="/TrackApplication"
+              component={TrackApplication}
+            />
+            <Route1 exact path="/BookSlot" component={BookSlot} />
+            <Route2 exact path="/Appointments" component={Appointments} />
+            <Route1 exact path="/Aboutus_dashboard" component={Aboutus_dash} />
+            <Route1
+              exact
+              path="/Contactus_dashboard"
+              component={Contactus_dash}
+            />
+            <Route1
+              exact
+              path="/Whydonateblood_dashboard"
+              component={Whydonateblood_dashboard}
+            />
 
-          <Route2 exact path="/About_us_hosp" component={About_us_hosp} />
-          <Route2 exact path="/Contact_us_hosp" component={Contact_us_hosp} />
-          <Route2 exact path="/WhyDonateBloodhp" component={WhydonatebloodHop} />
-          <Route2 exact path="/Hsignin" component={HospitalSignin} />
-          <Route2 exact path="/Hospitaldashboard" component={Hospitaldashboard} />
-          <Route2 exact path="/PendingHospitalApp" component={PendingHospitalrequ}/>
-          <Route2 exact path="/AddEvent" component={Addevent} />
-          <Route2 exact path="/MyEvents" component={MyEvents} />
-          <Route2 exact path="/ViewApplication" component={viewapplication} />
-          <Route2 exact path="/SuccessfulDonations" component={SuccessfulDonations} />
-          </Switch>  
+            <Route2 exact path="/About_us_hosp" component={About_us_hosp} />
+            <Route2 exact path="/Contact_us_hosp" component={Contact_us_hosp} />
+            <Route2
+              exact
+              path="/WhyDonateBloodhp"
+              component={WhydonatebloodHop}
+            />
+            <Route2 exact path="/Hsignin" component={HospitalSignin} />
+            <Route2
+              exact
+              path="/Hospitaldashboard"
+              component={Hospitaldashboard}
+            />
+            <Route2
+              exact
+              path="/PendingHospitalApp"
+              component={PendingHospitalrequ}
+            />
+            <Route2 exact path="/AddEvent" component={Addevent} />
+            <Route2 exact path="/MyEvents" component={MyEvents} />
+            <Route2 exact path="/ViewApplication" component={viewapplication} />
+            <Route2
+              exact
+              path="/SuccessfulDonations"
+              component={SuccessfulDonations}
+            />
+          </Switch>
         </UserProvider>
       </Router>
     );

@@ -1,7 +1,13 @@
-.verify{
-    
-  
-  width: 100%;    
+* {
+  font-family: Calibri;
+}
+
+.containermain.verification {
+  background-color: #6068b441;
+}
+
+.verify {
+  width: 70%;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -9,60 +15,64 @@
   margin-bottom: 45px;
 }
 
-.verify-1{
-    width: 100%;
-    
-background: #a2d2ff;
-box-shadow: 4px 4px 20px rgba(147, 147, 147, 0.25);
-border-radius: 15px;
-font-family: Calibri;
-font-style: normal;
-font-weight: 600;
-font-size: 24px;
-padding-left: 30px;
-padding-top: 50px;
-padding-bottom: 50px;
-margin: 20px 40px 20px 40px;
-
-box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
-}
-
-.verifytext{
+.verify-1 {
   width: 100%;
-    margin: 10px;
-    padding: 10px;
-    font-weight: bolder;
-    color: rgb(63, 61, 61);
+  background-color: white;
+  box-shadow: 4px 4px 20px rgba(147, 147, 147, 0.575);
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  padding-left: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin: 20px 40px 20px 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+.verifytext {
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  font-weight: bolder;
+  color: rgb(63, 61, 61);
 
+  text-align: center;
+}
 
-.verifybutton{
-    margin: 10px 40px 10px 10px;
-    
-  padding: 16px 100px;
+.verifytext h4 {
+  font-weight: 500;
+}
+
+.verifybutton {
+  margin: 10px;
+  margin-top: 40px;
   text-decoration: none;
-  
-  
+  width: 30%;
+  height: 50px;
   cursor: pointer;
-  background: #6069B4;
+  background: #6069b4;
   color: none;
-  border-radius: 10px;
   border: none;
   color: white;
-  font-family: Source Sans Pro;
-font-style: normal;
-font-weight: 20;
-
-line-height: 35px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: large;
+  line-height: 35px;
 }
 
-.verifybutton a{
-    text-decoration: none;
-    
-  font-family: Source Sans Pro;
+.verifybutton a {
+  text-decoration: none;
   font-style: normal;
   font-weight: 20;
-  
   line-height: 35px;
+}
+
+.verify-1 h5 {
+  margin-top: 10px;
+  font-weight: 400;
 }
