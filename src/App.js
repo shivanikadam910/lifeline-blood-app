@@ -33,7 +33,10 @@ import WhydonatebloodHop from "./components/WhydonatebloodHosp";
 import Aboutus_dash from "./components/Aboutus_dashboard";
 import Contactus_dash from "./components/Contactus_dashboard";
 import Navbar_hosp from "./components/Navbar_hosp";
-import Whydonateblood_dashboard from "./components/Whydonateblood_dashboard"
+import Whydonateblood_dashboard from "./components/Whydonateblood_dashboard";
+import About_us_hosp from "./components/About_us_hosp";
+import Contact_us_hosp from "./components/Contact_us_hosp";
+
 const RouteWithNavbar = ({exact, path, component:Component}) => {
   return(
     <div>
@@ -92,7 +95,9 @@ class App extends Component {
           <Route1 exact path="/Aboutus_dashboard" component={Aboutus_dash} />
           <Route1 exact path="/Contactus_dashboard" component={Contactus_dash} />
           <Route1 exact path="/Whydonateblood_dashboard" component={Whydonateblood_dashboard} />
-          
+
+          <Route2 exact path="/About_us_hosp" component={About_us_hosp} />
+          <Route2 exact path="/Contact_us_hosp" component={Contact_us_hosp} />
           <Route2 exact path="/WhyDonateBloodhp" component={WhydonatebloodHop} />
           <Route2 exact path="/Hsignin" component={HospitalSignin} />
           <Route2 exact path="/Hospitaldashboard" component={Hospitaldashboard} />

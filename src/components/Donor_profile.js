@@ -77,7 +77,7 @@ class Donor_profile extends Component {
           if (this.state.age == undefined) {
             window.alert("Enter your Age");
           } else {
-            if (this.state.city == undefined) {
+            if (this.state.city == undefined ) {
               window.alert("Enter your city");
             } else {
               if (this.state.contact == undefined) {
@@ -381,6 +381,7 @@ class Donor_profile extends Component {
                   <input
                     name="city"
                     type="text"
+                    placeholder="Ahmedabad"
                     value={this.state.city}
                     onChange={this.onInputchange}
                   />
