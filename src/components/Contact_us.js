@@ -9,46 +9,91 @@ import { Link } from "react-router-dom";
 import Request from "./ReceiverRequest";
 
 class Contact_us extends React.Component {
+  constructor(props) {
+    super();
+    this.state = {
+      users: [],
+    };
+  }
   render() {
+    const { users } = this.state;
+    var flag = false;
+    if (auth.currentUser == null) {
+      flag = true;
+    }
     return (
       <div className="containermain">
-        <div className="sidebar">
+       <div className="sidebar">
           <div className="menu">
             <ul>
               <li>
                 <div className="menulist">
-                  <Link
-                    to="/dashboard"
-                    style={{ textDecoration: "none" }}
-                    className="link"
-                  >
-                    <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
-                    <h3>Dashboard</h3>
-                  </Link>
+                  {flag && (
+                    <Link
+                      to="/Login"
+                      style={{ textDecoration: "none" }}
+                      className="link"
+                    >
+                      <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
+                      <h3>Dashboard</h3>
+                    </Link>
+                  )}
+                  {!flag && (
+                    <Link
+                      to="/dashboard"
+                      style={{ textDecoration: "none" }}
+                      className="link"
+                    >
+                      <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
+                      <h3>Dashboard</h3>
+                    </Link>
+                  )}
                 </div>
 
                 <div className="menulist">
-                  <Link
-                    to="/receiverrequest"
-                    style={{ textDecoration: "none" }}
-                    className="link"
-                  >
-                    <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
-
-                    <h3>Request Blood</h3>
-                  </Link>
+                  {flag && (
+                    <Link
+                      to="/Login"
+                      style={{ textDecoration: "none" }}
+                      className="link"
+                    >
+                      <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
+                      <h3>Request Blood</h3>
+                    </Link>
+                  )}
+                  {!flag && (
+                    <Link
+                      to="/receiverrequest"
+                      style={{ textDecoration: "none" }}
+                      className="link"
+                    >
+                      <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
+                      <h3>Request Blood</h3>
+                    </Link>
+                  )}
                 </div>
 
                 <div className="menulist">
-                  <Link
-                    to="/Donor_profile"
-                    style={{ textDecoration: "none" }}
-                    className="link"
-                  >
-                    <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
-
-                    <h3>Donate Blood</h3>
-                  </Link>
+                  {flag && (
+                    <Link
+                      to="/Login"
+                      style={{ textDecoration: "none" }}
+                      className="link"
+                    >
+                      <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
+                      <h3>Donate Blood</h3>
+                    </Link>
+                  )}
+                  {!flag && (
+                    <Link
+                      to="/Donor_profile"
+                      style={{ textDecoration: "none" }}
+                      className="link"
+                    >
+                      <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
+                      <h3>Donate Blood</h3>
+                    </Link>
+                  )}
                 </div>
 
                 <div className="menulist">

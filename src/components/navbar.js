@@ -36,17 +36,12 @@ class navbar extends React.Component {
                 </Link>
               </li>
 
-              <li>
-                <Link to="/Hospitalregister" style={{ fontWeight: "600" }}>
-                  {" "}
-                  Hospital Sign in
-                </Link>
-              </li>
+             
 
               <li>
                 <Link to="/Login" style={{ fontWeight: "600" }}>
                   {" "}
-                  User Sign in{" "}
+                 Sign in{" "}
                 </Link>
               </li>
             </ul>

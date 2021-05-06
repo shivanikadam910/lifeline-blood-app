@@ -99,8 +99,11 @@ class ViewApplications extends Component {
 
                 <div className="menulist">
                   <Link
-                    to="/Hospitaldashboard"
-                    style={{ textDecoration: "none" }}
+                    to={{
+                      pathname:"/Hospitaldashboard",
+                      state: { data: this.props.location.state.data }
+                    }}
+                      style={{ textDecoration: "none" }}
                     className="link"
                   >
                     <img src="https://img.icons8.com/material-rounded/24/000000/calendar-minus.png" />
