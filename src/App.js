@@ -85,7 +85,6 @@ class App extends Component {
           <Route1 exact path="/Donor_profile" component={Donorprofile} />
           <Route1 exact path="/ViewMyRequest" component={ViewMyRequest} />
           <Route1 exact path="/ViewRecievers" component={View_reciever} />
-          <Route1 exact path="/Hsignin" component={HospitalSignin} />
           <Route1 exact path="/ReceivedBlood" component={ReceivedBlood} />
           <Route1 exact path="/TrackApplication" component={TrackApplication} />
           <Route1 exact path="/BookSlot" component={BookSlot} />
@@ -95,19 +94,9 @@ class App extends Component {
           <Route1 exact path="/Whydonateblood_dashboard" component={Whydonateblood_dashboard} />
           
           <Route2 exact path="/WhyDonateBloodhp" component={WhydonatebloodHop} />
-
-          <Route2
-            exact
-            path="/Hospitaldashboard"
-            component={Hospitaldashboard}
-          >
-            
-            </Route2>
-          <Route2
-            exact
-            path="/PendingHospitalApp"
-            component={PendingHospitalrequ}
-          />
+          <Route2 exact path="/Hsignin" component={HospitalSignin} />
+          <Route2 exact path="/Hospitaldashboard" component={Hospitaldashboard} />
+          <Route2 exact path="/PendingHospitalApp" component={PendingHospitalrequ}/>
           <Route2 exact path="/AddEvent" component={Addevent} />
           <Route2 exact path="/MyEvents" component={MyEvents} />
           <Route2 exact path="/ViewApplication" component={viewapplication} />

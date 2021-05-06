@@ -211,14 +211,6 @@ class Hospitaldashboard extends React.Component {
                     <h3>Appointments</h3>
                   </Link>
                 </div>
-
-                <div className="menulist H">
-                  <button onClick={this.logoutHospital}>
-                    <h3>Logout</h3>
-                  </button>
-
-                  {/* <img src="https://img.icons8.com/material-two-tone/24/000000/news.png" /> */}
-                </div>
               </li>
             </ul>
           </div>
