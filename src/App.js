@@ -74,7 +74,7 @@ class App extends Component {
             <RouteWithNavbar exact path="/Signup" component={Register} />
             <RouteWithNavbar exact path="/Login" component={LoginPage} />
             <RouteWithNavbar exact path="/Home" component={HomeScreen} />
-            <RouteWithNavbar
+            <Route2
               exact
               path="/Hospitalregister"
               component={HospitalRegister}
