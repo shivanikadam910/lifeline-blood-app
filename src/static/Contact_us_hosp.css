@@ -1,0 +1,139 @@
+.contact-info {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-bottom: 45px;
+  margin-top: 40px;
+  background-color: white;
+}
+
+.contactinfo1 {
+  width: 100%;
+  border-radius: 15px;
+  font-family: Calibri;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  padding-left: 30px;
+  padding-top: 0px;
+  margin: 0px 40px 20px 40px;
+}
+
+.section-header h3::before {
+  background: #ddd;
+}
+
+.section-header h3::after {
+  background: #18d26e;
+}
+
+.section-header p {
+  text-align: center;
+
+  color: #333;
+}
+
+.contact-info {
+  text-align: left;
+}
+
+.contact-info h2 {
+  margin-top: 20px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: rgb(24, 24, 24);
+}
+
+.contact-info h2 a {
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgb(24, 24, 24);
+}
+.contactinfo-1 p a {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgb(24, 24, 24);
+}
+
+.contact-info i {
+  font-size: 48px;
+  display: inline-block;
+
+  color: #18d26e;
+}
+
+.contact-info address,
+.contact-info p {
+  margin-bottom: 0;
+  color: #000;
+}
+
+.contact-info h3 {
+  font-size: 18px;
+
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.contact-info a {
+  color: #000;
+  font-size: 1.4rem;
+}
+
+.contact-info a:hover {
+  color: #18d26e;
+}
+
+.contact-address,
+.contact-phone,
+.contact-email {
+}
+
+.banner-contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: inset 0 0 0 1000px rgba(5, 1, 51, 0.6);
+  background-image: url("https://images.unsplash.com/photo-1587560699334-bea93391dcef?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+  background-size: cover;
+  background-position: center;
+  height: 350px;
+}
+.banner-contact h1 {
+  color: #fff;
+  font-weight: 600;
+  font-size: 3.5rem;
+  letter-spacing: 10px;
+}
+
+.contact-info.contact {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: transparent;
+
+  position: relative;
+  top: -100px;
+}
+
+.contactinfo-1 {
+  background-color: white;
+  border-radius: 5px;
+  height: 200px;
+  width: 350px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+.contactinfo-1:hover {
+  background-color: #61f3a5;
+}
+
+.container2.contact {
+  background-color: whitesmoke;
+  height: 90vh;
+}

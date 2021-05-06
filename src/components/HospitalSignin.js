@@ -1,8 +1,5 @@
 import "../static/style.css";
-// import { Link } from "react-router-dom";
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
-import UserProvider, { UserContext } from "../providers/userprovider";
 import firebase from "../firebase/firebase";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -54,7 +51,7 @@ export default class HospitalRegister extends Component {
         <div className="layer" id="login">
           <div className="loginArea" id="loginId">
             <div className="vector" id="vector-login"></div>
-            <h3 className="loginText">Sign In</h3>
+            <h3 className="loginText">Hospital Sign In</h3>
             <div className="textArea">
               <form>
                 <div>

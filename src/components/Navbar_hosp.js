@@ -40,10 +40,17 @@ class Navbar_hosp extends React.Component {
               <li>
                 <Link  to={{
                     pathname: "/Contact_us_hosp",
-                    // state: { data: this.props.location.state.data },
                   }} style={{ fontWeight: "600" }}>
                   {" "}
                   Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link  to={{
+                    pathname: "/Hsignin",
+                  }} style={{ fontWeight: "600" }}>
+                  {" "}
+                  Logout
                 </Link>
               </li>
             
