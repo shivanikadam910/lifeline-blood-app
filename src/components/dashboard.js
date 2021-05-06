@@ -302,9 +302,9 @@ class dashboard extends React.Component {
               }}
             >
               <h3> Events </h3>
-              <div class="list-1">
+              <div class="listevent-1">
               {users.map((user) => (
-                <div key={user.uid} class="list">
+                <div key={user.uid} class="listevent">
                   
                   <h5> {user.Title}</h5>
                   <div>
