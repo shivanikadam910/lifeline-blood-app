@@ -29,7 +29,7 @@ class Appointments extends Component {
 
   componentDidMount() {
     const db = firebase.firestore();
-    
+
     db.collection("RegisteredHospital")
       .where("Licence", "==", this.props.location.state.data)
       .get()
@@ -164,18 +164,23 @@ class Appointments extends Component {
           </div>
           <div className="why">
             <h3>
-              <Link to={{
-                      pathname: "/WhyDonateBloodhp",
-                      state: { data: this.props.location.state.data },
-                    }} style={{ fontWeight: "600" }}>
+              <Link
+                to={{
+                  pathname: "/WhyDonateBloodhp",
+                  state: { data: this.props.location.state.data },
+                }}
+                style={{ fontWeight: "600" }}
+              >
                 Why Donate Blood?
               </Link>
             </h3>
             <div className="donateVector">
-              <Link to={{
-                      pathname: "/WhyDonateBloodhp",
-                      state: { data: this.props.location.state.data },
-                    }}>
+              <Link
+                to={{
+                  pathname: "/WhyDonateBloodhp",
+                  state: { data: this.props.location.state.data },
+                }}
+              >
                 <img src={donate} alt="why donate" />
               </Link>
             </div>

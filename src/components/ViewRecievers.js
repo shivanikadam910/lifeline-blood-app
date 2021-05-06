@@ -5,13 +5,13 @@ import firebase, { auth } from "../firebase/firebase";
 import donate from "../images/donateVector.png";
 import donateblood from "../images/Donating-Blood-1.svg";
 import "../static/receiverrequest.css";
-import { BeatLoader } from "react-spinners"
+import { BeatLoader } from "react-spinners";
 import { css } from "@emotion/core";
 const override = css`
   margin-top: 250px;
   margin-left: 650px;
-  position: fixed; 
-  top: 100px;  
+  position: fixed;
+  top: 100px;
 `;
 
 class ViewRecievers extends React.Component {
@@ -21,7 +21,7 @@ class ViewRecievers extends React.Component {
       Donation_Request: [],
       Recievers: [],
       email: "",
-      isLoading: true
+      isLoading: true,
     };
   }
   componentDidMount() {
@@ -60,11 +60,7 @@ class ViewRecievers extends React.Component {
     const { isLoading } = this.state;
 
     if (isLoading) {
-      return <BeatLoader        
-      color='red'
-      size={70}
-      css = {override}
-      loading/>;
+      return <BeatLoader color="red" size={70} css={override} loading />;
     }
     return (
       <div className="containermain">
@@ -122,12 +118,15 @@ class ViewRecievers extends React.Component {
           </div>
           <div className="why">
             <h3>
-              <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>
+              <Link
+                to="/Whydonateblood_dashboard"
+                style={{ fontWeight: "600" }}
+              >
                 Why Donate Blood?
               </Link>
             </h3>
             <div className="donateVector">
-              <Link to="/WhyDonateBlood">
+              <Link to="/Whydonateblood_dashboard">
                 <img src={donate} alt="why donate" />
               </Link>
             </div>

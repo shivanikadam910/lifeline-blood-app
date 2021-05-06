@@ -24,7 +24,7 @@ class ReceiverRequest extends React.Component {
       users: [],
       users1: [],
       selectValue: "",
-      email:"",
+      email: "",
       ApplicationStatus: false,
       stat: new Boolean(null),
     };
@@ -119,21 +119,22 @@ class ReceiverRequest extends React.Component {
     }
   };
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(function(user) {
-      console.log(user)
-      this.setState({ email: user.email },() => {
-        const db = firebase.firestore();
-        db.collection("Receiver")
-        .where("Email", "==", this.state.email)
-        .get()
-        .then((querySnapshot) => {
-          const data = querySnapshot.docs.map((doc) => doc.data());
-          console.log("here is data", data);
-          this.setState({ users1: data });
+    firebase.auth().onAuthStateChanged(
+      function (user) {
+        console.log(user);
+        this.setState({ email: user.email }, () => {
+          const db = firebase.firestore();
+          db.collection("Receiver")
+            .where("Email", "==", this.state.email)
+            .get()
+            .then((querySnapshot) => {
+              const data = querySnapshot.docs.map((doc) => doc.data());
+              console.log("here is data", data);
+              this.setState({ users1: data });
+            });
         });
-      
-  });
-    }.bind(this));
+      }.bind(this)
+    );
   }
   render() {
     const { users } = this.state;
@@ -194,18 +195,20 @@ class ReceiverRequest extends React.Component {
                     <h3>Track Application</h3>
                   </Link>
                 </div>
-
               </li>
             </ul>
           </div>
           <div className="why">
             <h3>
-              <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>
+              <Link
+                to="/Whydonateblood_dashboard"
+                style={{ fontWeight: "600" }}
+              >
                 Why Donate Blood?
               </Link>
             </h3>
             <div className="donateVector">
-              <Link to="/WhyDonateBlood">
+              <Link to="/Whydonateblood_dashboard">
                 <img src={donate} alt="why donate" />
               </Link>
             </div>
@@ -304,11 +307,12 @@ class ReceiverRequest extends React.Component {
                   />
                   <br />
 
+                  <div class="customSelect">
                   <label for="hospitals">
                     <b>Choose a Hospital</b>
                   </label>
                   <select
-                    className="drpdwn2"
+                    className="drpdwn"
                     id="sel"
                     value={this.state.selectValue}
                     onChange={(e) =>
@@ -326,6 +330,7 @@ class ReceiverRequest extends React.Component {
                       }
                     })}
                   </select>
+                  </div>
 
                   <div className="req-button">
                     <button

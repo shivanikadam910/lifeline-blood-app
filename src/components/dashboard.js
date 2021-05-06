@@ -179,12 +179,12 @@ class dashboard extends React.Component {
           </div>
           <div className="why">
             <h3>
-              <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>
+              <Link to="/Whydonateblood_dashboard" style={{ fontWeight: "600" }}>
                 Why Donate Blood?
               </Link>
             </h3>
             <div className="donateVector">
-              <Link to="/WhyDonateBlood">
+              <Link to="/Whydonateblood_dashboard">
                 <img src={donate} alt="why donate" />
               </Link>
             </div>

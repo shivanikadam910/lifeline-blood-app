@@ -7,13 +7,13 @@ import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
 import data from "../Hospitals.json";
 import Select from "react-select";
-import { BeatLoader } from "react-spinners"
+import { BeatLoader } from "react-spinners";
 import { css } from "@emotion/core";
 const override = css`
   margin-top: 250px;
   margin-left: 650px;
-  position: fixed; 
-  top: 100px;  
+  position: fixed;
+  top: 100px;
 `;
 
 class ReceivedBlood extends React.Component {
@@ -21,42 +21,39 @@ class ReceivedBlood extends React.Component {
     super();
     this.state = {
       users: [],
-      email:"",
-      isLoading: true
-
+      email: "",
+      isLoading: true,
     };
   }
   componentDidMount() {
     this.setState({ isLoading: true });
-    firebase.auth().onAuthStateChanged(function(user) {
-      console.log(user)
-      this.setState({ email: user.email },() => {
-      const db = firebase.firestore();
-      db.collection("Receiver")
-        .where("Email", "==", this.state.email)
-        .where("ApplicationStatus", "==", true)
-        .get()
-        .then((querySnapshot) => {
-          const data = querySnapshot.docs.map((doc) => doc.data());
-          console.log("here is data", data);
-          this.setState({ users: data });
-          this.setState({ isLoading: false });
+    firebase.auth().onAuthStateChanged(
+      function (user) {
+        console.log(user);
+        this.setState({ email: user.email }, () => {
+          const db = firebase.firestore();
+          db.collection("Receiver")
+            .where("Email", "==", this.state.email)
+            .where("ApplicationStatus", "==", true)
+            .get()
+            .then((querySnapshot) => {
+              const data = querySnapshot.docs.map((doc) => doc.data());
+              console.log("here is data", data);
+              this.setState({ users: data });
+              this.setState({ isLoading: false });
+            });
         });
-      });
-    }.bind(this));
+      }.bind(this)
+    );
   }
 
   render() {
     const { users } = this.state;
     const { donors } = this.state;
-     const { isLoading } = this.state;
+    const { isLoading } = this.state;
 
     if (isLoading) {
-      return <BeatLoader        
-      color='red'
-      size={70}
-      css = {override}
-      loading/>;
+      return <BeatLoader color="red" size={70} css={override} loading />;
     }
     return (
       <div className="containermain">
@@ -109,18 +106,20 @@ class ReceivedBlood extends React.Component {
                     <h3>Track Application</h3>
                   </Link>
                 </div>
-
               </li>
             </ul>
           </div>
           <div className="why">
             <h3>
-              <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>
+              <Link
+                to="/Whydonateblood_dashboard"
+                style={{ fontWeight: "600" }}
+              >
                 Why Donate Blood?
               </Link>
             </h3>
             <div className="donateVector">
-              <Link to="/WhyDonateBlood">
+              <Link to="/Whydonateblood_dashboard">
                 <img src={donate} alt="why donate" />
               </Link>
             </div>

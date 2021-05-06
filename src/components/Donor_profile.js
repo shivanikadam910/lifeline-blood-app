@@ -276,12 +276,12 @@ class Donor_profile extends Component {
           </div>
           <div className="why">
             <h3>
-              <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>
+              <Link to="/Whydonateblood_dashboard" style={{ fontWeight: "600" }}>
                 Why Donate Blood?
               </Link>
             </h3>
             <div className="donateVector">
-              <Link to="/WhyDonateBlood">
+              <Link to="/Whydonateblood_dashboard">
                 <img src={donate} alt="why donate" />
               </Link>
             </div>
@@ -521,7 +521,7 @@ class Donor_profile extends Component {
                     <b>Select the hospital you would like to donate bloood</b>{" "}
                   </label>
                   <select
-                    className="drpdwn2"
+                    className="drpdwn"
                     id="select"
                     value={this.state.selectValue}
                     onChange={(e1) =>

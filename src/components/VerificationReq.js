@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import firebase, { auth } from "../firebase/firebase";
-
 import smile from "../images/smiling-woman.png";
 import donate from "../images/donateVector.png";
-
 import "../static/varificationreq.css";
 import lifeline from "../images/lifeline.png";
-
 import Request from "./ReceiverRequest";
 
 class VerificationReq extends Component {
@@ -30,71 +27,6 @@ class VerificationReq extends Component {
   render() {
     return (
       <div className="containermain">
-        <div className="sidebar">
-          <div className="menu">
-            <ul>
-              <li>
-                <div className="menulist">
-                  <Link
-                    to="/dashboard"
-                    style={{ textDecoration: "none" }}
-                    className="link"
-                  >
-                    <img src="https://img.icons8.com/fluent-systems-regular/48/000000/dashboard-layout.png" />
-                    <h3>Dashboard</h3>
-                  </Link>
-                </div>
-
-                <div className="menulist">
-                  <Link
-                    to="/receiverrequest"
-                    style={{ textDecoration: "none" }}
-                    className="link"
-                  >
-                    <img src="https://img.icons8.com/material-outlined/24/000000/invite.png" />
-
-                    <h3>Request Blood</h3>
-                  </Link>
-                </div>
-
-                <div className="menulist">
-                  <Link
-                    to="/Donor_profile"
-                    style={{ textDecoration: "none" }}
-                    className="link"
-                  >
-                    <img src="https://img.icons8.com/fluent-systems-regular/48/000000/drop-of-blood.png" />
-
-                    <h3>Donate Blood</h3>
-                  </Link>
-                </div>
-
-                <div className="menulist">
-                  <Link
-                    to="/Hospitalregister"
-                    style={{ textDecoration: "none" }}
-                    className="link"
-                  >
-                    <img src="https://img.icons8.com/material/24/000000/hospital-2.png" />
-                    <h3>Hospitals</h3>
-                  </Link>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div className="why">
-            <h3>
-              <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>
-                Why Donate Blood?
-              </Link>
-            </h3>
-            <div className="donateVector">
-              <Link to="/WhyDonateBlood">
-                <img src={donate} alt="why donate" />
-              </Link>
-            </div>
-          </div>
-        </div>
         <div className="container2">
           <div className="verify">
             <div className="verify-1">
