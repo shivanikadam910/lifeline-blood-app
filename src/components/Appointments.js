@@ -18,18 +18,21 @@ class Appointments extends Component {
       currentID: "",
       User: "",
       date: new Date(),
-      email: "",
+      email: ""
     };
   }
   onChange = (date) =>
     this.setState({
       date,
-      donor: [],
+      donor: []
     });
 
   componentDidMount() {
     const db = firebase.firestore();
-
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log(user)
+      this.setState({ email: user.email })
+      }.bind(this));
     db.collection("RegisteredHospital")
       .where("Licence", "==", this.props.location.state.data)
       .get()
@@ -39,10 +42,10 @@ class Appointments extends Component {
         console.log("here is data", data);
       });
   }
-  donation_done = (user) => {
+  donation_done = (user) =>{
     const db = firebase.firestore();
     db.collection("User")
-      .where("Email", "==", this.state.email)
+    .where("Email", "==", this.state.email)
       .where("FirstName", "==", user.FirstName)
       .where("LastName", "==", user.LastName)
       .get()
@@ -54,7 +57,7 @@ class Appointments extends Component {
             },
             () => {
               db.collection("User").doc(this.state.currentID).update({
-                Donation_complete: "true",
+               Donation_complete: "true"
               });
               window.alert("Donation completed successfully !!");
               this.props.history.push({
@@ -65,7 +68,8 @@ class Appointments extends Component {
           );
         });
       });
-  };
+   
+  }
   showAppointments = () => {
     const db = firebase.firestore();
     db.collection("User")
@@ -95,7 +99,7 @@ class Appointments extends Component {
           <div className="menu">
             <ul>
               <li>
-                <div className="menulist H">
+                <div className="menulist">
                   <Link
                     to={{
                       pathname: "/Hospitaldashboard",
@@ -109,7 +113,7 @@ class Appointments extends Component {
                   </Link>
                 </div>
 
-                <div className="menulist H">
+                <div className="menulist">
                   <Link
                     to={{
                       pathname: "/PendingHospitalApp",
@@ -124,7 +128,7 @@ class Appointments extends Component {
                   </Link>
                 </div>
 
-                <div className="menulist H">
+                <div className="menulist">
                   <Link
                     to={{
                       pathname: "/AddEvent",
@@ -140,7 +144,7 @@ class Appointments extends Component {
                 </div>
 
                 <div
-                  className="menulist H"
+                  className="menulist"
                   style={{
                     background: "#f2f2f2",
                     borderRight: "5px solid #fc3d3d",
@@ -159,48 +163,25 @@ class Appointments extends Component {
                     <h3>Appointments</h3>
                   </Link>
                 </div>
+
               </li>
             </ul>
           </div>
           <div className="why">
             <h3>
-              <Link
-                to={{
-                  pathname: "/WhyDonateBloodhp",
-                  state: { data: this.props.location.state.data },
-                }}
-                style={{ fontWeight: "600" }}
-              >
+              <Link to="/WhyDonateBlood" style={{ fontWeight: "600" }}>
                 Why Donate Blood?
               </Link>
             </h3>
             <div className="donateVector">
-              <Link
-                to={{
-                  pathname: "/WhyDonateBloodhp",
-                  state: { data: this.props.location.state.data },
-                }}
-              >
+              <Link to="/WhyDonateBlood">
                 <img src={donate} alt="why donate" />
               </Link>
             </div>
           </div>
         </div>
-        <div
-          class="request-card view"
-          style={{
-            marginLeft: "275px",
-          }}
-        >
-          <div
-            class="request-card-1 view"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              alignItems: "center",
-            }}
-          >
+        <div class="request-card view" style={{ marginLeft: "275px" }}>
+          <div class="request-card-1 view">
             <h3>Appointment List</h3>
             <Calendar onChange={this.onChange} value={this.state.date} />
             {console.log(this.state.date)}
@@ -209,7 +190,6 @@ class Appointments extends Component {
                 class="cta-btn"
                 onClick={this.showAppointments}
                 class="buttonform"
-                style={{ width: "100%" }}
               >
                 <h4>Show Appointments</h4>
               </button>
@@ -235,19 +215,23 @@ class Appointments extends Component {
                       <h6>Medical condition :{user1.MedicalCondition}</h6>
                       <h6>Weight:{user1.Weight}</h6>
                       {user1.Donation_complete === "true" ? (
+                      
                         <h6>Donation status : updated</h6>
-                      ) : (
-                        <div className="buttons">
-                          <button
-                            class="cta-btn"
-                            onClick={this.donation_done.bind(this, user1)}
-                            class="buttonform"
-                          >
-                            <h4>Donation completed</h4>
-                          </button>
-                        </div>
-                      )}
+                        
+                    ) : (
+                      <div className="buttons">
+                      <button
+                        class="cta-btn"
+                        onClick={this.donation_done.bind(this, user1)}
+                        class="buttonform"
+                      >
+                        <h4>Donation completed</h4>
+                      </button>
                     </div>
+                    )}
+                      
+                    </div>
+
                   </div>
                 );
             })}

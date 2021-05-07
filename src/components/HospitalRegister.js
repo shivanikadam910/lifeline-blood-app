@@ -37,20 +37,31 @@ export default class HospitalRegister extends Component {
 
     if (this.state.Hlicence === "") {
       alert("Enter Licence number proper.");
-      window.location = "/Hsignup";
+      this.props.history.push("/HospitalRegister");
     } else {
       if (this.state.Hcity === "") {
         alert("Enter city");
-        window.location = "/Hsignup";
+        this.props.history.push("/HospitalRegister");
       } else {
         if (this.state.Hpassword === "") {
           alert("Enter Password");
-          window.location = "/Hsignup";
+          this.props.history.push("/HospitalRegister");
         } else {
+
+          if(this.state.Hpassword.length < 6){
+            window.alert("Password has to be greater than 6 characters")
+            this.props.history.push("/HospitalRegister");
+
+            }
+            else{
+        
           {
             data.map((e, key) => {
               //  console.log("Hospital name : ",e.Hospital_Name)
               //  console.log("Hname",this.state.selectValue)
+             
+
+              
               if (
                 e.Hospital_Name == this.state.selectValue &&
                 e.Licence_number == this.state.Hlicence
@@ -69,9 +80,12 @@ export default class HospitalRegister extends Component {
                 window.alert("Hospital is registered successfully!");
                 this.props.history.push("/Hsignin");
               }
+            
             });
-            // window.alert("Licence number not matched try again!")
+           window.alert("Licence number not matched try again!")
           }
+        }
+          
         }
       }
     }
