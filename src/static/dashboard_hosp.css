@@ -1,0 +1,23 @@
+.banner-hosp {
+  display: flex;
+  height: 40%;
+  width: 100%;
+  justify-content: space-evenly;
+
+  background-color: #a2d2ff;
+}
+
+.banner1-hosp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.banner1-hosp h1 {
+  margin-top: 25px;
+  font-weight: 600;
+  color: #fc3d3d;
+}
+.banner1-hosp p {
+  color: white;
+  font-size: 1.2rem;
+}

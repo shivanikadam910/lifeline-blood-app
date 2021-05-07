@@ -1,5 +1,6 @@
 import React from "react";
 import "../static/dashboard.css";
+import "../static/dashboard_hosp.css";
 import lifeline from "../images/lifeline.png";
 import firebase, { auth } from "../firebase/firebase";
 import smile from "../images/smiling-woman.png";
@@ -8,6 +9,8 @@ import { Link } from "react-router-dom";
 import Request from "./ReceiverRequest";
 import { BeatLoader } from "react-spinners";
 import { css } from "@emotion/core";
+import img from "../images/dash-hosp.png";
+
 const override = css`
   margin-top: 250px;
   margin-left: 650px;
@@ -239,6 +242,35 @@ class Hospitaldashboard extends React.Component {
           </div>
         </div>
         <div className="container2">
+          <div className="banner-hosp">
+            <div class="banner2-hosp">
+              <img src={img} alt="Image" />
+            </div>
+            <div class="banner1-hosp">
+              <h1>
+                Blood Donation
+                <br />
+                Center
+              </h1>
+              <p>
+                Register your hospital with us and
+                <br />
+                connect with thousands of donors and receivers online!
+                <h3>
+                  <Link
+                    to="/HospitalRegister"
+                    style={{
+                      color: "#006462",
+                      fontWeight: "600",
+                      fontSize: "1.3rem",
+                    }}
+                  >
+                    Register a Hospital
+                  </Link>
+                </h3>
+              </p>
+            </div>
+          </div>
           <div className="card-grid">
             <div className="card1">
               {this.state.app_count != 0 ? (
@@ -323,7 +355,7 @@ class Hospitaldashboard extends React.Component {
             </div>
           </div>
 
-          <div class="request-card view event">
+          <div class="request-card view event" style={{ marginTop: "40px" }}>
             <div
               class="request-card-1 view event"
               style={{
@@ -334,19 +366,17 @@ class Hospitaldashboard extends React.Component {
             >
               <h3> Events </h3>
               <div class="listevent-1">
-              {users.map((user) => (
-                <div key={user.uid} class="listevent">
-                  
-                  <h5> {user.Title}</h5>
-                  <div>
-                    <h6>{user.Description}</h6>
+                {users.map((user) => (
+                  <div key={user.uid} class="listevent">
+                    <h5> {user.Title}</h5>
+                    <div>
+                      <h6>{user.Description}</h6>
+                    </div>
+                    <div className="image">
+                      <img src={user.Url} width="300" height="300" />
+                    </div>
                   </div>
-                  <div className="image">
-                    <img src={user.Url} width="300" height="300" />
-                  </div>
-                  
-                </div>
-              ))}
+                ))}
               </div>
             </div>
           </div>
