@@ -137,7 +137,16 @@ class MyEvents extends React.Component {
         </div>
         <div className="container2">
           <div class="request-card view event">
-            <div class="request-card-1 view event">
+           
+            <div class="request-card view event">
+            <div
+              class="request-card-1 view event"
+              style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
               <div className="eventheader" style={{ marginBottom: "0px  " }}>
                 <div className="add">
                   <Link
@@ -164,9 +173,11 @@ class MyEvents extends React.Component {
                 </div>
               </div>
 
-              <h3> My Events</h3>
+              <h3> Events </h3>
+              <div class="listevent-1">
               {users.map((user) => (
-                <div key={user.uid} class="list">
+                <div key={user.uid} class="listevent">
+                  
                   <h5> {user.Title}</h5>
                   <div>
                     <h6>{user.Description}</h6>
@@ -174,9 +185,12 @@ class MyEvents extends React.Component {
                   <div className="image">
                     <img src={user.Url} width="300" height="300" />
                   </div>
+                  
                 </div>
               ))}
+              </div>
             </div>
+          </div>
           </div>
         </div>
 
