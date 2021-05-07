@@ -171,7 +171,7 @@ export default class Main extends Component {
                 Save lives!
               </h1>
               <h3>
-                <Link to="/Donor_profile" style={{ color: "white" }}>
+                <Link to="/Login" style={{ color: "white" }}>
                   Donate Now &nbsp; &gt;
                 </Link>
               </h3>
