@@ -75,7 +75,7 @@ class BookSlot extends Component {
           <div className="menu">
             <ul>
               <li>
-                <div className="menulist">
+                <div className="menulist H">
                   <Link
                     to="/dashboard"
                     style={{ textDecoration: "none" }}
@@ -86,7 +86,7 @@ class BookSlot extends Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
+                <div className="menulist H">
                   <Link
                     to="/receiverrequest"
                     style={{ textDecoration: "none" }}
@@ -98,7 +98,7 @@ class BookSlot extends Component {
                   </Link>
                 </div>
 
-                <div className="menulist">
+                <div className="menulist H">
                   <Link
                     to="/Donor_profile"
                     style={{ textDecoration: "none" }}
@@ -111,7 +111,7 @@ class BookSlot extends Component {
                 </div>
 
                 <div
-                  className="menulist"
+                  className="menulist H"
                   style={{
                     background: "#f2f2f2",
                     borderRight: "5px solid #fc3d3d",
@@ -142,11 +142,23 @@ class BookSlot extends Component {
             </div>
           </div>
         </div>
-        <div className="container2">
-          <div class="request-card view">
-            <div class="request-card-1 view">
+        <div
+          class="request-card view"
+          style={{
+            marginLeft: "275px",
+          }}
+        >
+          <div
+            class="request-card-1 view"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+           >
               <h3>Book your date</h3>
-              <div class="list">
+              
                 <Calendar
                   onChange={this.onChange}
                   value={this.state.date}
@@ -159,12 +171,12 @@ class BookSlot extends Component {
                     class="cta-btn"
                     onClick={this.bookDate}
                     class="buttonform"
+                    style={{ width: "100%" }}
                   >
                     <h4>Book your slot</h4>
                   </button>
                 </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
