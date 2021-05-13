@@ -1,6 +1,40 @@
 # Lifeline Blood App
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Project Description
+* Due to the current pandemic situation in the world, many people are dying, not only because of covid but also due to many other deadly diseases.
+* Instead of manually looking for places where the user can donate or receive plasma/blood, they can find this information digitally. In most of the critical cases except for covid patients, there are high chances that the patient would require blood of a certain blood group.
+
+## Users
+* Donor
+* Receiver
+* Hospital
+
+## Stackholders
+* Donor
+* Receiver
+* Hospitals
+* Doctors
+* Developers
+* Blood Banks
+* NGO/Group hosting events
+* Government organisations
+* Hospital employees and supply providers
+
+## Features
+* Donor interface
+  - Donation Request
+  - Track application
+  - View Receivers
+  - View News and events
+* Receiver interface
+  - Make a blood request
+  - View list of donors
+  - Update/Delete blood request
+* Hospital interface
+  - Post events
+  - Update applications
+  - Track appointment list
 
 ## Available Scripts
 
