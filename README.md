@@ -36,6 +36,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - Update applications
   - Track appointment list
 
+## Some Snapshots
+
+* Login for users
+![Untitled_page-0001](https://user-images.githubusercontent.com/54388663/118119915-b9846180-b40c-11eb-826c-312cf046fbe3.jpg)
+
+* Dashboard
+![Untitled_page-0005](https://user-images.githubusercontent.com/54388663/118119931-bf7a4280-b40c-11eb-8ca7-b66b4136c335.jpg)
+
+* Login for hospital
+![Untitled_page-0003](https://user-images.githubusercontent.com/54388663/118119948-c7d27d80-b40c-11eb-8683-31fba9a628bd.jpg)
+
 ## Available Scripts
 
 In the project directory, you can run:
